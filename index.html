@@ -12,41 +12,45 @@
             background: linear-gradient(135deg, #B500FF, #7800FF, #00B4E4);
             color: white;
             text-align: center;
+            overflow-x: hidden; /* Evita rolagem horizontal */
         }
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             background-color: rgba(0, 0, 0, 0.7);
-            padding: 20px;
+            padding: 10px 20px; /* Ajuste o padding para dispositivos menores */
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
+            box-sizing: border-box;
         }
         header .logo img {
-            height: 40px; /* Ajuste a altura da logo conforme necessário */
+            height: 30px; /* Ajuste a altura da logo conforme necessário */
+            max-width: 100%; /* Garante que a logo não exceda a largura disponível */
         }
         header .cta-button {
             background-color: #00B4E4;
-            padding: 12px 25px;
+            padding: 10px 20px;
             color: white;
             text-decoration: none;
             border-radius: 30px;
             font-weight: bold;
+            font-size: 14px; /* Ajuste o tamanho da fonte para dispositivos menores */
         }
         section {
-            padding: 120px 20px 60px 20px;
+            padding: 80px 10px 60px 10px; /* Ajuste o padding para dispositivos menores */
         }
         h1, h2 {
             margin-bottom: 20px;
         }
         p {
-            font-size: 18px;
+            font-size: 16px; /* Ajuste o tamanho da fonte para dispositivos menores */
         }
         .cta-section button {
-            padding: 15px 35px;
-            font-size: 20px;
+            padding: 10px 20px;
+            font-size: 16px; /* Ajuste o tamanho da fonte para dispositivos menores */
             background-color: #7800FF;
             color: white;
             border: none;
@@ -59,8 +63,8 @@
             background-color: #B500FF;
         }
         .cta-section video {
-            width: 80%;
-            max-width: 800px;
+            width: 90%; /* Ajuste a largura para dispositivos menores */
+            max-width: 100%;
             border-radius: 10px;
             margin-top: 20px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
@@ -74,9 +78,10 @@
         }
         .plan {
             background-color: rgba(255, 255, 255, 0.2);
-            padding: 20px;
+            padding: 15px;
             border-radius: 15px;
-            width: 280px;
+            width: 90%; /* Ajuste a largura para dispositivos menores */
+            max-width: 280px;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
             text-align: center;
         }
@@ -96,6 +101,7 @@
             cursor: pointer;
             font-weight: bold;
             width: 100%;
+            font-size: 14px; /* Ajuste o tamanho da fonte para dispositivos menores */
         }
         .testimonials {
             padding: 40px 20px;
@@ -103,7 +109,7 @@
             margin-top: 30px;
         }
         .whatsapp-prints {
-            padding: 40px 20px;
+            padding: 40px 10px; /* Ajuste o padding para dispositivos menores */
             background-color: rgba(0, 0, 0, 0.8);
             margin-top: 40px;
         }
@@ -136,14 +142,15 @@
             display: flex;
             justify-content: space-between;
             transform: translateY(-50%);
+            box-sizing: border-box;
         }
         .carousel-buttons button {
             background-color: rgba(0, 0, 0, 0.5);
             border: none;
             color: white;
-            padding: 15px;
+            padding: 10px;
             cursor: pointer;
-            font-size: 20px;
+            font-size: 16px; /* Ajuste o tamanho da fonte para dispositivos menores */
             border-radius: 50%;
             transition: background-color 0.3s ease;
         }
@@ -154,7 +161,7 @@
             background-color: rgba(0, 0, 0, 0.8);
             color: white;
             text-align: center;
-            padding: 20px;
+            padding: 10px;
         }
     </style>
 </head>
