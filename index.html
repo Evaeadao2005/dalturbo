@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dal Turbo - A Melhor IPTV do Mercado</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #B500FF, #7800FF, #00B4E4);
+            color: white;
+            text-align: center;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        header .logo img {
+            height: 40px; /* Ajuste a altura da logo conforme necessário */
+        }
+        header .cta-button {
+            background-color: #00B4E4;
+            padding: 12px 25px;
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+        }
+        section {
+            padding: 120px 20px 60px 20px;
+        }
+        h1, h2 {
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 18px;
+        }
+        .cta-section button {
+            padding: 15px 35px;
+            font-size: 20px;
+            background-color: #7800FF;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        .cta-section button:hover {
+            background-color: #B500FF;
+        }
+        .cta-section video {
+            width: 80%;
+            max-width: 800px;
+            border-radius: 10px;
+            margin-top: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+        .plan-section {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+        .plan {
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 15px;
+            width: 280px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        .plan h3 {
+            color: #00B4E4;
+            margin-bottom: 10px;
+        }
+        .plan p {
+            margin: 10px 0;
+        }
+        .plan button {
+            background-color: #00B4E4;
+            padding: 10px;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            width: 100%;
+        }
+        .testimonials {
+            padding: 40px 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+            margin-top: 30px;
+        }
+        .whatsapp-prints {
+            padding: 40px 20px;
+            background-color: rgba(0, 0, 0, 0.8);
+            margin-top: 40px;
+        }
+        .whatsapp-prints h2 {
+            color: #00B4E4;
+            margin-bottom: 20px;
+        }
+        .carousel {
+            position: relative;
+            max-width: 100%;
+            margin: auto;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+        .carousel-images {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        .carousel-images img {
+            width: 100%;
+            height: auto;
+            flex-shrink: 0;
+            border-radius: 10px;
+        }
+        .carousel-buttons {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+        .carousel-buttons button {
+            background-color: rgba(0, 0, 0, 0.5);
+            border: none;
+            color: white;
+            padding: 15px;
+            cursor: pointer;
+            font-size: 20px;
+            border-radius: 50%;
+            transition: background-color 0.3s ease;
+        }
+        .carousel-buttons button:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        footer {
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        <img src="sua-logo.png" alt="Logo Dal Turbo"> <!-- Substitua "sua-logo.png" pelo caminho da sua logo -->
+    </div>
+    <a href="https://wa.me/SEUNUMERO" class="cta-button">WhatsApp</a>
+</header>
+
+<section class="intro">
+    <h1>ASSISTA SEUS PROGRAMAS FAVORITOS SEM TRAVAMENTO</h1>
+    <p>A MELHOR DO BRASIL + DE 85 MIL CONTEÚDO! CANAIS, FILMES E SÉRIES EM HD, FULL HD E 4K</p>
+    <div class="cta-section">
+        <button onclick="window.location.href='#planos'">QUERO ACESSAR OS MELHORES CANAIS</button>
+        <video controls>
+            <source src="seu-video.mp4" type="video/mp4">
+            Seu navegador não suporta o elemento de vídeo.
+        </video>
+    </div>
+</section>
+
+<section class="benefits">
+    <h2>Por que Escolher a Dal Turbo?</h2>
+    <div class="benefit-item">
+        <h3>ASSISTA ONDE QUISER</h3>
+        <p>Nosso aplicativo exclusivo permite que você assista a tudo o que quiser, a qualquer hora e em qualquer lugar.</p>
+    </div>
+    <div class="benefit-item">
+        <h3>+100 MIL CONTEÚDOS</h3>
+        <p>Explore uma vasta biblioteca com filmes, séries e muito mais em alta qualidade.</p>
+    </div>
+    <div class="benefit-item">
+        <h3>TODOS OS TIPOS DE SÉRIES</h3>
+        <p>De dramas a comédias, temos todas as suas séries favoritas, prontas para você assistir.</p>
+    </div>
+    <div class="benefit-item">
+        <h3>CANAIS ABERTOS E FECHADOS</h3>
+        <p>Acesso a todos os canais, abertos e fechados, sem travamentos e com qualidade garantida.</p>
+    </div>
+</section>
+
+<section id="planos" class="plan-section">
+    <div class="plan">
+        <h3>Plano Mensal</h3>
+        <p>R$ 25,00</p>
+        <p>Teste Grátis - 1 Tela - FHD/HD/SD</p>
+        <p>+70 Mil Conteúdos</p>
+        <button onclick="window.location.href='https://wa.me/SEUNUMERO'">SOLICITE SEU TESTE</button>
+    </div>
+    <div class="plan">
+        <h3>Plano Trimestral</h3>
+        <p>R$ 79,99</p>
+        <p>Teste Grátis - 1 Tela - FHD/HD/SD</p>
+        <p>+70 Mil Conteúdos</p>
+        <button onclick="window.location.href='https://wa.me/SEUNUMERO'">SOLICITE SEU TESTE</button>
+    </div>
+    <div class="plan">
+        <h3>Plano Semestral</h3>
+        <p>R$ 139,99</p>
+        <p>Teste Grátis - 1 Tela - FHD/HD/SD</p>
+        <p>+70 Mil Conteúdos</p>
+        <button onclick="window.location.href='https://wa.me/SEUNUMERO'">SOLICITE SEU TESTE</button>
+    </div>
+</section>
+
+<section class="whatsapp-prints">
+    <h2>Atendimentos via WhatsApp</h2>
+    <div class="carousel">
+        <div class="carousel-images">
+            <img src="print1.jpg" alt="Print de Atendimento 1">
+            <img src="print2.jpg" alt="Print de Atendimento 2">
+            <!-- Adicione mais imagens conforme necessário -->
+        </div>
+        <div class="carousel-buttons">
+            <button onclick="moveSlide(-1)">&#10094;</button>
+            <button onclick="moveSlide(1)">&#10095;</button>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2024 Dal Turbo - Todos os direitos reservados.</p>
+</footer>
+
+<script>
+    let currentIndex = 0;
+
+    function moveSlide(step) {
+        const slides = document.querySelectorAll('.carousel-images img');
+        const totalSlides = slides.length;
+        currentIndex = (currentIndex + step + totalSlides) % totalSlides;
+        const offset = -currentIndex * 100;
+        document.querySelector('.carousel-images').style.transform = `translateX(${offset}%)`;
+    }
+</script>
+
+</body>
+</html>
