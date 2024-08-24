@@ -12,77 +12,81 @@
             background: linear-gradient(135deg, #B500FF, #7800FF, #00B4E4);
             color: white;
             text-align: center;
+            overflow-x: hidden; /* Evita o overflow horizontal */
         }
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             background-color: rgba(0, 0, 0, 0.7);
-            padding: 20px;
+            padding: 15px 20px;
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
         }
         header .logo img {
-            height: 60px; /* Aumente a altura da logo conforme necessário */
+            height: 50px; /* Ajuste o tamanho da logo conforme necessário */
         }
         header .cta-button {
             background-color: #00B4E4;
-            padding: 12px 25px;
+            padding: 10px 20px;
             color: white;
             text-decoration: none;
-            border-radius: 30px;
+            border-radius: 20px;
             font-weight: bold;
         }
         section {
-            padding: 120px 20px 60px 20px;
+            padding: 80px 20px 60px 20px;
+            margin-top: 70px; /* Para acomodar o header fixo */
         }
         h1, h2 {
-            margin-bottom: 20px;
+            margin: 0 0 20px;
         }
         p {
             font-size: 18px;
+            margin: 0 0 10px;
         }
         .cta-section button {
-            padding: 15px 35px;
-            font-size: 20px;
+            padding: 12px 30px;
+            font-size: 18px;
             background-color: #7800FF;
             color: white;
             border: none;
             border-radius: 30px;
             cursor: pointer;
             font-weight: bold;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s;
         }
         .cta-section button:hover {
             background-color: #B500FF;
         }
         .cta-section video {
-            width: 70%;
-            max-width: 700px;
+            width: 100%;
+            max-width: 600px;
+            height: auto;
             border-radius: 10px;
-            margin-top: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
         }
         .plan-section {
             display: flex;
+            flex-wrap: wrap;
             justify-content: center;
             gap: 20px;
-            flex-wrap: wrap;
             margin-top: 30px;
         }
         .plan {
             background-color: rgba(255, 255, 255, 0.2);
             padding: 20px;
             border-radius: 15px;
-            width: 280px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            width: calc(50% - 20px);
+            max-width: 280px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
             text-align: center;
         }
         .plan h3 {
             color: #00B4E4;
-            margin-bottom: 10px;
+            margin: 0 0 10px;
         }
         .plan p {
             margin: 10px 0;
@@ -104,7 +108,7 @@
         }
         .testimonials h2 {
             color: #00B4E4;
-            margin-bottom: 20px;
+            margin: 0 0 20px;
         }
         .carousel {
             position: relative;
@@ -122,7 +126,6 @@
             width: 100%;
             height: auto;
             flex-shrink: 0;
-            border-radius: 10px;
         }
         .carousel-buttons {
             position: absolute;
@@ -136,11 +139,11 @@
             background-color: rgba(0, 0, 0, 0.5);
             border: none;
             color: white;
-            padding: 15px;
+            padding: 10px;
             cursor: pointer;
-            font-size: 20px;
+            font-size: 24px;
             border-radius: 50%;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s;
         }
         .carousel-buttons button:hover {
             background-color: rgba(0, 0, 0, 0.8);
@@ -150,6 +153,7 @@
             color: white;
             text-align: center;
             padding: 20px;
+            margin-top: 30px;
         }
         .whatsapp-button {
             position: fixed;
@@ -162,7 +166,7 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
             text-decoration: none;
             font-size: 24px;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s;
             z-index: 1000;
         }
         .whatsapp-button:hover {
@@ -181,7 +185,7 @@
 
 <section class="intro">
     <h1>ASSISTA SEUS PROGRAMAS FAVORITOS SEM TRAVAMENTO</h1>
-    <p>A MELHOR DO BRASIL + DE 85 MIL CONTEÚDO! CANAIS, FILMES E SÉRIES EM HD, FULL HD E 4K</p>
+    <p>A MELHOR DO BRASIL + DE 85 MIL CONTEÚDOS! CANAIS, FILMES E SÉRIES EM HD, FULL HD E 4K</p>
     <div class="cta-section">
         <button onclick="window.location.href='#planos'">QUERO ACESSAR OS MELHORES CANAIS</button>
         <video controls>
