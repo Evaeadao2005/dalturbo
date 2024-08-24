@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+        <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
@@ -12,45 +12,64 @@
             background: linear-gradient(135deg, #B500FF, #7800FF, #00B4E4);
             color: white;
             text-align: center;
-            overflow-x: hidden; /* Evita rolagem horizontal */
+            overflow-x: hidden; /* Evita scroll horizontal */
         }
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             background-color: rgba(0, 0, 0, 0.7);
-            padding: 10px 20px; /* Ajuste o padding para dispositivos menores */
+            padding: 20px;
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            box-sizing: border-box;
         }
         header .logo img {
-            height: 30px; /* Ajuste a altura da logo conforme necessário */
-            max-width: 100%; /* Garante que a logo não exceda a largura disponível */
+            height: 60px; /* Aumenta a altura da logo */
         }
         header .cta-button {
             background-color: #00B4E4;
-            padding: 10px 20px;
+            padding: 12px 25px;
             color: white;
             text-decoration: none;
             border-radius: 30px;
             font-weight: bold;
-            font-size: 14px; /* Ajuste o tamanho da fonte para dispositivos menores */
+        }
+        .whatsapp-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #25D366;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        .whatsapp-button:hover {
+            background-color: #128C7E;
+            transform: scale(1.1);
         }
         section {
-            padding: 80px 10px 60px 10px; /* Ajuste o padding para dispositivos menores */
+            padding: 120px 20px 60px 20px;
         }
         h1, h2 {
             margin-bottom: 20px;
         }
         p {
-            font-size: 16px; /* Ajuste o tamanho da fonte para dispositivos menores */
+            font-size: 18px;
         }
         .cta-section button {
-            padding: 10px 20px;
-            font-size: 16px; /* Ajuste o tamanho da fonte para dispositivos menores */
+            padding: 15px 35px;
+            font-size: 20px;
             background-color: #7800FF;
             color: white;
             border: none;
@@ -63,11 +82,21 @@
             background-color: #B500FF;
         }
         .cta-section video {
-            width: 90%; /* Ajuste a largura para dispositivos menores */
-            max-width: 100%;
+            width: 70%;
+            max-width: 700px;
             border-radius: 10px;
             margin-top: 20px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+        .benefits {
+            padding: 40px 20px;
+        }
+        .benefit-item {
+            margin-bottom: 20px;
+        }
+        .benefit-item h3 {
+            color: #00B4E4;
+            margin-bottom: 10px;
         }
         .plan-section {
             display: flex;
@@ -77,16 +106,16 @@
             margin-top: 30px;
         }
         .plan {
-            background-color: rgba(255, 255, 255, 0.2);
-            padding: 15px;
+            background-color: #FFFFFF;
+            color: #333;
+            padding: 20px;
             border-radius: 15px;
-            width: 90%; /* Ajuste a largura para dispositivos menores */
-            max-width: 280px;
+            width: 280px;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
             text-align: center;
         }
         .plan h3 {
-            color: #00B4E4;
+            color: #7800FF;
             margin-bottom: 10px;
         }
         .plan p {
@@ -101,7 +130,10 @@
             cursor: pointer;
             font-weight: bold;
             width: 100%;
-            font-size: 14px; /* Ajuste o tamanho da fonte para dispositivos menores */
+            transition: background-color 0.3s ease;
+        }
+        .plan button:hover {
+            background-color: #7800FF;
         }
         .testimonials {
             padding: 40px 20px;
@@ -109,7 +141,7 @@
             margin-top: 30px;
         }
         .whatsapp-prints {
-            padding: 40px 10px; /* Ajuste o padding para dispositivos menores */
+            padding: 40px 20px;
             background-color: rgba(0, 0, 0, 0.8);
             margin-top: 40px;
         }
@@ -127,7 +159,7 @@
         }
         .carousel-images {
             display: flex;
-            transition: transform 0.5s ease;
+            transition: transform 0.8s ease; /* Ajuste a velocidade de transição */
         }
         .carousel-images img {
             width: 100%;
@@ -142,15 +174,14 @@
             display: flex;
             justify-content: space-between;
             transform: translateY(-50%);
-            box-sizing: border-box;
         }
         .carousel-buttons button {
             background-color: rgba(0, 0, 0, 0.5);
             border: none;
             color: white;
-            padding: 10px;
+            padding: 15px;
             cursor: pointer;
-            font-size: 16px; /* Ajuste o tamanho da fonte para dispositivos menores */
+            font-size: 20px;
             border-radius: 50%;
             transition: background-color 0.3s ease;
         }
@@ -161,7 +192,7 @@
             background-color: rgba(0, 0, 0, 0.8);
             color: white;
             text-align: center;
-            padding: 10px;
+            padding: 20px;
         }
     </style>
 </head>
@@ -217,47 +248,62 @@
     <div class="plan">
         <h3>Plano Trimestral</h3>
         <p>R$ 79,99</p>
-        <p>Teste Grátis - 1 Tela - FHD/HD/SD</p>
+<p>Teste Grátis - 1 Tela - FHD/HD/SD</p>
         <p>+70 Mil Conteúdos</p>
         <button onclick="window.location.href='https://wa.me/SEUNUMERO'">SOLICITE SEU TESTE</button>
     </div>
     <div class="plan">
-        <h3>Plano Semestral</h3>
-        <p>R$ 139,99</p>
+        <h3>Plano Anual</h3>
+        <p>R$ 299,99</p>
         <p>Teste Grátis - 1 Tela - FHD/HD/SD</p>
         <p>+70 Mil Conteúdos</p>
         <button onclick="window.location.href='https://wa.me/SEUNUMERO'">SOLICITE SEU TESTE</button>
     </div>
 </section>
 
-<section class="whatsapp-prints">
-    <h2>Atendimentos via WhatsApp</h2>
+<section class="testimonials">
+    <h2>O Que Dizem Nossos Clientes</h2>
     <div class="carousel">
         <div class="carousel-images">
-            <img src="print1.jpg" alt="Print de Atendimento 1">
-            <img src="print2.jpg" alt="Print de Atendimento 2">
-            <!-- Adicione mais imagens conforme necessário -->
+            <img src="print1.jpg" alt="Print 1">
+            <img src="print2.jpg" alt="Print 2">
+            <img src="print3.jpg" alt="Print 3">
         </div>
         <div class="carousel-buttons">
-            <button onclick="moveSlide(-1)">&#10094;</button>
-            <button onclick="moveSlide(1)">&#10095;</button>
+            <button onclick="moveCarousel(-1)">❮</button>
+            <button onclick="moveCarousel(1)">❯</button>
+        </div>
+    </div>
+</section>
+
+<section class="whatsapp-prints">
+    <h2>Veja Nossos Prints de Atendimento</h2>
+    <div class="carousel">
+        <div class="carousel-images">
+            <img src="print4.jpg" alt="Print 4">
+            <img src="print5.jpg" alt="Print 5">
+            <img src="print6.jpg" alt="Print 6">
+        </div>
+        <div class="carousel-buttons">
+            <button onclick="moveCarousel(-1)">❮</button>
+            <button onclick="moveCarousel(1)">❯</button>
         </div>
     </div>
 </section>
 
 <footer>
-    <p>&copy; 2024 Dal Turbo - Todos os direitos reservados.</p>
+    <p>&copy; 2024 Dal Turbo. Todos os direitos reservados.</p>
 </footer>
 
 <script>
     let currentIndex = 0;
 
-    function moveSlide(step) {
-        const slides = document.querySelectorAll('.carousel-images img');
-        const totalSlides = slides.length;
-        currentIndex = (currentIndex + step + totalSlides) % totalSlides;
+    function moveCarousel(direction) {
+        const carouselImages = document.querySelector('.carousel-images');
+        const totalImages = carouselImages.children.length;
+        currentIndex = (currentIndex + direction + totalImages) % totalImages;
         const offset = -currentIndex * 100;
-        document.querySelector('.carousel-images').style.transform = `translateX(${offset}%)`;
+        carouselImages.style.transform = `translateX(${offset}%)`;
     }
 </script>
 
