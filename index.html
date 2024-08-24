@@ -186,6 +186,56 @@
         .whatsapp-button:hover {
             background-color: #128C7E;
         }
+        .carousel {
+    position: relative;
+    overflow: hidden;
+    max-width: 100%;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.carousel-images {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-images img {
+    max-width: 100%;
+    height: auto;
+    flex-shrink: 0;
+}
+
+.carousel-buttons {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+}
+
+.carousel-buttons button {
+    background: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+.whatsapp-button {
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    background: #25D366; /* Green color for WhatsApp */
+    color: white;
+    border-radius: 50%;
+    padding: 0.5rem;
+    font-size: 2rem;
+    text-align: center;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+}
     </style>
 </head>
 <body>
