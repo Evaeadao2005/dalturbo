@@ -1,4 +1,4 @@
-        <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
@@ -12,7 +12,6 @@
             background: linear-gradient(135deg, #B500FF, #7800FF, #00B4E4);
             color: white;
             text-align: center;
-            overflow-x: hidden; /* Evita scroll horizontal */
         }
         header {
             display: flex;
@@ -26,7 +25,7 @@
             z-index: 1000;
         }
         header .logo img {
-            height: 60px; /* Aumenta a altura da logo */
+            height: 60px; /* Aumente a altura da logo conforme necessário */
         }
         header .cta-button {
             background-color: #00B4E4;
@@ -35,28 +34,6 @@
             text-decoration: none;
             border-radius: 30px;
             font-weight: bold;
-        }
-        .whatsapp-button {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: #25D366;
-            border: none;
-            border-radius: 50%;
-            width: 60px;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-            color: white;
-            font-size: 30px;
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-        }
-        .whatsapp-button:hover {
-            background-color: #128C7E;
-            transform: scale(1.1);
         }
         section {
             padding: 120px 20px 60px 20px;
@@ -88,16 +65,6 @@
             margin-top: 20px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
         }
-        .benefits {
-            padding: 40px 20px;
-        }
-        .benefit-item {
-            margin-bottom: 20px;
-        }
-        .benefit-item h3 {
-            color: #00B4E4;
-            margin-bottom: 10px;
-        }
         .plan-section {
             display: flex;
             justify-content: center;
@@ -106,8 +73,7 @@
             margin-top: 30px;
         }
         .plan {
-            background-color: #FFFFFF;
-            color: #333;
+            background-color: rgba(255, 255, 255, 0.2);
             padding: 20px;
             border-radius: 15px;
             width: 280px;
@@ -115,7 +81,7 @@
             text-align: center;
         }
         .plan h3 {
-            color: #7800FF;
+            color: #00B4E4;
             margin-bottom: 10px;
         }
         .plan p {
@@ -130,22 +96,13 @@
             cursor: pointer;
             font-weight: bold;
             width: 100%;
-            transition: background-color 0.3s ease;
-        }
-        .plan button:hover {
-            background-color: #7800FF;
         }
         .testimonials {
             padding: 40px 20px;
             background-color: rgba(0, 0, 0, 0.7);
             margin-top: 30px;
         }
-        .whatsapp-prints {
-            padding: 40px 20px;
-            background-color: rgba(0, 0, 0, 0.8);
-            margin-top: 40px;
-        }
-        .whatsapp-prints h2 {
+        .testimonials h2 {
             color: #00B4E4;
             margin-bottom: 20px;
         }
@@ -159,7 +116,7 @@
         }
         .carousel-images {
             display: flex;
-            transition: transform 0.8s ease; /* Ajuste a velocidade de transição */
+            transition: transform 1s ease;
         }
         .carousel-images img {
             width: 100%;
@@ -193,6 +150,23 @@
             color: white;
             text-align: center;
             padding: 20px;
+        }
+        .whatsapp-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #25D366;
+            padding: 15px;
+            color: white;
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            text-decoration: none;
+            font-size: 24px;
+            transition: background-color 0.3s ease;
+            z-index: 1000;
+        }
+        .whatsapp-button:hover {
+            background-color: #128C7E;
         }
     </style>
 </head>
@@ -248,7 +222,14 @@
     <div class="plan">
         <h3>Plano Trimestral</h3>
         <p>R$ 79,99</p>
-<p>Teste Grátis - 1 Tela - FHD/HD/SD</p>
+        <p>Teste Grátis - 1 Tela - FHD/HD/SD</p>
+        <p>+70 Mil Conteúdos</p>
+        <button onclick="window.location.href='https://wa.me/SEUNUMERO'">SOLICITE SEU TESTE</button>
+    </div>
+    <div class="plan">
+        <h3>Plano Semestral</h3>
+        <p>R$ 139,99</p>
+        <p>Teste Grátis - 1 Tela - FHD/HD/SD</p>
         <p>+70 Mil Conteúdos</p>
         <button onclick="window.location.href='https://wa.me/SEUNUMERO'">SOLICITE SEU TESTE</button>
     </div>
@@ -276,24 +257,11 @@
     </div>
 </section>
 
-<section class="whatsapp-prints">
-    <h2>Veja Nossos Prints de Atendimento</h2>
-    <div class="carousel">
-        <div class="carousel-images">
-            <img src="print4.jpg" alt="Print 4">
-            <img src="print5.jpg" alt="Print 5">
-            <img src="print6.jpg" alt="Print 6">
-        </div>
-        <div class="carousel-buttons">
-            <button onclick="moveCarousel(-1)">❮</button>
-            <button onclick="moveCarousel(1)">❯</button>
-        </div>
-    </div>
-</section>
-
 <footer>
     <p>&copy; 2024 Dal Turbo. Todos os direitos reservados.</p>
 </footer>
+
+<a href="https://wa.me/SEUNUMERO" class="whatsapp-button" target="_blank">📱</a>
 
 <script>
     let currentIndex = 0;
