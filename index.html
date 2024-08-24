@@ -24,9 +24,11 @@
             width: 100%;
             top: 0;
             z-index: 1000;
+            box-sizing: border-box;
         }
         header .logo img {
             height: 50px; /* Ajuste o tamanho da logo conforme necessário */
+            max-width: 100%;
         }
         header .cta-button {
             background-color: #00B4E4;
@@ -35,10 +37,12 @@
             text-decoration: none;
             border-radius: 20px;
             font-weight: bold;
+            display: inline-block;
         }
         section {
             padding: 80px 20px 60px 20px;
             margin-top: 70px; /* Para acomodar o header fixo */
+            box-sizing: border-box;
         }
         h1, h2 {
             margin: 0 0 20px;
@@ -46,6 +50,11 @@
         p {
             font-size: 18px;
             margin: 0 0 10px;
+        }
+        .cta-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
         .cta-section button {
             padding: 12px 30px;
@@ -57,6 +66,7 @@
             cursor: pointer;
             font-weight: bold;
             transition: background-color 0.3s;
+            margin-bottom: 20px; /* Espaço entre o botão e o vídeo */
         }
         .cta-section button:hover {
             background-color: #B500FF;
@@ -79,10 +89,11 @@
             background-color: rgba(255, 255, 255, 0.2);
             padding: 20px;
             border-radius: 15px;
-            width: calc(50% - 20px);
+            width: 100%;
             max-width: 280px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
             text-align: center;
+            box-sizing: border-box;
         }
         .plan h3 {
             color: #00B4E4;
@@ -100,11 +111,13 @@
             cursor: pointer;
             font-weight: bold;
             width: 100%;
+            box-sizing: border-box;
         }
         .testimonials {
             padding: 40px 20px;
             background-color: rgba(0, 0, 0, 0.7);
             margin-top: 30px;
+            box-sizing: border-box;
         }
         .testimonials h2 {
             color: #00B4E4;
@@ -154,6 +167,7 @@
             text-align: center;
             padding: 20px;
             margin-top: 30px;
+            box-sizing: border-box;
         }
         .whatsapp-button {
             position: fixed;
@@ -226,13 +240,6 @@
     <div class="plan">
         <h3>Plano Trimestral</h3>
         <p>R$ 79,99</p>
-        <p>Teste Grátis - 1 Tela - FHD/HD/SD</p>
-        <p>+70 Mil Conteúdos</p>
-        <button onclick="window.location.href='https://wa.me/SEUNUMERO'">SOLICITE SEU TESTE</button>
-    </div>
-    <div class="plan">
-        <h3>Plano Semestral</h3>
-        <p>R$ 139,99</p>
         <p>Teste Grátis - 1 Tela - FHD/HD/SD</p>
         <p>+70 Mil Conteúdos</p>
         <button onclick="window.location.href='https://wa.me/SEUNUMERO'">SOLICITE SEU TESTE</button>
