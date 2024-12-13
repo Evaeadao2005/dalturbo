@@ -1,356 +1,200 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-
-     <link rel="icon" type="image/png" href="sua-logo.png">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dal TV - SUA IPTV POR ASSINATURA</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background: linear-gradient(135deg, #B500FF, #7800FF, #00B4E4);
-            color: white;
-            text-align: center;
-            overflow-x: hidden; /* Evita o overflow horizontal */
-        }
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: rgba(0, 0, 0, 0.7);
-            padding: 15px 20px;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-sizing: border-box;
-        }
-        header .logo img {
-            height: 80px; /* Ajuste o tamanho da logo conforme necessário */
-            max-width: 100%;
-        }
-        header .cta-button {
-            background-color: #00B4E4;
-            padding: 10px 20px;
-            color: white;
-            text-decoration: none;
-            border-radius: 20px;
-            font-weight: bold;
-            display: inline-block;
-        }
-        section {
-            padding: 80px 20px 60px 20px;
-            margin-top: 70px; /* Para acomodar o header fixo */
-            box-sizing: border-box;
-        }
-        h1, h2 {
-            margin: 0 0 20px;
-        }
-        p {
-            font-size: 18px;
-            margin: 0 0 10px;
-        }
-        .cta-section {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .cta-section button {
-            padding: 12px 30px;
-            font-size: 18px;
-            background-color: #7800FF;
-            color: white;
-            border: none;
-            border-radius: 30px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: background-color 0.3s;
-            margin-bottom: 20px; /* Espaço entre o botão e o vídeo */
-        }
-        .cta-section button:hover {
-            background-color: #B500FF;
-        }
-        .cta-section video {
-            width: 100%;
-            max-width: 600px;
-            height: auto;
-            border-radius: 10px;
-            box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
-        }
-       .plan-section {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-    margin-top: 30px;
-}
-
-.plan {
-    background-color: rgba(255, 255, 255, 0.2);
-    padding: 20px;
-    border-radius: 15px;
-    width: 150%;
-    max-width: 400px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-    text-align: center;
-    box-sizing: border-box;
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.plan:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-}
-
-.plan h3 {
-    color: #00B4E4;
-    margin: 0 0 10px;
-}
-
-.plan p {
-    margin: 10px 0;
-}
-
-.plan button {
-    background-color: #00B4E4;
-    padding: 10px;
-    color: white;
-    border: none;
-    border-radius: 20px;
-    cursor: pointer;
-    font-weight: bold;
-    width: 100%;
-    box-sizing: border-box;
-    animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-    0% {
-        transform: scale(1);
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dal TV - Qualidade até você</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background-color: #000000;
+      color: #ffffff;
     }
-    50% {
-        transform: scale(1.05);
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: linear-gradient(90deg, #7800FF, #B500FF);
+      padding: 20px 10%;
+      border-bottom: 1px solid #00B4E4;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
     }
-    100% {
-        transform: scale(1);
+
+    header .logo {
+      font-size: 24px;
+      font-weight: bold;
+      letter-spacing: 2px;
     }
-}
-        .testimonials {
-            padding: 40px 20px;
-            background-color: rgba(0, 0, 0, 0.7);
-            margin-top: 30px;
-            box-sizing: border-box;
-        }
-        .testimonials h2 {
-            color: #00B4E4;
-            margin: 0 0 20px;
-        }
-        .carousel {
-            position: relative;
-            max-width: 100%;
-            margin: auto;
-            overflow: hidden;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-        }
-        .carousel-images {
-            display: flex;
-            transition: transform 1s ease;
-        }
-        .carousel-images img {
-            width: 100%;
-            height: auto;
-            flex-shrink: 0;
-        }
-        .carousel-buttons {
-            position: absolute;
-            top: 50%;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            transform: translateY(-50%);
-        }
-        .carousel-buttons button {
-            background-color: rgba(0, 0, 0, 0.5);
-            border: none;
-            color: white;
-            padding: 10px;
-            cursor: pointer;
-            font-size: 24px;
-            border-radius: 50%;
-            transition: background-color 0.3s;
-        }
-        .carousel-buttons button:hover {
-            background-color: rgba(0, 0, 0, 0.8);
-        }
-        footer {
-            background-color: rgba(0, 0, 0, 0.8);
-            color: white;
-            text-align: center;
-            padding: 20px;
-            margin-top: 30px;
-            box-sizing: border-box;
-        }
-        .whatsapp-button {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: #25D366;
-            padding: 15px;
-            color: white;
-            border-radius: 50%;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-            text-decoration: none;
-            font-size: 24px;
-            transition: background-color 0.3s;
-            z-index: 1000;
-        }
-        .whatsapp-button:hover {
-            background-color: #128C7E;
-        }
-        .carousel {
-    position: relative;
-    overflow: hidden;
-    max-width: 100%;
-    width: 100%;
-    margin: 0 auto;
-}
 
-.carousel-images {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-}
+    header .cta-buttons {
+      display: flex;
+      gap: 15px;
+    }
 
-.carousel-images img {
-    max-width: 100%;
-    height: auto;
-    flex-shrink: 0;
-}
+    header .cta-buttons a {
+      padding: 10px 20px;
+      background-color: #00B4E4;
+      border-radius: 20px;
+      color: #fff;
+      font-weight: bold;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
 
-.carousel-buttons {
-    position: absolute;
-    top: 50%;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    transform: translateY(-50%);
-}
+    header .cta-buttons a:hover {
+      background-color: #0086A0;
+      transform: scale(1.05);
+    }
 
-.carousel-buttons button {
-    background: rgba(0, 0, 0, 0.5);
-    border: none;
-    color: white;
-    font-size: 2rem;
-    cursor: pointer;
-    padding: 0.5rem;
-}
+    .hero {
+      text-align: center;
+      padding: 50px 10%;
+    }
 
-.whatsapp-button {
-    position: fixed;
-    bottom: 1rem;
-    right: 1rem;
-    background: #25D366; /* Green color for WhatsApp */
-    color: white;
-    border-radius: 50%;
-    padding: 0.5rem;
-    font-size: 2rem;
-    text-align: center;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-    z-index: 1000;
-}
-    </style>
+    .hero h1 {
+      font-size: 3rem;
+      color: #B500FF;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 40px;
+    }
+
+    .hero .whatsapp-button {
+      padding: 15px 30px;
+      background-color: #25D366;
+      color: #fff;
+      border: none;
+      border-radius: 30px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .hero .whatsapp-button:hover {
+      background-color: #1DA851;
+      transform: scale(1.05);
+    }
+
+    .plans {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      padding: 50px 10%;
+    }
+
+    .plan-card {
+      background-color: #1A1A1A;
+      border: 2px solid #B500FF;
+      border-radius: 15px;
+      padding: 20px;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .plan-card:hover {
+      border-color: #00B4E4;
+      transform: scale(1.05);
+    }
+
+    .plan-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+
+    .plan-card p {
+      margin-bottom: 20px;
+      font-size: 1rem;
+    }
+
+    .plan-card .price {
+      font-size: 2rem;
+      color: #00B4E4;
+      margin-bottom: 20px;
+    }
+
+    .plan-card a {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #00B4E4;
+      color: #fff; /* Ajustado para branco */
+      border-radius: 20px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+
+    .plan-card a:hover {
+      background-color: #0086A0;
+      transform: scale(1.05);
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px 10%;
+      background-color: #1A1A1A;
+      color: #ffffff;
+    }
+
+    footer a {
+      color: #00B4E4;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
-
-<header>
-    <div class="logo">
-        <img src="sua-logo.png" alt="Logo Dal TV"> <!-- Substitua "sua-logo.png" pelo caminho da sua logo -->
+  <header>
+    <div class="logo">Dal TV - Qualidade até você</div>
+    <div class="cta-buttons">
+      <a href="#plans">Planos</a>
+      <a href="https://wa.me/5588994635325" target="_blank">Fale Conosco</a>
     </div>
-    <a href="https://wa.me/message/SOQHCKA4ZGTEK1" class="cta-button">WhatsApp</a>
-</header>
+  </header>
 
-<section class="intro">
-   <h1>ASSISTA SEUS PROGRAMAS FAVORITOS SEM TRAVAMENTO</h1>
-<p>A MELHOR DO BRASIL: MAIS DE 100 MIL CONTEÚDOS! CANAIS, FILMES, SÉRIES E ESPORTES,e muitos MAIS!</p>
-<div class="cta-section">
-    <button onclick="window.location.href='#planos'">QUERO FAZER UM TESTE GRÁTIS!</button>
-    <video controls>
-        <source src="vídeo-1.mp4" type="video/mp4">
-        Seu navegador não suporta o elemento de vídeo.
-    </video>
-</div>
-</section>
-<section id="planos" class="plan-section">
-    <div class="plan">
-        <h3>Plano Mensal</h3>
-        <p>R$ 25,00</p>
-        <p>Teste Grátis - SD, HD, FULL HD, 4K e H265</p>
-        <p>TODOS Conteúdos LIBERADOS!</p>
-        <button onclick="window.location.href='https://wa.me/558894635325'">SOLICITE SEU TESTE</button>
+  <section class="hero">
+    <h1>Assista Tudo com Dal TV</h1>
+    <p>Tenha acesso aos melhores canais ao vivo, filmes e séries com suporte personalizado e chamadas de vídeo.</p>
+    <a class="whatsapp-button" href="https://wa.me/5588994635325?text=Ol%C3%A1%2C+quero+saber+mais+sobre+a+Dal+TV!" target="_blank">
+      <i class="fab fa-whatsapp"></i> Assine Agora
+    </a>
+  </section>
+
+  <section class="plans" id="plans">
+    <div class="plan-card">
+      <h3>Plano Mensal</h3>
+      <p>1 mês de acesso ilimitado.</p>
+      <div class="price">R$24,90</div>
+      <a href="https://wa.me/5588994635325?text=Quero+assinar+o+Plano+Mensal+da+Dal+TV!" target="_blank">Teste Agora</a>
     </div>
-</section>
-<section class="benefits">
-    <h2>Por que Escolher a DAL TV?</h2>
-    <div class="benefit-item">
-        <h3>ASSISTA ONDE QUISER</h3>
-        <p>Nosso aplicativo permite que você assista a tudo, a qualquer hora e lugar. 📱🌍</p>
+    <div class="plan-card">
+      <h3>Plano Trimestral</h3>
+      <p>3 meses de acesso ilimitado.</p>
+      <div class="price">R$64,90</div>
+      <a href="https://wa.me/5588994635325?text=Quero+assinar+o+Plano+Trimestral+da+Dal+TV!" target="_blank">Teste Agora</a>
     </div>
-    <div class="benefit-item">
-        <h3>+100 MIL CONTEÚDOS</h3>
-        <p>Explore uma vasta biblioteca com filmes, séries e esportes em alta qualidade. 🎥⚽</p>
+    <div class="plan-card">
+      <h3>Plano Semestral</h3>
+      <p>6 meses de acesso ilimitado.</p>
+      <div class="price">R$99,90</div>
+      <a href="https://wa.me/5588994635325?text=Quero+assinar+o+Plano+Semestral+da+Dal+TV!" target="_blank">Teste Agora</a>
     </div>
-    <div class="benefit-item">
-        <h3>CANAIS ABERTOS E FECHADOS</h3>
-        <p>Acesso a todos os canais, com transmissão sem interrupções e qualidade garantida. 🚀</p>
-    </div>
-    <div class="benefit-item">
-        <h3>QUALIDADE GARANTIDA</h3>
-        <p>Servidores de alto padrão com opções em SD, HD, FULL HD, 4K e H265. ⏳</p>
-    </div>
-</section>
+  </section>
 
-
-
-
-<section class="testimonials">
-    <h2>O Que Dizem Nossos Clientes</h2>
-    <div class="carousel">
-        <div class="carousel-images">
-            <img src="screenshot-1.jpg" alt="Print 1">
-            <img src="screenshot-2.jpg" alt="Print 2">
-            <img src="screenshot-3.jpg" alt="Print 3">
-            <img src="screenshot-4.jpg" alt="Print 4">
-            <img src="screenshot-5.jpg" alt="Print 5">
-            <img src="screenshot-6.jpg" alt="Print 6">
-            <img src="screenshot-7.jpg" alt="Print 7">
-            <img src="screenshot-8.jpg" alt="Print 8">
-        
-        </div>
-        <div class="carousel-buttons">
-            <button onclick="moveCarousel(-1)">❮</button>
-            <button onclick="moveCarousel(1)">❯</button>
-        </div>
-    </div>
-</section>
-
-<footer>
-    <p>&copy; 2024 DAL TV. Todos os direitos reservados.</p>
-</footer>
-<script>
-    let currentIndex = 0;
-
-    function moveCarousel(direction) {
-        const carouselImages = document.querySelector('.carousel-images');
-        const totalImages = carouselImages.children.length;
-        currentIndex = (currentIndex + direction + totalImages) % totalImages;
-        const offset = -currentIndex * 100;
-        carouselImages.style.transform = `translateX(${offset}%)`;
-    }
-</script>
-
+  <footer>
+    &copy; 2024 Dal TV. Todos os direitos reservados. <a href="https://wa.me/5588994635325">Fale conosco</a>
+  </footer>
 </body>
 </html>
