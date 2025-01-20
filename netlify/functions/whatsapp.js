@@ -3,11 +3,11 @@ exports.handler = async function(event, context) {
     let saudacao;
 
     if (hour >= 6 && hour < 12) {
-        saudacao = "Bom dia";
+        saudacao = "Bom dia, tenho interesse em adquirir um plano na DALTV";
     } else if (hour >= 12 && hour < 18) {
-        saudacao = "Boa tarde";
+        saudacao = "Boa tarde, tenho interesse em adquirir um plano na DALTV";
     } else {
-        saudacao = "Boa noite";
+        saudacao = "Boa noite, tenho interesse em adquirir um plano na DALTV";
     }
 
     const whatsappUrl = `https://wa.me/558892063359?text=${encodeURIComponent(saudacao)}`;
