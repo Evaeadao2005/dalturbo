@@ -35,7 +35,7 @@
 
     #chat-box {
       width: 100%;
-      height: calc(100% - 60px);
+      height: calc(100% - 60px); /* Espaço para a barra de digitação */
       background-image: url('https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png');
       background-size: cover;
       background-position: top center;
@@ -117,7 +117,7 @@
     }
 
     input[type="text"] {
-      width: calc(100% - 60px);
+      width: calc(100% - 60px); /* Tamanho ajustado para não ultrapassar a tela */
       padding: 10px;
       border: 1px solid #ccc;
       border-radius: 20px;
@@ -265,7 +265,6 @@
     let discountPrice = 0;
 
     const chatBox = document.getElementById("chat-box");
-    const header = document.getElementById("header");
 
     function getGreeting() {
       const hour = new Date().getHours();
@@ -325,10 +324,6 @@
         }
       } else if (step === 2) {
         userTVBrand = userInput;
-        addTypingMessage(
-          `Você informou que o dispositivo é uma TV ${userTVBrand}. Agora, escolha o plano desejado.`,
-          "bot"
-        );
         showPlanOptions();
       }
     }
@@ -351,7 +346,7 @@
             planButton.textContent = plan.name;
             planButton.onclick = () => {
               userPlan = plan.name;
-              discountPrice = plan.price - 5; 
+              discountPrice = plan.price - 5; // Desconto de R$5
               addMessage(`Você escolheu o plano: ${userPlan}.`, "bot");
               addMessage(
                 `O valor com desconto será de R$ ${discountPrice.toFixed(2)}. Para finalizar, clique no botão abaixo para seguir para o WhatsApp.`,
@@ -372,10 +367,10 @@
       whatsappButtonContainer.classList.add("whatsapp-button-container");
 
       const greeting = getGreeting();
-      let message = `${greeting} Olá, estou interessado no plano de ${userPlan} com o valor de R$ ${discountPrice.toFixed(2)} após o desconto.`;
+      const message = `${greeting} Olá, estou interessado no plano de ${userPlan} com o valor de R$ ${discountPrice.toFixed(2)} após o desconto.`;
 
-      if (userDevice.includes("tv") && userTVBrand) {
-        message += ` Meu dispositivo é uma TV ${userTVBrand}.`;
+      if (userDevice.includes("tv")) {
+        message += ` Estou usando uma TV ${userTVBrand}.`;
       }
 
       const whatsappButton = document.createElement("a");
@@ -392,9 +387,7 @@
       }
     }
 
-    // Inicia o fluxo com saudação
-    addMessage(`Olá, eu sou o Atendente Dalmon. Como posso te ajudar hoje?`, "bot");
-
+    addMessage("Olá, eu sou o Atendente Dalmon. Como posso te ajudar hoje?", "bot");
   </script>
 </body>
 </html>
