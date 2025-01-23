@@ -27,9 +27,8 @@
       background-color: #fff;
       border-radius: 10px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      overflow: hidden;
       margin-top: 60px;
-      align-items: flex-start;
+      align-items: center;
     }
 
     #chat-box {
@@ -40,7 +39,8 @@
       flex-direction: column;
       overflow-y: auto;
       box-sizing: border-box;
-      justify-content: flex-start;
+      justify-content: flex-end;
+      align-items: center;
     }
 
     .message {
@@ -50,6 +50,7 @@
       max-width: 80%;
       word-wrap: break-word;
       font-size: 16px;
+      display: inline-block;
     }
 
     .user {
@@ -204,7 +205,7 @@
     </div>
   </div>
 
-  <script>
+<script>
     let step = 0;
     let userName = "";
     let userDevice = "";
@@ -305,6 +306,7 @@
       const whatsappButtonContainer = document.createElement("div");
       whatsappButtonContainer.classList.add("whatsapp-button-container");
 
+      // Inserir a saudação antes da mensagem
       const greeting = getGreeting();
       const message = `${greeting} Olá, estou interessado no plano de ${userPlan} com o valor de R$ ${discountPrice.toFixed(2)} após o desconto.`;
 
@@ -318,6 +320,7 @@
 
     // Inicia o fluxo com saudação
     addMessage(`${getGreeting()}, Olá, eu sou o Atendente Dalmon. Como posso te ajudar hoje?`, "bot");
-  </script>
+</script>
+
 </body>
 </html>
