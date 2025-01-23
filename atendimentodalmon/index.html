@@ -328,6 +328,10 @@
         }
       } else if (step === 2) {
         userTVBrand = userInput;
+        addTypingMessage(
+          `Você informou que o dispositivo é uma TV ${userTVBrand}. Agora, escolha o plano desejado.`,
+          "bot"
+        );
         showPlanOptions();
       }
     }
@@ -379,7 +383,6 @@
       whatsappButton.textContent = "Finalizar no WhatsApp";
       whatsappButtonContainer.appendChild(whatsappButton);
       chatBox.appendChild(whatsappButtonContainer);
-      chatBox.scrollTop = chatBox.scrollHeight;
     }
 
     function handleKeyPress(event) {
@@ -388,7 +391,9 @@
       }
     }
 
-    addMessage(`${getGreeting()} Como posso te ajudar hoje?`, "bot");
+    // Inicia o fluxo com saudação
+    addMessage(`Olá, eu sou o Atendente Dalmon. Como posso te ajudar hoje?`, "bot");
+
   </script>
 </body>
 </html>
