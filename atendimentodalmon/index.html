@@ -114,7 +114,7 @@
     }
 
     input[type="text"] {
-      width: 75%; /* Ajustando para evitar ficar largo em telas grandes */
+      width: 85%; /* Ajustando para evitar ficar largo em telas grandes */
       padding: 15px;
       border: 1px solid #ccc;
       border-radius: 20px;
@@ -370,11 +370,13 @@
     }
 
     function showWhatsAppButton() {
-      const greeting = getGreeting();
       const whatsappButtonContainer = document.createElement("div");
       whatsappButtonContainer.classList.add("whatsapp-button-container");
+
+      const message = `${getGreeting()} Olá, estou interessado no plano de ${userPlan} com o valor de R$ ${discountPrice.toFixed(2)} após o desconto.`;
+
       const whatsappButton = document.createElement("a");
-      whatsappButton.href = `https://wa.me/5583990000000?text=${greeting} Olá, estou interessado no plano de R$ ${discountPrice.toFixed(2)}.`;
+      whatsappButton.href = `https://wa.me/5583990000000?text=${encodeURIComponent(message)}`;
       whatsappButton.classList.add("whatsapp-button");
       whatsappButton.textContent = "Finalizar no WhatsApp";
       whatsappButtonContainer.appendChild(whatsappButton);
@@ -382,17 +384,13 @@
       chatBox.scrollTop = chatBox.scrollHeight;
     }
 
-    window.onload = () => {
-      addTypingMessage(getGreeting(), "bot", () => {
-        addTypingMessage("Qual é o seu nome?", "bot");
-      });
-    };
-
     function handleKeyPress(event) {
       if (event.key === "Enter") {
         sendMessage();
       }
     }
+
+    addMessage(`${getGreeting()} Como posso te ajudar hoje?`, "bot");
   </script>
 </body>
 </html>
