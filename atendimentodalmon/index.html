@@ -311,7 +311,7 @@
 
         if (step === 0) {
           userName = userInput;
-          addMessage(`Certo, ${userName}. Qual dispositivo você usará? (Ex: Celular Android, iPhone, TV Smart, etc.)`, "bot");
+          addMessage(`${getGreeting()} Certo, ${userName}. Qual dispositivo você usará? (Ex: Celular Android, iPhone, TV Smart, etc.)`, "bot");
           step++;
         } else if (step === 1) {
           userDevice = userInput.toLowerCase();
@@ -329,31 +329,36 @@
     }
 
     function showPlanOptions() {
-      addMessage("Escolha o plano desejado para assinar após o teste. Aproveite o desconto de R$ 5 na primeira compra!", "bot");
+      addTypingMessage();
+      setTimeout(() => {
+        removeTypingMessage();
 
-      const plans = [
-        { name: "Mensal (1 mês): R$ 19,90", id: "mensal", price: 19.90 },
-        { name: "Trimestral (3 meses): R$ 49,90", id: "trimestral", price: 49.90 },
-        { name: "Semestral (6 meses): R$ 89,90", id: "semestral", price: 89.90 },
-      ];
+        addMessage("Escolha o plano desejado para assinar após o teste. Aproveite o desconto de R$ 5 na primeira compra!", "bot");
 
-      const buttonContainer = document.createElement("div");
-      buttonContainer.classList.add("button-container");
-      plans.forEach(plan => {
-        const planButton = document.createElement("button");
-        planButton.classList.add("plan-button");
-        planButton.textContent = plan.name;
-        planButton.onclick = () => {
-          userPlan = plan.name;
-          discountPrice = plan.price - 5; // Desconto de R$5
-          addMessage(`Você escolheu o plano: ${userPlan}.`, "bot");
-          addMessage(`O valor com desconto será de R$ ${discountPrice.toFixed(2)}. Para finalizar, clique no botão abaixo para seguir para o WhatsApp.`, "bot");
-          showWhatsAppButton();
-        };
-        buttonContainer.appendChild(planButton);
-      });
-      chatBox.appendChild(buttonContainer);
-      chatBox.scrollTop = chatBox.scrollHeight;
+        const plans = [
+          { name: "Mensal (1 mês): R$ 19,90", id: "mensal", price: 19.90 },
+          { name: "Trimestral (3 meses): R$ 49,90", id: "trimestral", price: 49.90 },
+          { name: "Semestral (6 meses): R$ 89,90", id: "semestral", price: 89.90 },
+        ];
+
+        const buttonContainer = document.createElement("div");
+        buttonContainer.classList.add("button-container");
+        plans.forEach(plan => {
+          const planButton = document.createElement("button");
+          planButton.classList.add("plan-button");
+          planButton.textContent = plan.name;
+          planButton.onclick = () => {
+            userPlan = plan.name;
+            discountPrice = plan.price - 5; // Desconto de R$5
+            addMessage(`Você escolheu o plano: ${userPlan}.`, "bot");
+            addMessage(`O valor com desconto será de R$ ${discountPrice.toFixed(2)}. Para finalizar, clique no botão abaixo para seguir para o WhatsApp.`, "bot");
+            showWhatsAppButton();
+          };
+          buttonContainer.appendChild(planButton);
+        });
+        chatBox.appendChild(buttonContainer);
+        chatBox.scrollTop = chatBox.scrollHeight;
+      }, 1000); // Delay para "Digitando..."
     }
 
     function showWhatsAppButton() {
