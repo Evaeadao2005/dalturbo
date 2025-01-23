@@ -308,7 +308,7 @@
     function generateWhatsAppButton() {
       const greeting = getGreeting();
       const whatsappLink = `https://wa.me/558892963517?text=${encodeURIComponent(
-        `${greeting}%20sou%20${userName},%20uso%20um(a)%20${userDevice}%20da%20marca%20${userTVBrand}.%20Escolhi%20o%20plano%20${userPlan}%20por%20R$%20${discountPrice.toFixed(2)}%20e%20o%20teste%20tem%20duração%20de%204%20horas.`
+        `${greeting} sou ${userName},uso um(a) ${userDevice} da marca ${userTVBrand}. Escolhi o plano ${userPlan} por R$${discountPrice.toFixed(2)} e o teste tem duração de 4 horas.`
       )}`;
       addTypingMessage("Clique no botão abaixo para continuar conversando comigo no WhatsApp:", "bot", () => {
         const buttonContainer = document.createElement("div");
