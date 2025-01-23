@@ -35,7 +35,7 @@
 
     #chat-box {
       width: 100%;
-      height: calc(100% - 60px); /* Espaço para a barra de digitação */
+      height: calc(100% - 60px);
       background-image: url('https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png');
       background-size: cover;
       background-position: top center;
@@ -117,7 +117,7 @@
     }
 
     input[type="text"] {
-      width: calc(100% - 60px); /* Tamanho ajustado para não ultrapassar a tela */
+      width: calc(100% - 60px);
       padding: 10px;
       border: 1px solid #ccc;
       border-radius: 20px;
@@ -369,16 +369,13 @@
       const greeting = getGreeting();
       const message = `${greeting} Olá, estou interessado no plano de ${userPlan} com o valor de R$ ${discountPrice.toFixed(2)} após o desconto.`;
 
-      if (userDevice.includes("tv")) {
-        message += ` Estou usando uma TV ${userTVBrand}.`;
-      }
-
       const whatsappButton = document.createElement("a");
       whatsappButton.href = `https://wa.me/5583990000000?text=${encodeURIComponent(message)}`;
       whatsappButton.classList.add("whatsapp-button");
       whatsappButton.textContent = "Finalizar no WhatsApp";
       whatsappButtonContainer.appendChild(whatsappButton);
       chatBox.appendChild(whatsappButtonContainer);
+      chatBox.scrollTop = chatBox.scrollHeight;  // Rolando até o final para mostrar o botão
     }
 
     function handleKeyPress(event) {
