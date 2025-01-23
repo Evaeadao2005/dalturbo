@@ -34,7 +34,7 @@
 
     #chat-box {
       width: 100%;
-      height: calc(100% - 70px); /* Ajuste para deixar espaço para a barra de mensagens */
+      height: calc(100% - 120px); /* Ajuste para deixar espaço para a barra superior fixa */
       background-image: url('https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png');
       background-size: cover;
       background-position: center;
@@ -44,6 +44,7 @@
       overflow-y: auto;
       margin-bottom: 10px;
       position: relative;
+      margin-top: 60px; /* Ajuste para a barra superior fixa */
     }
 
     .message {
@@ -83,10 +84,13 @@
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       z-index: 1;
       flex-shrink: 0;
-      position: absolute;
+      position: fixed;
       width: 100%;
       top: 0;
       left: 0;
+      box-sizing: border-box;
+      padding-left: 10px;
+      padding-right: 10px;
     }
 
     .header img {
@@ -106,6 +110,7 @@
       background-color: #fff;
       z-index: 2;
       justify-content: space-between;
+      box-sizing: border-box;
     }
 
     input[type="text"] {
