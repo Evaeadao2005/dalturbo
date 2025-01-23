@@ -30,6 +30,7 @@
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
       overflow: hidden;
       position: relative;
+      margin-top: 60px; /* Ajuste para a barra fixa */
     }
 
     #chat-box {
@@ -37,12 +38,12 @@
       height: calc(100% - 120px); /* Ajuste para deixar espaço para a barra superior fixa */
       background-image: url('https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png');
       background-size: cover;
-      background-position: center;
+      background-position: top center;
+      background-attachment: fixed;
       padding: 20px;
       display: flex;
       flex-direction: column;
       overflow-y: auto;
-      margin-top: 60px; /* Ajuste para a barra superior fixa */
       box-sizing: border-box;
     }
 
@@ -113,7 +114,7 @@
     }
 
     input[type="text"] {
-      width: 90%;
+      width: 85%; /* Ajustando para evitar ficar largo em telas grandes */
       padding: 15px;
       border: 1px solid #ccc;
       border-radius: 20px;
@@ -342,64 +343,55 @@
           const plans = [
             { name: "Mensal (1 mês): R$ 19,90", id: "mensal", price: 19.90 },
             { name: "Trimestral (3 meses): R$ 49,90", id: "trimestral", price: 49.90 },
-            { name: "Semestral (6 meses): R$ 94,90", id: "semestral", price: 94.90 },
-            { name: "Anual (12 meses): R$ 185,90", id: "anual", price: 185.90 }
+            { name: "Semestral (6 meses): R$ 89,90", id: "semestral", price: 89.90 },
           ];
-
           const buttonContainer = document.createElement("div");
           buttonContainer.classList.add("button-container");
-
           plans.forEach(plan => {
-            const button = document.createElement("button");
-            button.classList.add("plan-button");
-            const finalPrice = plan.price - 5;
-            button.textContent = `${plan.name} (Agora por R$ ${finalPrice.toFixed(2)})`;
-            button.onclick = () => {
-              userPlan = plan.id;
-              discountPrice = finalPrice;
-              generateWhatsAppButton();
+            const planButton = document.createElement("button");
+            planButton.classList.add("plan-button");
+            planButton.textContent = plan.name;
+            planButton.onclick = () => {
+              userPlan = plan.name;
+              discountPrice = plan.price - 5; // Desconto de R$5
+              addMessage(`Você escolheu o plano: ${userPlan}.`, "bot");
+              addMessage(
+                `O valor com desconto será de R$ ${discountPrice.toFixed(2)}. Para finalizar, clique no botão abaixo para seguir para o WhatsApp.`,
+                "bot"
+              );
+              showWhatsAppButton();
             };
-            buttonContainer.appendChild(button);
+            buttonContainer.appendChild(planButton);
           });
-
           chatBox.appendChild(buttonContainer);
           chatBox.scrollTop = chatBox.scrollHeight;
         }
       );
     }
 
-    function generateWhatsAppButton() {
-      const greeting = getGreeting();
-      const whatsappLink = `https://wa.me/558892963517?text=${encodeURIComponent(
-        `${greeting} sou ${userName}, uso um(a) ${userDevice} da marca ${userTVBrand}. Escolhi o plano ${userPlan} por R$${discountPrice.toFixed(2)} e o teste tem duração de 4 horas.`
-      )}`;
-      addTypingMessage("Clique no botão abaixo para continuar conversando comigo no WhatsApp:", "bot", () => {
-        const buttonContainer = document.createElement("div");
-        buttonContainer.classList.add("whatsapp-button-container");
-
-        const button = document.createElement("a");
-        button.classList.add("whatsapp-button");
-        button.href = whatsappLink;
-        button.target = "_blank";
-        button.textContent = "Continue a conversa no WhatsApp";
-
-        buttonContainer.appendChild(button);
-        chatBox.appendChild(buttonContainer);
-        chatBox.scrollTop = chatBox.scrollHeight;
-      });
+    function showWhatsAppButton() {
+      const whatsappButtonContainer = document.createElement("div");
+      whatsappButtonContainer.classList.add("whatsapp-button-container");
+      const whatsappButton = document.createElement("a");
+      whatsappButton.href = `https://wa.me/5583990000000?text=Olá, estou interessado no plano de R$ ${discountPrice.toFixed(2)}.`;
+      whatsappButton.classList.add("whatsapp-button");
+      whatsappButton.textContent = "Finalizar no WhatsApp";
+      whatsappButtonContainer.appendChild(whatsappButton);
+      chatBox.appendChild(whatsappButtonContainer);
+      chatBox.scrollTop = chatBox.scrollHeight;
     }
+
+    window.onload = () => {
+      addTypingMessage(getGreeting(), "bot", () => {
+        addTypingMessage("Qual é o seu nome?", "bot");
+      });
+    };
 
     function handleKeyPress(event) {
       if (event.key === "Enter") {
         sendMessage();
       }
     }
-
-    document.addEventListener("DOMContentLoaded", function () {
-      header.innerHTML = '<img src="https://daltv.site/logo.avif" alt="Perfil Atendente Dalmon">Atendente Dalmon';
-      addTypingMessage(`${getGreeting()} Vamos começar o teste gratuito. Qual é o seu nome?`, "bot");
-    });
   </script>
-
 </body>
 </html>
