@@ -271,26 +271,25 @@
       return "Boa noite!";
     }
 
-    function addTypingMessage(message, sender, callback) {
-      const typingIndicator = document.createElement("div");
-      typingIndicator.classList.add("message", "bot", "typing");
-      typingIndicator.textContent = "Digitando...";
-      chatBox.appendChild(typingIndicator);
-      chatBox.scrollTop = chatBox.scrollHeight;
-
-      setTimeout(() => {
-        chatBox.removeChild(typingIndicator);
-        addMessage(message, sender);
-        if (callback) callback();
-      }, 1000 + Math.random() * 1000);
-    }
-
     function addMessage(message, sender) {
       const msgDiv = document.createElement("div");
       msgDiv.classList.add("message", sender);
       msgDiv.textContent = message;
       chatBox.appendChild(msgDiv);
       chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    function addTypingMessage() {
+      const typingMessage = document.createElement("div");
+      typingMessage.classList.add("message", "bot", "typing");
+      typingMessage.textContent = "Digitando...";
+      chatBox.appendChild(typingMessage);
+      chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    function removeTypingMessage() {
+      const typingMessages = document.querySelectorAll(".typing");
+      typingMessages.forEach(msg => msg.remove());
     }
 
     function sendMessage() {
@@ -305,59 +304,56 @@
     }
 
     function processBotResponse(userInput) {
-      if (step === 0) {
-        userName = userInput;
-        addTypingMessage(
-          `Certo, ${userName}. Qual dispositivo você usará? (Ex: Celular Android, iPhone, TV Smart, etc.)`,
-          "bot"
-        );
-        step++;
-      } else if (step === 1) {
-        userDevice = userInput.toLowerCase();
-        if (userDevice.includes("tv") && !userDevice.includes("box")) {
-          addTypingMessage("Qual a marca da sua TV?", "bot");
+      addTypingMessage();
+
+      setTimeout(() => {
+        removeTypingMessage();
+
+        if (step === 0) {
+          userName = userInput;
+          addMessage(`Certo, ${userName}. Qual dispositivo você usará? (Ex: Celular Android, iPhone, TV Smart, etc.)`, "bot");
           step++;
-        } else {
+        } else if (step === 1) {
+          userDevice = userInput.toLowerCase();
+          if (userDevice.includes("tv") && !userDevice.includes("box")) {
+            addMessage("Qual a marca da sua TV?", "bot");
+            step++;
+          } else {
+            showPlanOptions();
+          }
+        } else if (step === 2) {
+          userTVBrand = userInput;
           showPlanOptions();
         }
-      } else if (step === 2) {
-        userTVBrand = userInput;
-        showPlanOptions();
-      }
+      }, 1000); // Simulando o delay do bot digitando...
     }
 
     function showPlanOptions() {
-      addTypingMessage(
-        "Escolha o plano desejado para assinar após o teste. Aproveite o desconto de R$ 5 na primeira compra!",
-        "bot",
-        () => {
-          const plans = [
-            { name: "Mensal (1 mês): R$ 19,90", id: "mensal", price: 19.90 },
-            { name: "Trimestral (3 meses): R$ 49,90", id: "trimestral", price: 49.90 },
-            { name: "Semestral (6 meses): R$ 89,90", id: "semestral", price: 89.90 },
-          ];
-          const buttonContainer = document.createElement("div");
-          buttonContainer.classList.add("button-container");
-          plans.forEach(plan => {
-            const planButton = document.createElement("button");
-            planButton.classList.add("plan-button");
-            planButton.textContent = plan.name;
-            planButton.onclick = () => {
-              userPlan = plan.name;
-              discountPrice = plan.price - 5; // Desconto de R$5
-              addMessage(`Você escolheu o plano: ${userPlan}.`, "bot");
-              addMessage(
-                `O valor com desconto será de R$ ${discountPrice.toFixed(2)}. Para finalizar, clique no botão abaixo para seguir para o WhatsApp.`,
-                "bot"
-              );
-              showWhatsAppButton();
-            };
-            buttonContainer.appendChild(planButton);
-          });
-          chatBox.appendChild(buttonContainer);
-          chatBox.scrollTop = chatBox.scrollHeight;
-        }
-      );
+      addMessage("Escolha o plano desejado para assinar após o teste. Aproveite o desconto de R$ 5 na primeira compra!", "bot");
+
+      const plans = [
+        { name: "Mensal (1 mês): R$ 19,90", id: "mensal", price: 19.90 },
+        { name: "Trimestral (3 meses): R$ 49,90", id: "trimestral", price: 49.90 },
+        { name: "Semestral (6 meses): R$ 89,90", id: "semestral", price: 89.90 },
+      ];
+
+      const buttonContainer = document.createElement("div");
+      buttonContainer.classList.add("button-container");
+      plans.forEach(plan => {
+        const planButton = document.createElement("button");
+        planButton.classList.add("plan-button");
+        planButton.textContent = plan.name;
+        planButton.onclick = () => {
+          userPlan = plan.name;
+          discountPrice = plan.price - 5; // Desconto de R$5
+          addMessage(`Você escolheu o plano: ${userPlan}.`, "bot");
+          addMessage(`O valor com desconto será de R$ ${discountPrice.toFixed(2)}. Para finalizar, clique no botão abaixo para seguir para o WhatsApp.`, "bot");
+          showWhatsAppButton();
+        };
+        buttonContainer.appendChild(planButton);
+      });
+      chatBox.appendChild(buttonContainer);
+      chatBox.scrollTop = chatBox.scrollHeight;
     }
 
     function showWhatsAppButton() {
@@ -365,7 +361,8 @@
       whatsappButtonContainer.classList.add("whatsapp-button-container");
 
       const greeting = getGreeting();
-      const message = `${greeting} Olá, estou interessado no plano de ${userPlan} com o valor de R$ ${discountPrice.toFixed(2)} após o desconto.`;
+      const deviceInfo = userDevice.includes("tv") ? `TV: ${userTVBrand}, ` : "";
+      const message = `${greeting} Olá, estou interessado no plano de ${userPlan} com o valor de R$ ${discountPrice.toFixed(2)} após o desconto. Dispositivo: ${deviceInfo}${userDevice}.`;
 
       const whatsappButton = document.createElement("a");
       whatsappButton.href = `https://wa.me/5583990000000?text=${encodeURIComponent(message)}`;
@@ -373,7 +370,7 @@
       whatsappButton.textContent = "Finalizar no WhatsApp";
       whatsappButtonContainer.appendChild(whatsappButton);
       chatBox.appendChild(whatsappButtonContainer);
-      chatBox.scrollTop = chatBox.scrollHeight;  // Rolando até o final para mostrar o botão
+      chatBox.scrollTop = chatBox.scrollHeight;
     }
 
     function handleKeyPress(event) {
