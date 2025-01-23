@@ -174,24 +174,6 @@
       gap: 10px;
     }
 
-    .plan-button {
-      background-color: #25d366;
-      color: white;
-      padding: 15px 20px;
-      font-size: 16px;
-      border-radius: 10px;
-      width: 100%;
-      text-align: center;
-      cursor: pointer;
-      transition: background-color 0.3s, transform 0.3s;
-      border: none;
-    }
-
-    .plan-button:hover {
-      background-color: #128c7e;
-      transform: scale(1.05);
-    }
-
     /* Botão do WhatsApp */
     .whatsapp-button-container {
       display: flex;
@@ -265,12 +247,9 @@
     let step = 0;
     let userName = "";
     let userDevice = "";
-    let userPlan = "";
     let userTVBrand = "";
-    let discountPrice = 0;
 
     const chatBox = document.getElementById("chat-box");
-    const header = document.getElementById("header");
 
     function getGreeting() {
       const hour = new Date().getHours();
@@ -325,10 +304,7 @@
         handleDeviceResponse(userDevice);
       } else if (step === 2) {
         userTVBrand = userInput;
-        handlePlanResponse();
-      } else if (step === 3) {
-        userPlan = userInput;
-        handlePriceCalculation(userPlan);
+        showPlans();
       }
     }
 
@@ -338,39 +314,39 @@
           step++;
         });
       } else {
-        handlePlanResponse();
+        showPlans();
       }
     }
 
-    function handlePlanResponse() {
-      addTypingMessage(
-        "Agora, qual plano você deseja? (Ex: Básico, Completo, Premium)",
-        "bot",
-        () => {
-          step++;
-        }
-      );
+    function showPlans() {
+      addTypingMessage("Agora, vamos escolher o plano ideal para você.", "bot", () => {
+        const plans = [
+          { name: "Plano Mensal", description: "Testes mensais", price: "R$49,99", discountPrice: "R$44,99" },
+          { name: "Plano Trimestral", description: "Testes trimestrais", price: "R$139,99", discountPrice: "R$134,99" },
+          { name: "Plano Semestral", description: "Testes semestrais", price: "R$269,99", discountPrice: "R$264,99" },
+          { name: "Plano Anual", description: "Testes anuais", price: "R$499,99", discountPrice: "R$494,99" }
+        ];
+
+        const buttonContainer = document.createElement("div");
+        buttonContainer.classList.add("button-container");
+
+        plans.forEach(plan => {
+          const planButton = document.createElement("button");
+          planButton.textContent = `${plan.name} - ${plan.description} por ${plan.discountPrice}`;
+          planButton.onclick = () => handleWhatsAppButton(plan);
+          buttonContainer.appendChild(planButton);
+        });
+
+        chatBox.appendChild(buttonContainer);
+        chatBox.scrollTop = chatBox.scrollHeight;
+      });
     }
 
-    function handlePriceCalculation(plan) {
-      // Exemplo de cálculo de preço com desconto
-      if (plan === "Básico") {
-        discountPrice = 19.99;
-      } else if (plan === "Completo") {
-        discountPrice = 29.99;
-      } else if (plan === "Premium") {
-        discountPrice = 39.99;
-      }
-
-      showWhatsAppButton();
-    }
-
-    function showWhatsAppButton() {
+    function handleWhatsAppButton(plan) {
       const whatsappButtonContainer = document.createElement("div");
       whatsappButtonContainer.classList.add("whatsapp-button-container");
 
-      // Estrutura da mensagem do WhatsApp
-      const mensagem = `Olá, meu nome é ${userName}. Quero saber mais sobre o plano ${userPlan}, que custa R$ ${discountPrice}.`;
+      const mensagem = `${getGreeting()} Meu nome é ${userName}. Estou usando um(a) ${userDevice}${userTVBrand ? ', da marca ' + userTVBrand : ''}. Gostaria de contratar o ${plan.name} por ${plan.discountPrice}.`;
 
       const whatsappButton = document.createElement("a");
       whatsappButton.href = `https://wa.me/5583990000000?text=${encodeURIComponent(mensagem)}`;
