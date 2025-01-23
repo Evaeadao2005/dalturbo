@@ -351,7 +351,7 @@
             userPlan = plan.name;
             discountPrice = plan.price - 5; // Desconto de R$5
             addMessage(`Você escolheu o plano: ${userPlan}.`, "bot");
-            addMessage(`O valor com desconto será de R$ ${discountPrice.toFixed(2)}. Para finalizar, clique no botão abaixo para seguir para o WhatsApp.`, "bot");
+            addMessage(`O valor com desconto será de R$ ${discountPrice.toFixed(2)}. Para continuarmos conversando, clique no botão abaixo para seguir para o WhatsApp.`, "bot");
             showWhatsAppButton();
           };
           buttonContainer.appendChild(planButton);
@@ -372,7 +372,7 @@
       const whatsappButton = document.createElement("a");
       whatsappButton.href = `https://wa.me/558892963517?text=${encodeURIComponent(message)}`;
       whatsappButton.classList.add("whatsapp-button");
-      whatsappButton.textContent = "Finalizar no WhatsApp";
+      whatsappButton.textContent = "Continuar no WhatsApp";
       whatsappButtonContainer.appendChild(whatsappButton);
       chatBox.appendChild(whatsappButtonContainer);
       chatBox.scrollTop = chatBox.scrollHeight;
