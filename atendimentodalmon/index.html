@@ -8,7 +8,7 @@
   <style>
     body {
       font-family: 'Roboto', sans-serif;
-      background-color: #f5f5f5; /* Cor de fundo padrão */
+      background-color: #f5f5f5;
       margin: 0;
       padding: 0;
       display: flex;
@@ -122,37 +122,6 @@
       font-size: 24px;
     }
 
-    /* Contêiner do botão do WhatsApp */
-    .whatsapp-button-container {
-      width: 100%;
-      max-width: 480px;
-      text-align: center;
-      margin-top: 10px;
-      margin-bottom: 20px;
-      display: flex;
-      justify-content: center;
-    }
-
-    .whatsapp-button {
-      background-color: #25d366;
-      color: white;
-      padding: 15px;
-      border-radius: 50px;
-      font-size: 18px;
-      width: 100%;
-      max-width: 480px;
-      cursor: pointer;
-      transition: background-color 0.3s ease, transform 0.3s ease;
-      text-decoration: none;
-      text-align: center;
-      margin-bottom: 10px;
-    }
-
-    .whatsapp-button:hover {
-      background-color: #128c7e;
-      transform: scale(1.05);
-    }
-
     /* Estilo do perfil */
     .header {
       font-size: 18px;
@@ -193,6 +162,17 @@
     .plan-button:hover {
       background-color: #128c7e;
       transform: scale(1.05);
+    }
+
+    /* Ajuste do layout para evitar o scroll horizontal */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body, html {
+      overflow-x: hidden;
     }
 
   </style>
