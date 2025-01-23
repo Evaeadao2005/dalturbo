@@ -16,7 +16,6 @@
       height: 100vh;
       justify-content: flex-start;
       align-items: center;
-      overflow-x: hidden;
     }
 
     /* Container do chat */
@@ -38,7 +37,6 @@
       height: calc(100% - 120px); /* Ajuste para deixar espaço para a barra superior fixa */
       background-image: url('https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png');
       background-size: cover;
-      background-attachment: fixed; /* Garante que o fundo fique fixo */
       background-position: center;
       padding: 20px;
       display: flex;
@@ -46,8 +44,6 @@
       overflow-y: auto;
       margin-top: 60px; /* Ajuste para a barra superior fixa */
       box-sizing: border-box;
-      word-wrap: break-word;
-      overflow-x: hidden; /* Evitar overflow horizontal */
     }
 
     .message {
@@ -76,31 +72,53 @@
       color: #888;
     }
 
-    /* Input e botão de envio fixos */
-    .input-container {
+    /* Estilo da barra superior (Header) */
+    .header {
+      font-size: 18px;
+      font-weight: bold;
       display: flex;
-      width: 100%;
-      max-width: 480px;
-      margin-top: 10px;
       align-items: center;
       padding: 10px;
-      position: fixed;
-      bottom: 0;
       background-color: #fff;
-      z-index: 2;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      z-index: 1;
+      flex-shrink: 0;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
       box-sizing: border-box;
       padding-left: 10px;
       padding-right: 10px;
     }
 
-    input[type="text"] {
+    .header img {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+
+    /* Input e botão de envio fixos */
+    .input-container {
+      display: flex;
       width: 100%;
+      padding: 10px;
+      position: fixed;
+      bottom: 0;
+      background-color: #fff;
+      z-index: 2;
+      justify-content: space-between;
+      box-sizing: border-box;
+    }
+
+    input[type="text"] {
+      width: 90%;
       padding: 15px;
       border: 1px solid #ccc;
       border-radius: 20px;
       font-size: 16px;
       background-color: #ffffff;
-      margin-right: 10px;
       outline: none;
       box-shadow: none;
     }
@@ -136,33 +154,6 @@
       font-size: 24px;
     }
 
-    /* Estilo do perfil */
-    .header {
-      font-size: 18px;
-      font-weight: bold;
-      display: flex;
-      align-items: center;
-      padding: 10px;
-      background-color: #fff;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      z-index: 1;
-      flex-shrink: 0;
-      position: fixed;
-      width: 100%;
-      top: 0;
-      left: 0;
-      box-sizing: border-box;
-      padding-left: 10px;
-      padding-right: 10px;
-    }
-
-    .header img {
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      margin-right: 10px;
-    }
-
     /* Ajuste do layout para evitar o scroll horizontal */
     * {
       box-sizing: border-box;
@@ -174,18 +165,34 @@
       overflow-x: hidden;
     }
 
-    /* Evitar o movimento do layout ao abrir o teclado */
-    #chat-box {
-      flex-grow: 1;
-      overflow-y: auto;
-      position: relative;
-      padding-bottom: 60px; /* Garantir que o chat box não sobreponha o teclado */
-      background-attachment: fixed; /* Fixar o fundo */
-      background-position: center;
-      background-size: cover; /* Garantir que cubra toda a área */
+    /* Botões de planos */
+    .button-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 20px;
+      gap: 10px;
     }
 
-    /* Resposta bot com foco no layout fixo e ajuste do scroll */
+    .plan-button {
+      background-color: #25d366;
+      color: white;
+      padding: 15px 20px;
+      font-size: 16px;
+      border-radius: 10px;
+      width: 100%;
+      text-align: center;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.3s;
+      border: none;
+    }
+
+    .plan-button:hover {
+      background-color: #128c7e;
+      transform: scale(1.05);
+    }
+
+    /* Botão do WhatsApp */
     .whatsapp-button-container {
       display: flex;
       justify-content: center;
@@ -194,20 +201,42 @@
 
     .whatsapp-button {
       background-color: #25d366;
-      padding: 15px;
-      border-radius: 10px;
       color: white;
+      padding: 15px 30px;
       font-size: 16px;
+      border-radius: 50px;
       text-decoration: none;
-      text-align: center;
-      display: inline-block;
-      width: 250px;
+      transition: background-color 0.3s, transform 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .whatsapp-button:hover {
       background-color: #128c7e;
+      transform: scale(1.05);
     }
 
+    /* Melhorar a visualização para dispositivos móveis */
+    @media (max-width: 480px) {
+      .header {
+        font-size: 16px;
+      }
+
+      .send-button {
+        width: 50px;
+        height: 50px;
+      }
+
+      input[type="text"] {
+        font-size: 14px;
+      }
+
+      #chat-container {
+        max-width: 100%;
+        height: 100%;
+      }
+    }
   </style>
 </head>
 <body>
@@ -274,43 +303,90 @@
 
     function sendMessage() {
       const input = document.getElementById("user-input");
-      const message = input.value.trim();
-      if (message) {
-        addMessage(message, "user");
-        input.value = "";
-        handleUserMessage(message);
+      const userInput = input.value.trim();
+      if (!userInput) return;
+
+      addMessage(userInput, "user");
+      input.value = "";
+
+      processBotResponse(userInput);
+    }
+
+    function processBotResponse(userInput) {
+      if (step === 0) {
+        userName = userInput;
+        addTypingMessage(
+          `Certo, ${userName}. Qual dispositivo você usará? (Ex: Celular Android, iPhone, TV Smart, etc.)`,
+          "bot"
+        );
+        step++;
+      } else if (step === 1) {
+        userDevice = userInput.toLowerCase();
+        if (userDevice.includes("tv") && !userDevice.includes("box")) {
+          addTypingMessage("Qual a marca da sua TV?", "bot");
+          step++;
+        } else {
+          showPlanOptions();
+        }
+      } else if (step === 2) {
+        userTVBrand = userInput;
+        showPlanOptions();
       }
     }
 
-    function handleUserMessage(message) {
-      switch (step) {
-        case 0:
-          addTypingMessage("Olá, " + getGreeting(), "bot", () => {
-            addMessage("Qual é o seu nome?", "bot");
-            step++;
+    function showPlanOptions() {
+      addTypingMessage(
+        "Escolha o plano desejado para assinar após o teste. Aproveite o desconto de R$ 5 na primeira compra!",
+        "bot",
+        () => {
+          const plans = [
+            { name: "Mensal (1 mês): R$ 19,90", id: "mensal", price: 19.90 },
+            { name: "Trimestral (3 meses): R$ 49,90", id: "trimestral", price: 49.90 },
+            { name: "Semestral (6 meses): R$ 94,90", id: "semestral", price: 94.90 },
+            { name: "Anual (12 meses): R$ 185,90", id: "anual", price: 185.90 }
+          ];
+
+          const buttonContainer = document.createElement("div");
+          buttonContainer.classList.add("button-container");
+
+          plans.forEach(plan => {
+            const button = document.createElement("button");
+            button.classList.add("plan-button");
+            const finalPrice = plan.price - 5;
+            button.textContent = `${plan.name} (Agora por R$ ${finalPrice.toFixed(2)})`;
+            button.onclick = () => {
+              userPlan = plan.id;
+              discountPrice = finalPrice;
+              generateWhatsAppButton();
+            };
+            buttonContainer.appendChild(button);
           });
-          break;
-        case 1:
-          userName = message;
-          addTypingMessage("Muito prazer, " + userName + "!", "bot", () => {
-            addMessage("Qual dispositivo você está usando?", "bot");
-            step++;
-          });
-          break;
-        case 2:
-          userDevice = message;
-          addTypingMessage("Ótimo! Agora, qual plano você deseja?", "bot", () => {
-            addMessage("Escolha o seu plano:", "bot");
-            step++;
-          });
-          break;
-        case 3:
-          userPlan = message;
-          addMessage("Perfeito! Obrigado por escolher o " + userPlan, "bot");
-          break;
-        default:
-          break;
-      }
+
+          chatBox.appendChild(buttonContainer);
+          chatBox.scrollTop = chatBox.scrollHeight;
+        }
+      );
+    }
+
+    function generateWhatsAppButton() {
+      const greeting = getGreeting();
+      const whatsappLink = `https://wa.me/558892963517?text=${encodeURIComponent(
+        `${greeting} sou ${userName}, uso um(a) ${userDevice} da marca ${userTVBrand}. Escolhi o plano ${userPlan} por R$${discountPrice.toFixed(2)} e o teste tem duração de 4 horas.`
+      )}`;
+      addTypingMessage("Clique no botão abaixo para continuar conversando comigo no WhatsApp:", "bot", () => {
+        const buttonContainer = document.createElement("div");
+        buttonContainer.classList.add("whatsapp-button-container");
+
+        const button = document.createElement("a");
+        button.classList.add("whatsapp-button");
+        button.href = whatsappLink;
+        button.target = "_blank";
+        button.textContent = "Continue a conversa no WhatsApp";
+
+        buttonContainer.appendChild(button);
+        chatBox.appendChild(buttonContainer);
+        chatBox.scrollTop = chatBox.scrollHeight;
+      });
     }
 
     function handleKeyPress(event) {
@@ -318,6 +394,11 @@
         sendMessage();
       }
     }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      header.innerHTML = '<img src="https://daltv.site/logo.avif" alt="Perfil Atendente Dalmon">Atendente Dalmon';
+      addTypingMessage(`${getGreeting()} Vamos começar o teste gratuito. Qual é o seu nome?`, "bot");
+    });
   </script>
 
 </body>
