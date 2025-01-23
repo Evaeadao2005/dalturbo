@@ -14,7 +14,8 @@
       display: flex;
       flex-direction: column;
       height: 100vh;
-      justify-content: flex-start;
+      justify-content: center; /* Alinha o conteúdo verticalmente no centro */
+      align-items: center; /* Alinha o conteúdo horizontalmente no centro */
     }
 
     #chat-container {
@@ -28,7 +29,7 @@
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
       overflow: hidden;
       margin-top: 60px;
-      align-items: flex-start; /* Ajustando para alinhamento à esquerda */
+      align-items: flex-start;
     }
 
     #chat-box {
@@ -97,7 +98,6 @@
       margin-right: 10px;
     }
 
-    /* Barra de digitação ajustada */
     .input-container {
       display: flex;
       width: 100%;
@@ -114,7 +114,7 @@
     }
 
     input[type="text"] {
-      width: calc(100% - 60px); /* Tamanho ajustado para não ultrapassar a tela */
+      width: calc(100% - 60px);
       padding: 10px;
       border: 1px solid #ccc;
       border-radius: 20px;
@@ -165,14 +165,13 @@
       overflow-x: hidden;
     }
 
-    /* Botões de planos */
     .button-container {
       display: flex;
       flex-direction: column;
-      align-items: flex-start; /* Alinhamento à esquerda para os botões */
+      align-items: flex-start;
       margin-top: 20px;
       gap: 10px;
-      width: 100%; /* Ajustado para não centralizar */
+      width: 100%;
     }
 
     .plan-button {
@@ -193,7 +192,6 @@
       transform: scale(1.05);
     }
 
-    /* Botão do WhatsApp */
     .whatsapp-button-container {
       display: flex;
       justify-content: center;
@@ -265,7 +263,6 @@
     let discountPrice = 0;
 
     const chatBox = document.getElementById("chat-box");
-    const header = document.getElementById("header");
 
     function getGreeting() {
       const hour = new Date().getHours();
@@ -317,73 +314,57 @@
         step++;
       } else if (step === 1) {
         userDevice = userInput.toLowerCase();
-        if (userDevice.includes("tv") && !userDevice.includes("box")) {
-          addTypingMessage("Qual a marca da sua TV?", "bot");
+        if (userDevice.includes("tv")) {
+          addTypingMessage(
+            "Qual é a marca da sua TV?",
+            "bot"
+          );
           step++;
         } else {
-          showPlanOptions();
+          addPlanOptions();
         }
-      } else if (step === 2) {
+      } else if (step === 2 && userDevice.includes("tv")) {
         userTVBrand = userInput;
-        addTypingMessage(
-          `Você informou que o dispositivo é uma TV ${userTVBrand}. Agora, escolha o plano desejado.`,
-          "bot"
-        );
-        showPlanOptions();
+        addPlanOptions();
       }
     }
 
-    function showPlanOptions() {
-      addTypingMessage(
-        "Escolha o plano desejado para assinar após o teste. Aproveite o desconto de R$ 5 na primeira compra!",
-        "bot",
-        () => {
-          const plans = [
-            { name: "Mensal (1 mês): R$ 19,90", id: "mensal", price: 19.90 },
-            { name: "Trimestral (3 meses): R$ 49,90", id: "trimestral", price: 49.90 },
-            { name: "Semestral (6 meses): R$ 89,90", id: "semestral", price: 89.90 },
-          ];
-          const buttonContainer = document.createElement("div");
-          buttonContainer.classList.add("button-container");
-          plans.forEach(plan => {
-            const planButton = document.createElement("button");
-            planButton.classList.add("plan-button");
-            planButton.textContent = plan.name;
-            planButton.onclick = () => {
-              userPlan = plan.name;
-              discountPrice = plan.price - 5; // Desconto de R$5
-              addMessage(`Você escolheu o plano: ${userPlan}.`, "bot");
-              addMessage(
-                `O valor com desconto será de R$ ${discountPrice.toFixed(2)}. Para finalizar, clique no botão abaixo para seguir para o WhatsApp.`,
-                "bot"
-              );
-              showWhatsAppButton();
-            };
-            buttonContainer.appendChild(planButton);
-          });
-          chatBox.appendChild(buttonContainer);
-          chatBox.scrollTop = chatBox.scrollHeight;
-        }
-      );
+    function addPlanOptions() {
+      const plans = ["Mensal", "Trimestral", "Semestral", "Anual"];
+      const planButtons = plans.map(plan => {
+        return `<button class="plan-button" onclick="selectPlan('${plan}')">${plan}</button>`;
+      });
+
+      chatBox.innerHTML += `
+        <div class="message bot">
+          Escolha seu plano de assinatura:
+        </div>
+        <div class="button-container">
+          ${planButtons.join('')}
+        </div>
+      `;
     }
 
-    function showWhatsAppButton() {
-      const whatsappButtonContainer = document.createElement("div");
-      whatsappButtonContainer.classList.add("whatsapp-button-container");
-
-      const greeting = getGreeting();
-      const message = `${greeting} Olá, estou interessado no plano de ${userPlan} com o valor de R$ ${discountPrice.toFixed(2)} após o desconto.`;
-
-      const whatsappButton = document.createElement("a");
-      whatsappButton.href = `https://wa.me/5583990000000?text=${encodeURIComponent(message)}`;
-      whatsappButton.classList.add("whatsapp-button");
-      whatsappButton.textContent = "Finalizar no WhatsApp";
-      whatsappButtonContainer.appendChild(whatsappButton);
-      chatBox.appendChild(whatsappButtonContainer);
+    function selectPlan(plan) {
+      userPlan = plan;
+      chatBox.innerHTML += `
+        <div class="message bot">
+          Você escolheu o plano ${plan}. Agora, clique no link abaixo para falar conosco no WhatsApp.
+        </div>
+        <div class="whatsapp-button-container">
+          <a href="https://wa.me/5511999999999?text=${getGreeting()}%20Estou%20interessado%20no%20plano%20${userPlan}" class="whatsapp-button" target="_blank">
+            Falar no WhatsApp
+          </a>
+        </div>
+      `;
     }
 
-    // Inicia o fluxo com saudação
-    addMessage(`${getGreeting()} Olá, eu sou o Atendente Dalmon. Como posso te ajudar hoje?`, "bot");
+    function handleKeyPress(event) {
+      if (event.key === 'Enter') {
+        sendMessage();
+      }
+    }
   </script>
+
 </body>
 </html>
