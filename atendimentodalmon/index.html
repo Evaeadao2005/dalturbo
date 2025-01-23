@@ -24,16 +24,13 @@
       background-image: url('https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png');
       background-size: cover;
       background-position: center;
-      border-radius: 10px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      position: relative;
       padding: 20px;
       display: flex;
       flex-direction: column;
       overflow-y: auto;
       margin-bottom: 10px;
-      position: absolute;
-      top: 60px;
-      bottom: 60px;
+      z-index: 1;
     }
 
     .message {
@@ -178,6 +175,9 @@
       overflow-y: auto;
       position: relative;
       padding-bottom: 60px; /* Garantir que o chat box não sobreponha o teclado */
+      background-attachment: fixed; /* Fixar o fundo */
+      background-position: center;
+      background-size: cover; /* Garantir que cubra toda a área */
     }
 
     /* Resposta bot com foco no layout fixo e ajuste do scroll */
