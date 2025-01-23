@@ -304,7 +304,7 @@
 
     function sendMessage() {
       const input = document.getElementById("user-input");
-      const userInput = input.value.trim();
+      const userInput = input.value.trim().toLowerCase();
       if (!userInput) return;
 
       addMessage(userInput, "user");
