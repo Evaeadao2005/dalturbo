@@ -14,8 +14,7 @@
       display: flex;
       flex-direction: column;
       height: 100vh;
-      justify-content: center; /* Alinha o conteúdo verticalmente no centro */
-      align-items: center; /* Alinha o conteúdo horizontalmente no centro */
+      justify-content: flex-start;
     }
 
     #chat-container {
@@ -34,11 +33,7 @@
 
     #chat-box {
       width: 100%;
-      height: calc(100% - 60px); /* Espaço para a barra de digitação */
-      background-image: url('https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png');
-      background-size: cover;
-      background-position: top center;
-      background-attachment: fixed;
+      height: calc(100% - 60px);
       padding: 20px;
       display: flex;
       flex-direction: column;
@@ -68,11 +63,6 @@
       border-radius: 18px 18px 18px 0;
     }
 
-    .typing {
-      font-style: italic;
-      color: #888;
-    }
-
     .header {
       font-size: 18px;
       font-weight: bold;
@@ -88,7 +78,6 @@
       width: 100%;
       padding-left: 10px;
       padding-right: 10px;
-      box-sizing: border-box;
     }
 
     .header img {
@@ -124,10 +113,6 @@
       box-shadow: none;
     }
 
-    input[type="text"]:focus {
-      border-color: #25d366;
-    }
-
     .send-button {
       background-color: #25d366;
       color: white;
@@ -138,58 +123,10 @@
       font-size: 18px;
       width: 50px;
       height: 50px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-      transition: background-color 0.3s, box-shadow 0.3s, transform 0.2s;
-      display: flex;
-      align-items: center;
-      justify-content: center;
     }
 
     .send-button:hover {
       background-color: #128c7e;
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
-      transform: scale(1.1);
-    }
-
-    .send-button i {
-      font-size: 24px;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body, html {
-      overflow-x: hidden;
-    }
-
-    .button-container {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      margin-top: 20px;
-      gap: 10px;
-      width: 100%;
-    }
-
-    .plan-button {
-      background-color: #25d366;
-      color: white;
-      padding: 15px 20px;
-      font-size: 16px;
-      border-radius: 10px;
-      width: 100%;
-      text-align: center;
-      cursor: pointer;
-      transition: background-color 0.3s, transform 0.3s;
-      border: none;
-    }
-
-    .plan-button:hover {
-      background-color: #128c7e;
-      transform: scale(1.05);
     }
 
     .whatsapp-button-container {
@@ -205,29 +142,15 @@
       font-size: 16px;
       border-radius: 50px;
       text-decoration: none;
-      transition: background-color 0.3s, transform 0.3s;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .whatsapp-button:hover {
-      background-color: #128c7e;
-      transform: scale(1.05);
     }
 
     @media (max-width: 480px) {
       .header {
         font-size: 16px;
       }
-
       .send-button {
         width: 50px;
         height: 50px;
-      }
-
-      input[type="text"] {
-        font-size: 14px;
       }
     }
   </style>
@@ -263,26 +186,13 @@
     let discountPrice = 0;
 
     const chatBox = document.getElementById("chat-box");
+    const header = document.getElementById("header");
 
     function getGreeting() {
       const hour = new Date().getHours();
       if (hour < 12) return "Bom dia!";
       if (hour < 18) return "Boa tarde!";
       return "Boa noite!";
-    }
-
-    function addTypingMessage(message, sender, callback) {
-      const typingIndicator = document.createElement("div");
-      typingIndicator.classList.add("message", "bot", "typing");
-      typingIndicator.textContent = "Digitando...";
-      chatBox.appendChild(typingIndicator);
-      chatBox.scrollTop = chatBox.scrollHeight;
-
-      setTimeout(() => {
-        chatBox.removeChild(typingIndicator);
-        addMessage(message, sender);
-        if (callback) callback();
-      }, 1000 + Math.random() * 1000);
     }
 
     function addMessage(message, sender) {
@@ -307,80 +217,81 @@
     function processBotResponse(userInput) {
       if (step === 0) {
         userName = userInput;
-        addTypingMessage(
+        addMessage(
           `Certo, ${userName}. Qual dispositivo você usará? (Ex: Celular Android, iPhone, TV Smart, etc.)`,
           "bot"
         );
         step++;
       } else if (step === 1) {
         userDevice = userInput.toLowerCase();
-        if (userDevice.includes("tv")) {
-          addTypingMessage(
-            "Qual é a marca da sua TV?",
-            "bot"
-          );
+        if (userDevice.includes("tv") && !userDevice.includes("box")) {
+          addMessage("Qual a marca da sua TV?", "bot");
           step++;
         } else {
-          addPlanOptions();
+          showPlanOptions();
         }
-      } else if (step === 2 && userDevice.includes("tv")) {
+      } else if (step === 2) {
         userTVBrand = userInput;
-        addPlanOptions();
+        addMessage(
+          `Você informou que o dispositivo é uma TV ${userTVBrand}. Agora, escolha o plano desejado.`,
+          "bot"
+        );
+        showPlanOptions();
       }
     }
 
-    function addPlanOptions() {
+    function showPlanOptions() {
+      addMessage(
+        "Escolha o plano desejado para assinar após o teste. Aproveite o desconto de R$ 5 na primeira compra!",
+        "bot"
+      );
       const plans = [
-        { name: "Mensal", price: 30.00 },
-        { name: "Trimestral", price: 85.00 },
-        { name: "Semestral", price: 160.00 },
-        { name: "Anual", price: 300.00 }
+        { name: "Mensal (1 mês): R$ 25,00", id: "mensal", price: 25.00 },
+        { name: "Trimestral (3 meses): R$ 70,00", id: "trimestral", price: 70.00 },
+        { name: "Semestral (6 meses): R$ 130,00", id: "semestral", price: 130.00 },
+        { name: "Anual (12 meses): R$ 250,00", id: "anual", price: 250.00 },
       ];
-
-      const planButtons = plans.map(plan => {
-        const finalPrice = plan.price - 5; // Desconto de R$5
-        return `<button class="plan-button" onclick="selectPlan('${plan.name}', ${finalPrice})">
-                  ${plan.name} - R$${finalPrice.toFixed(2)}
-                </button>`;
+      const buttonContainer = document.createElement("div");
+      buttonContainer.classList.add("button-container");
+      plans.forEach(plan => {
+        const planButton = document.createElement("button");
+        planButton.classList.add("plan-button");
+        planButton.textContent = plan.name;
+        planButton.onclick = () => {
+          userPlan = plan.name;
+          discountPrice = plan.price - 5; // Desconto de R$5
+          addMessage(`Você escolheu o plano: ${userPlan}.`, "bot");
+          addMessage(
+            `O valor com desconto será de R$ ${discountPrice.toFixed(2)}. Para finalizar, clique no botão abaixo para seguir para o WhatsApp.`,
+            "bot"
+          );
+          showWhatsAppButton();
+        };
+        buttonContainer.appendChild(planButton);
       });
-
-      chatBox.innerHTML += `
-        <div class="message bot">
-          Escolha seu plano de assinatura:
-        </div>
-        <div class="button-container">
-          ${planButtons.join('')}
-        </div>
-      `;
+      chatBox.appendChild(buttonContainer);
+      chatBox.scrollTop = chatBox.scrollHeight;
     }
 
-    function selectPlan(plan, price) {
-      userPlan = plan;
-      discountPrice = price;
+    function showWhatsAppButton() {
+      const whatsappButtonContainer = document.createElement("div");
+      whatsappButtonContainer.classList.add("whatsapp-button-container");
 
-      const message = `${getGreeting()} Eu sou ${userName}, escolhi o plano ${userPlan} por R$${discountPrice.toFixed(2)}. Dispositivo: ${userDevice}.`;
-      if (userDevice.includes("tv")) {
-        message += ` Marca da TV: ${userTVBrand}.`;
-      }
+      const greeting = getGreeting();
+      const message = `${greeting} Olá, estou interessado no plano de ${userPlan} com o valor de R$ ${discountPrice.toFixed(2)} após o desconto. Meu dispositivo é ${userDevice} e a marca da minha TV é ${userTVBrand}.`;
 
-      chatBox.innerHTML += `
-        <div class="message bot">
-          Você escolheu o plano ${userPlan}. Agora, clique no link abaixo para falar conosco no WhatsApp.
-        </div>
-        <div class="whatsapp-button-container">
-          <a href="https://wa.me/5511999999999?text=${encodeURIComponent(message)}" class="whatsapp-button" target="_blank">
-            Falar no WhatsApp
-          </a>
-        </div>
-      `;
+      const whatsappButton = document.createElement("a");
+      whatsappButton.href = `https://wa.me/5583990000000?text=${encodeURIComponent(message)}`;
+      whatsappButton.classList.add("whatsapp-button");
+      whatsappButton.textContent = "Finalizar no WhatsApp";
+      whatsappButtonContainer.appendChild(whatsappButton);
+      chatBox.appendChild(whatsappButtonContainer);
     }
 
-    function handleKeyPress(event) {
-      if (event.key === 'Enter') {
-        sendMessage();
-      }
-    }
+    // Envia a saudação assim que a página carregar
+    window.onload = () => {
+      addMessage(`${getGreeting()} Olá, eu sou o Atendente Dalmon. Como posso te ajudar hoje?`, "bot");
+    };
   </script>
-
 </body>
 </html>
