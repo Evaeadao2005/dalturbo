@@ -95,6 +95,19 @@
         .input-container button:hover {
             background-color: #0056b3;
         }
+        .send-icon {
+            width: 20px;
+            height: 20px;
+            background-image: url('https://img.icons8.com/ios-filled/50/ffffff/sent.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            border: none;
+            cursor: pointer;
+        }
+        .input-container button img {
+            width: 20px;
+            height: 20px;
+        }
     </style>
 </head>
 <body>
@@ -102,7 +115,7 @@
     <div id="chat-box"></div>
     <div class="input-container">
         <input type="text" id="user-input" placeholder="Digite sua mensagem..." />
-        <button onclick="sendMessage()">Enviar</button>
+        <button class="send-icon" onclick="sendMessage()"></button>
     </div>
 
     <script>
@@ -208,7 +221,7 @@
 
             // Inserir a saudação antes da mensagem
             const greeting = getGreeting();
-            const message = `${greeting} Olá, estou interessado no plano de ${userPlan} com o valor de R$ ${discountPrice.toFixed(2)} após o desconto.`;
+            const message = `${greeting}, Olá, estou interessado no plano de ${userPlan} com o valor de R$ ${discountPrice.toFixed(2)} após o desconto.`;
 
             const whatsappButton = document.createElement("a");
             whatsappButton.href = `https://wa.me/5583990000000?text=${encodeURIComponent(message)}`;
