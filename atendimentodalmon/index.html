@@ -42,9 +42,8 @@
       display: flex;
       flex-direction: column;
       overflow-y: auto;
-      margin-bottom: 10px;
-      position: relative;
       margin-top: 60px; /* Ajuste para a barra superior fixa */
+      box-sizing: border-box;
     }
 
     .message {
@@ -164,6 +163,58 @@
 
     body, html {
       overflow-x: hidden;
+    }
+
+    /* Botões de planos */
+    .button-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 20px;
+      gap: 10px;
+    }
+
+    .plan-button {
+      background-color: #25d366;
+      color: white;
+      padding: 15px 20px;
+      font-size: 16px;
+      border-radius: 10px;
+      width: 100%;
+      text-align: center;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.3s;
+      border: none;
+    }
+
+    .plan-button:hover {
+      background-color: #128c7e;
+      transform: scale(1.05);
+    }
+
+    /* Botão do WhatsApp */
+    .whatsapp-button-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .whatsapp-button {
+      background-color: #25d366;
+      color: white;
+      padding: 15px 30px;
+      font-size: 16px;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: background-color 0.3s, transform 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .whatsapp-button:hover {
+      background-color: #128c7e;
+      transform: scale(1.05);
     }
 
     /* Melhorar a visualização para dispositivos móveis */
