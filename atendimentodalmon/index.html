@@ -30,7 +30,6 @@
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
       overflow: hidden;
       position: relative;
-      margin-top: 60px; /* Ajuste para a barra fixa */
     }
 
     #chat-box {
@@ -38,12 +37,12 @@
       height: calc(100% - 120px); /* Ajuste para deixar espaço para a barra superior fixa */
       background-image: url('https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png');
       background-size: cover;
-      background-position: top center;
-      background-attachment: fixed;
+      background-position: center;
       padding: 20px;
       display: flex;
       flex-direction: column;
       overflow-y: auto;
+      margin-top: 60px; /* Ajuste para a barra superior fixa */
       box-sizing: border-box;
     }
 
@@ -114,7 +113,7 @@
     }
 
     input[type="text"] {
-      width: 85%; /* Ajustando para evitar ficar largo em telas grandes */
+      width: 85%; /* Ajuste para evitar que ultrapasse a tela */
       padding: 15px;
       border: 1px solid #ccc;
       border-radius: 20px;
@@ -304,7 +303,7 @@
 
     function sendMessage() {
       const input = document.getElementById("user-input");
-      const userInput = input.value.trim().toLowerCase();
+      const userInput = input.value.trim();
       if (!userInput) return;
 
       addMessage(userInput, "user");
@@ -322,76 +321,75 @@
         );
         step++;
       } else if (step === 1) {
-        userDevice = userInput.toLowerCase();
-        if (userDevice.includes("tv") && !userDevice.includes("box")) {
-          addTypingMessage("Qual a marca da sua TV?", "bot");
-          step++;
-        } else {
-          showPlanOptions();
-        }
+        userDevice = userInput;
+        handleDeviceResponse(userDevice);
       } else if (step === 2) {
         userTVBrand = userInput;
-        showPlanOptions();
+        handlePlanResponse();
+      } else if (step === 3) {
+        userPlan = userInput;
+        handlePriceCalculation(userPlan);
       }
     }
 
-    function showPlanOptions() {
+    function handleDeviceResponse(device) {
+      if (device.toLowerCase().includes("tv")) {
+        addTypingMessage("Qual a marca da sua TV?", "bot", () => {
+          step++;
+        });
+      } else {
+        handlePlanResponse();
+      }
+    }
+
+    function handlePlanResponse() {
       addTypingMessage(
-        "Escolha o plano desejado para assinar após o teste. Aproveite o desconto de R$ 5 na primeira compra!",
+        "Agora, qual plano você deseja? (Ex: Básico, Completo, Premium)",
         "bot",
         () => {
-          const plans = [
-            { name: "Mensal (1 mês): R$ 19,90", id: "mensal", price: 19.90 },
-            { name: "Trimestral (3 meses): R$ 49,90", id: "trimestral", price: 49.90 },
-            { name: "Semestral (6 meses): R$ 89,90", id: "semestral", price: 89.90 },
-          ];
-          const buttonContainer = document.createElement("div");
-          buttonContainer.classList.add("button-container");
-          plans.forEach(plan => {
-            const planButton = document.createElement("button");
-            planButton.classList.add("plan-button");
-            planButton.textContent = plan.name;
-            planButton.onclick = () => {
-              userPlan = plan.name;
-              discountPrice = plan.price - 5; // Desconto de R$5
-              addMessage(`Você escolheu o plano: ${userPlan}.`, "bot");
-              addMessage(
-                `O valor com desconto será de R$ ${discountPrice.toFixed(2)}. Para finalizar, clique no botão abaixo para seguir para o WhatsApp.`,
-                "bot"
-              );
-              showWhatsAppButton();
-            };
-            buttonContainer.appendChild(planButton);
-          });
-          chatBox.appendChild(buttonContainer);
-          chatBox.scrollTop = chatBox.scrollHeight;
+          step++;
         }
       );
+    }
+
+    function handlePriceCalculation(plan) {
+      // Exemplo de cálculo de preço com desconto
+      if (plan === "Básico") {
+        discountPrice = 19.99;
+      } else if (plan === "Completo") {
+        discountPrice = 29.99;
+      } else if (plan === "Premium") {
+        discountPrice = 39.99;
+      }
+
+      showWhatsAppButton();
     }
 
     function showWhatsAppButton() {
       const whatsappButtonContainer = document.createElement("div");
       whatsappButtonContainer.classList.add("whatsapp-button-container");
+
+      // Estrutura da mensagem do WhatsApp
+      const mensagem = `Olá, meu nome é ${userName}. Quero saber mais sobre o plano ${userPlan}, que custa R$ ${discountPrice}.`;
+
       const whatsappButton = document.createElement("a");
-      whatsappButton.href = `https://wa.me/5583990000000?text=Olá, estou interessado no plano de R$ ${discountPrice.toFixed(2)}.`;
+      whatsappButton.href = `https://wa.me/5583990000000?text=${encodeURIComponent(mensagem)}`;
       whatsappButton.classList.add("whatsapp-button");
       whatsappButton.textContent = "Finalizar no WhatsApp";
+
       whatsappButtonContainer.appendChild(whatsappButton);
       chatBox.appendChild(whatsappButtonContainer);
       chatBox.scrollTop = chatBox.scrollHeight;
     }
-
-    window.onload = () => {
-      addTypingMessage(getGreeting(), "bot", () => {
-        addTypingMessage("Qual é o seu nome?", "bot");
-      });
-    };
 
     function handleKeyPress(event) {
       if (event.key === "Enter") {
         sendMessage();
       }
     }
+
+    addMessage(getGreeting(), "bot");
+
   </script>
 </body>
 </html>
