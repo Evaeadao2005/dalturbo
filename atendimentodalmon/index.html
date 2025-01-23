@@ -386,13 +386,19 @@ src="https://www.facebook.com/tr?id=1035113441753192&ev=PageView&noscript=1"
       const deviceInfo = userDevice.includes("tv") ? `TV: ${userTVBrand}, ` : "";
       const message = `${greeting} Olá, quero fazer um teste de 4h, e estou interessado(a) no plano de ${userPlan} com o valor de R$ ${discountPrice.toFixed(2)} após o desconto. Dispositivo: ${deviceInfo}${userDevice}.`;
 
-      const whatsappButton = document.createElement("a");
-      whatsappButton.href = `https://wa.me/558892963517?text=${encodeURIComponent(message)}`;
-      whatsappButton.classList.add("whatsapp-button");
-      whatsappButton.textContent = "Continuar no WhatsApp";
-      whatsappButtonContainer.appendChild(whatsappButton);
-      chatBox.appendChild(whatsappButtonContainer);
-      chatBox.scrollTop = chatBox.scrollHeight;
+const whatsappButton = document.createElement("a");
+whatsappButton.href = `https://wa.me/558892963517?text=${encodeURIComponent(message)}`;
+whatsappButton.classList.add("whatsapp-button");
+whatsappButton.textContent = "Continuar no WhatsApp";
+
+// Adicionando o rastreamento do evento do Facebook Pixel
+whatsappButton.onclick = function () {
+  fbq('track', 'Contact'); // Evento do Facebook Pixel
+};
+
+whatsappButtonContainer.appendChild(whatsappButton);
+chatBox.appendChild(whatsappButtonContainer);
+chatBox.scrollTop = chatBox.scrollHeight;
     }
 
     function handleKeyPress(event) {
