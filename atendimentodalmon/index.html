@@ -330,9 +330,18 @@
     }
 
     function addPlanOptions() {
-      const plans = ["Mensal", "Trimestral", "Semestral", "Anual"];
+      const plans = [
+        { name: "Mensal", price: 30.00 },
+        { name: "Trimestral", price: 85.00 },
+        { name: "Semestral", price: 160.00 },
+        { name: "Anual", price: 300.00 }
+      ];
+
       const planButtons = plans.map(plan => {
-        return `<button class="plan-button" onclick="selectPlan('${plan}')">${plan}</button>`;
+        const finalPrice = plan.price - 5; // Desconto de R$5
+        return `<button class="plan-button" onclick="selectPlan('${plan.name}', ${finalPrice})">
+                  ${plan.name} - R$${finalPrice.toFixed(2)}
+                </button>`;
       });
 
       chatBox.innerHTML += `
@@ -345,14 +354,21 @@
       `;
     }
 
-    function selectPlan(plan) {
+    function selectPlan(plan, price) {
       userPlan = plan;
+      discountPrice = price;
+
+      const message = `${getGreeting()} Eu sou ${userName}, escolhi o plano ${userPlan} por R$${discountPrice.toFixed(2)}. Dispositivo: ${userDevice}.`;
+      if (userDevice.includes("tv")) {
+        message += ` Marca da TV: ${userTVBrand}.`;
+      }
+
       chatBox.innerHTML += `
         <div class="message bot">
-          Você escolheu o plano ${plan}. Agora, clique no link abaixo para falar conosco no WhatsApp.
+          Você escolheu o plano ${userPlan}. Agora, clique no link abaixo para falar conosco no WhatsApp.
         </div>
         <div class="whatsapp-button-container">
-          <a href="https://wa.me/5511999999999?text=${getGreeting()}%20Estou%20interessado%20no%20plano%20${userPlan}" class="whatsapp-button" target="_blank">
+          <a href="https://wa.me/5511999999999?text=${encodeURIComponent(message)}" class="whatsapp-button" target="_blank">
             Falar no WhatsApp
           </a>
         </div>
