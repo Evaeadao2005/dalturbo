@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" href="https://daltv.site/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="https://daltv.site/favicon.ico" type="image/x-icon">
   <title>Atendimento Dalmon</title>
   <style>
     body {
@@ -21,7 +21,7 @@
     #chat-box {
       width: 100%;
       max-width: 480px;
-      height: 70%;
+      height: calc(100vh - 130px); /* Ajuste a altura para não ultrapassar a tela */
       background-color: #ffffff;
       border-radius: 10px;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
@@ -308,7 +308,7 @@
     function generateWhatsAppButton() {
       const greeting = getGreeting();
       const whatsappLink = `https://wa.me/558892963517?text=${encodeURIComponent(
-        `${greeting} sou ${userName},uso um(a) ${userDevice} da marca ${userTVBrand}. Escolhi o plano ${userPlan} por R$${discountPrice.toFixed(2)} e o teste tem duração de 4 horas.`
+        `${greeting} sou ${userName}, uso um(a) ${userDevice} da marca ${userTVBrand}. Escolhi o plano ${userPlan} por R$${discountPrice.toFixed(2)} e o teste tem duração de 4 horas.`
       )}`;
       addTypingMessage("Clique no botão abaixo para continuar conversando comigo no WhatsApp:", "bot", () => {
         const buttonContainer = document.createElement("div");
