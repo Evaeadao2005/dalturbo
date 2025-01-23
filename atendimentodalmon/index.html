@@ -30,6 +30,7 @@
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
       overflow: hidden;
       position: relative;
+      margin-top: 60px; /* Ajuste para a barra fixa */
     }
 
     #chat-box {
@@ -37,12 +38,12 @@
       height: calc(100% - 120px); /* Ajuste para deixar espaço para a barra superior fixa */
       background-image: url('https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png');
       background-size: cover;
-      background-position: center;
+      background-position: top center;
+      background-attachment: fixed;
       padding: 20px;
       display: flex;
       flex-direction: column;
       overflow-y: auto;
-      margin-top: 60px; /* Ajuste para a barra superior fixa */
       box-sizing: border-box;
     }
 
@@ -113,7 +114,7 @@
     }
 
     input[type="text"] {
-      width: 85%; /* Ajuste para evitar que ultrapasse a tela */
+      width: 75%; /* Ajustando para evitar ficar largo em telas grandes */
       padding: 15px;
       border: 1px solid #ccc;
       border-radius: 20px;
@@ -172,6 +173,24 @@
       align-items: center;
       margin-top: 20px;
       gap: 10px;
+    }
+
+    .plan-button {
+      background-color: #25d366;
+      color: white;
+      padding: 15px 20px;
+      font-size: 16px;
+      border-radius: 10px;
+      width: 100%;
+      text-align: center;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.3s;
+      border: none;
+    }
+
+    .plan-button:hover {
+      background-color: #128c7e;
+      transform: scale(1.05);
     }
 
     /* Botão do WhatsApp */
@@ -247,9 +266,12 @@
     let step = 0;
     let userName = "";
     let userDevice = "";
+    let userPlan = "";
     let userTVBrand = "";
+    let discountPrice = 0;
 
     const chatBox = document.getElementById("chat-box");
+    const header = document.getElementById("header");
 
     function getGreeting() {
       const hour = new Date().getHours();
@@ -300,72 +322,77 @@
         );
         step++;
       } else if (step === 1) {
-        userDevice = userInput;
-        handleDeviceResponse(userDevice);
+        userDevice = userInput.toLowerCase();
+        if (userDevice.includes("tv") && !userDevice.includes("box")) {
+          addTypingMessage("Qual a marca da sua TV?", "bot");
+          step++;
+        } else {
+          showPlanOptions();
+        }
       } else if (step === 2) {
         userTVBrand = userInput;
-        showPlans();
+        showPlanOptions();
       }
     }
 
-    function handleDeviceResponse(device) {
-      if (device.toLowerCase().includes("tv")) {
-        addTypingMessage("Qual a marca da sua TV?", "bot", () => {
-          step++;
-        });
-      } else {
-        showPlans();
-      }
+    function showPlanOptions() {
+      addTypingMessage(
+        "Escolha o plano desejado para assinar após o teste. Aproveite o desconto de R$ 5 na primeira compra!",
+        "bot",
+        () => {
+          const plans = [
+            { name: "Mensal (1 mês): R$ 19,90", id: "mensal", price: 19.90 },
+            { name: "Trimestral (3 meses): R$ 49,90", id: "trimestral", price: 49.90 },
+            { name: "Semestral (6 meses): R$ 89,90", id: "semestral", price: 89.90 },
+          ];
+          const buttonContainer = document.createElement("div");
+          buttonContainer.classList.add("button-container");
+          plans.forEach(plan => {
+            const planButton = document.createElement("button");
+            planButton.classList.add("plan-button");
+            planButton.textContent = plan.name;
+            planButton.onclick = () => {
+              userPlan = plan.name;
+              discountPrice = plan.price - 5; // Desconto de R$5
+              addMessage(`Você escolheu o plano: ${userPlan}.`, "bot");
+              addMessage(
+                `O valor com desconto será de R$ ${discountPrice.toFixed(2)}. Para finalizar, clique no botão abaixo para seguir para o WhatsApp.`,
+                "bot"
+              );
+              showWhatsAppButton();
+            };
+            buttonContainer.appendChild(planButton);
+          });
+          chatBox.appendChild(buttonContainer);
+          chatBox.scrollTop = chatBox.scrollHeight;
+        }
+      );
     }
 
-    function showPlans() {
-      addTypingMessage("Agora, vamos escolher o plano ideal para você.", "bot", () => {
-        const plans = [
-          { name: "Plano Mensal", description: "Testes mensais", price: "R$49,99", discountPrice: "R$44,99" },
-          { name: "Plano Trimestral", description: "Testes trimestrais", price: "R$139,99", discountPrice: "R$134,99" },
-          { name: "Plano Semestral", description: "Testes semestrais", price: "R$269,99", discountPrice: "R$264,99" },
-          { name: "Plano Anual", description: "Testes anuais", price: "R$499,99", discountPrice: "R$494,99" }
-        ];
-
-        const buttonContainer = document.createElement("div");
-        buttonContainer.classList.add("button-container");
-
-        plans.forEach(plan => {
-          const planButton = document.createElement("button");
-          planButton.textContent = `${plan.name} - ${plan.description} por ${plan.discountPrice}`;
-          planButton.onclick = () => handleWhatsAppButton(plan);
-          buttonContainer.appendChild(planButton);
-        });
-
-        chatBox.appendChild(buttonContainer);
-        chatBox.scrollTop = chatBox.scrollHeight;
-      });
-    }
-
-    function handleWhatsAppButton(plan) {
+    function showWhatsAppButton() {
+      const greeting = getGreeting();
       const whatsappButtonContainer = document.createElement("div");
       whatsappButtonContainer.classList.add("whatsapp-button-container");
-
-      const mensagem = `${getGreeting()} Meu nome é ${userName}. Estou usando um(a) ${userDevice}${userTVBrand ? ', da marca ' + userTVBrand : ''}. Gostaria de contratar o ${plan.name} por ${plan.discountPrice}.`;
-
       const whatsappButton = document.createElement("a");
-      whatsappButton.href = `https://wa.me/5583990000000?text=${encodeURIComponent(mensagem)}`;
+      whatsappButton.href = `https://wa.me/5583990000000?text=${greeting} Olá, estou interessado no plano de R$ ${discountPrice.toFixed(2)}.`;
       whatsappButton.classList.add("whatsapp-button");
       whatsappButton.textContent = "Finalizar no WhatsApp";
-
       whatsappButtonContainer.appendChild(whatsappButton);
       chatBox.appendChild(whatsappButtonContainer);
       chatBox.scrollTop = chatBox.scrollHeight;
     }
+
+    window.onload = () => {
+      addTypingMessage(getGreeting(), "bot", () => {
+        addTypingMessage("Qual é o seu nome?", "bot");
+      });
+    };
 
     function handleKeyPress(event) {
       if (event.key === "Enter") {
         sendMessage();
       }
     }
-
-    addMessage(getGreeting(), "bot");
-
   </script>
 </body>
 </html>
