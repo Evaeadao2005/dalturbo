@@ -311,7 +311,7 @@
 
         if (step === 0) {
           userName = userInput;
-          addMessage(`${getGreeting()} Certo, ${userName}. Qual dispositivo você usará? (Ex: Celular Android, iPhone, TV Smart, etc.)`, "bot");
+          addMessage(`${getGreeting()} Certo, ${userName}. Qual dispositivo você usará? (Ex: Celular Android, iPhone, TV Smart, TV Box, etc.)`, "bot");
           step++;
         } else if (step === 1) {
           userDevice = userInput.toLowerCase();
@@ -333,7 +333,7 @@
       setTimeout(() => {
         removeTypingMessage();
 
-        addMessage("Escolha o plano desejado para assinar após o teste. Aproveite o desconto de R$ 5 na primeira compra!", "bot");
+        addMessage("Escolha o plano desejado para assinar após o teste de 4 horas. Aproveite o desconto de R$ 5 na primeira compra!", "bot");
 
         const plans = [
           { name: "Mensal (1 mês): R$ 19,90", id: "mensal", price: 19.90 },
@@ -367,10 +367,10 @@
 
       const greeting = getGreeting();
       const deviceInfo = userDevice.includes("tv") ? `TV: ${userTVBrand}, ` : "";
-      const message = `${greeting} Olá, estou interessado no plano de ${userPlan} com o valor de R$ ${discountPrice.toFixed(2)} após o desconto. Dispositivo: ${deviceInfo}${userDevice}.`;
+      const message = `${greeting} Olá, quero fazer um teste de 4h, e estou interessado(a) no plano de ${userPlan} com o valor de R$ ${discountPrice.toFixed(2)} após o desconto. Dispositivo: ${deviceInfo}${userDevice}.`;
 
       const whatsappButton = document.createElement("a");
-      whatsappButton.href = `https://wa.me/5583990000000?text=${encodeURIComponent(message)}`;
+      whatsappButton.href = `https://wa.me/558892963517?text=${encodeURIComponent(message)}`;
       whatsappButton.classList.add("whatsapp-button");
       whatsappButton.textContent = "Finalizar no WhatsApp";
       whatsappButtonContainer.appendChild(whatsappButton);
@@ -384,7 +384,7 @@
       }
     }
 
-    addMessage("Olá, eu sou o Atendente Dalmon. Como posso te ajudar hoje?", "bot");
+    addMessage("${greeting} Olá, eu sou o Atendente Dalmon. Qual o seu nome?", "bot");
   </script>
 </body>
 </html>
