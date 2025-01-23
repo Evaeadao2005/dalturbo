@@ -35,7 +35,7 @@
 
     #chat-box {
       width: 100%;
-      height: calc(100% - 60px); /* Espaço para a barra de digitação */
+      height: calc(100% - 60px);
       background-image: url('https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png');
       background-size: cover;
       background-position: top center;
@@ -101,7 +101,6 @@
       margin-right: 10px;
     }
 
-    /* Barra de digitação ajustada */
     .input-container {
       display: flex;
       width: 100%;
@@ -118,7 +117,7 @@
     }
 
     input[type="text"] {
-      width: calc(100% - 60px); /* Tamanho ajustado para não ultrapassar a tela */
+      width: calc(100% - 60px);
       padding: 10px;
       border: 1px solid #ccc;
       border-radius: 20px;
@@ -169,7 +168,6 @@
       overflow-x: hidden;
     }
 
-    /* Botões de planos */
     .button-container {
       display: flex;
       flex-direction: column;
@@ -196,7 +194,6 @@
       transform: scale(1.05);
     }
 
-    /* Botão do WhatsApp */
     .whatsapp-button-container {
       display: flex;
       justify-content: center;
@@ -354,7 +351,7 @@
             planButton.textContent = plan.name;
             planButton.onclick = () => {
               userPlan = plan.name;
-              discountPrice = plan.price - 5; // Desconto de R$5
+              discountPrice = plan.price - 5; 
               addMessage(`Você escolheu o plano: ${userPlan}.`, "bot");
               addMessage(
                 `O valor com desconto será de R$ ${discountPrice.toFixed(2)}. Para finalizar, clique no botão abaixo para seguir para o WhatsApp.`,
@@ -375,7 +372,11 @@
       whatsappButtonContainer.classList.add("whatsapp-button-container");
 
       const greeting = getGreeting();
-      const message = `${greeting} Olá, estou interessado no plano de ${userPlan} com o valor de R$ ${discountPrice.toFixed(2)} após o desconto.`;
+      let message = `${greeting} Olá, estou interessado no plano de ${userPlan} com o valor de R$ ${discountPrice.toFixed(2)} após o desconto.`;
+
+      if (userDevice.includes("tv") && userTVBrand) {
+        message += ` Meu dispositivo é uma TV ${userTVBrand}.`;
+      }
 
       const whatsappButton = document.createElement("a");
       whatsappButton.href = `https://wa.me/5583990000000?text=${encodeURIComponent(message)}`;
