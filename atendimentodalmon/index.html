@@ -5,409 +5,45 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="https://daltv.site/favicon.ico" type="image/x-icon">
   <title>Atendimento Dalmon</title>
-  <style>
-    body {
-      font-family: 'Roboto', sans-serif;
-      background-color: #f5f5f5;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      height: 100vh;
-      justify-content: flex-start;
-    }
-
-    #chat-container {
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-      max-width: 480px;
-      height: 100%;
-      background-color: #fff;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      overflow: hidden;
-      margin-top: 60px;
-      align-items: center;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    #chat-box {
-      width: 100%;
-      height: calc(100% - 60px);
-      background-image: url('https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png');
-      background-size: cover;
-      background-position: top center;
-      background-attachment: fixed;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      overflow-y: auto;
-      box-sizing: border-box;
-      justify-content: flex-start;
-    }
-
-    .message {
-      margin: 10px 0;
-      padding: 12px;
-      border-radius: 18px;
-      max-width: 80%;
-      word-wrap: break-word;
-      font-size: 16px;
-    }
-
-    .user {
-      background-color: #d1f8e4;
-      align-self: flex-end;
-      border-radius: 18px 18px 0 18px;
-    }
-
-    .bot {
-      background-color: #f0f0f0;
-      align-self: flex-start;
-      border-radius: 18px 18px 18px 0;
-    }
-
-    .typing {
-      font-style: italic;
-      color: #888;
-    }
-
-    .header {
-      font-size: 18px;
-      font-weight: bold;
-      display: flex;
-      align-items: center;
-      padding: 10px;
-      background-color: #fff;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      z-index: 1;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      padding-left: 10px;
-      padding-right: 10px;
-      box-sizing: border-box;
-    }
-
-    .header img {
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      margin-right: 10px;
-    }
-
-    .input-container {
-      display: flex;
-      width: 100%;
-      padding: 10px;
-      background-color: #fff;
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      box-sizing: border-box;
-      padding-left: 10px;
-      padding-right: 10px;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    input[type="text"] {
-      width: calc(100% - 60px);
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 20px;
-      font-size: 16px;
-      background-color: #ffffff;
-      outline: none;
-      box-shadow: none;
-    }
-
-    input[type="text"]:focus {
-      border-color: #25d366;
-    }
-
-    .send-button {
-      background-color: #25d366;
-      color: white;
-      padding: 15px;
-      border-radius: 50%;
-      border: none;
-      cursor: pointer;
-      font-size: 18px;
-      width: 50px;
-      height: 50px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-      transition: background-color 0.3s, box-shadow 0.3s, transform 0.2s;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .send-button:hover {
-      background-color: #128c7e;
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
-      transform: scale(1.1);
-    }
-
-    .send-button i {
-      font-size: 24px;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body, html {
-      overflow-x: hidden;
-    }
-
-    .button-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-top: 20px;
-      gap: 10px;
-    }
-
-    .plan-button {
-      background-color: #25d366;
-      color: white;
-      padding: 15px 20px;
-      font-size: 16px;
-      border-radius: 10px;
-      width: 100%;
-      text-align: center;
-      cursor: pointer;
-      transition: background-color 0.3s, transform 0.3s;
-      border: none;
-    }
-
-    .plan-button:hover {
-      background-color: #128c7e;
-      transform: scale(1.05);
-    }
-
-    .whatsapp-button-container {
-      display: flex;
-      justify-content: center;
-      margin-top: 20px;
-    }
-
-    .whatsapp-button {
-      background-color: #25d366;
-      color: white;
-      padding: 15px 30px;
-      font-size: 16px;
-      border-radius: 50px;
-      text-decoration: none;
-      transition: background-color 0.3s, transform 0.3s;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .whatsapp-button:hover {
-      background-color: #128c7e;
-      transform: scale(1.05);
-    }
-
-    @media (max-width: 480px) {
-      .header {
-        font-size: 16px;
-      }
-
-      .send-button {
-        width: 50px;
-        height: 50px;
-      }
-
-      input[type="text"] {
-        font-size: 14px;
-      }
-    }
-  </style>
-<!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1035113441753192');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1035113441753192&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
+  <link rel="stylesheet" href="styles.css">
+  <!-- Meta Pixel Code -->
+  <script>
+    !function(f,b,e,v,n,t,s){
+      if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '1035113441753192');
+      fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=1035113441753192&ev=PageView&noscript=1"
+    /></noscript>
+  <!-- End Meta Pixel Code -->
 </head>
 <body>
+  <header class="header" id="header">
+    <img src="https://daltv.site/logo.avif" alt="Perfil Atendente Dalmon">
+    <span>Atendente Dalmon</span>
+  </header>
 
-  <div id="chat-container">
-    <div class="header" id="header">
-      <img src="https://daltv.site/logo.avif" alt="Perfil Atendente Dalmon">
-      <span>Atendente Dalmon</span>
-    </div>
-
+  <main id="chat-container">
     <div id="chat-box">
       <!-- As mensagens serão inseridas aqui -->
     </div>
 
     <div class="input-container">
       <input type="text" id="user-input" placeholder="Digite aqui..." onkeypress="handleKeyPress(event)">
-      <button class="send-button" onclick="sendMessage()">
+      <button class="send-button" onclick="sendMessage()" aria-label="Enviar mensagem">
         <i class="fa fa-paper-plane"></i>
       </button>
     </div>
-  </div>
+  </main>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
-
-  <script>
-    let step = 0;
-    let userName = "";
-    let userDevice = "";
-    let userPlan = "";
-    let userTVBrand = "";
-    let discountPrice = 0;
-
-    const chatBox = document.getElementById("chat-box");
-
-    function getGreeting() {
-      const hour = new Date().getHours();
-      if (hour < 12) return "Bom dia!";
-      if (hour < 18) return "Boa tarde!";
-      return "Boa noite!";
-    }
-
-    function addMessage(message, sender) {
-      const msgDiv = document.createElement("div");
-      msgDiv.classList.add("message", sender);
-      msgDiv.textContent = message;
-      chatBox.appendChild(msgDiv);
-      chatBox.scrollTop = chatBox.scrollHeight;
-    }
-
-    function addTypingMessage() {
-      const typingMessage = document.createElement("div");
-      typingMessage.classList.add("message", "bot", "typing");
-      typingMessage.textContent = "Digitando...";
-      chatBox.appendChild(typingMessage);
-      chatBox.scrollTop = chatBox.scrollHeight;
-    }
-
-    function removeTypingMessage() {
-      const typingMessages = document.querySelectorAll(".typing");
-      typingMessages.forEach(msg => msg.remove());
-    }
-
-    function sendMessage() {
-      const input = document.getElementById("user-input");
-      const userInput = input.value.trim();
-      if (!userInput) return;
-
-      addMessage(userInput, "user");
-      input.value = "";
-
-      processBotResponse(userInput);
-    }
-
-    function processBotResponse(userInput) {
-      addTypingMessage();
-
-      setTimeout(() => {
-        removeTypingMessage();
-
-        if (step === 0) {
-          userName = userInput;
-          addMessage(`${getGreeting()} Certo, ${userName}. Qual dispositivo você usará? (Ex: Celular Android, iPhone, TV Smart, TV Box, etc.)`, "bot");
-          step++;
-        } else if (step === 1) {
-          userDevice = userInput.toLowerCase();
-          if (userDevice.includes("tv") && !userDevice.includes("box")) {
-            addMessage("Qual a marca da sua TV?", "bot");
-            step++;
-          } else {
-            showPlanOptions();
-          }
-        } else if (step === 2) {
-          userTVBrand = userInput;
-          showPlanOptions();
-        }
-      }, 1000); // Simulando o delay do bot digitando...
-    }
-
-    function showPlanOptions() {
-      addTypingMessage();
-      setTimeout(() => {
-        removeTypingMessage();
-
-        addMessage("Escolha o plano desejado para assinar após o teste de 4 horas. Aproveite o desconto de R$ 5 na primeira compra!", "bot");
-
-        const plans = [
-          { name: "Mensal (1 mês): R$ 19,90", id: "mensal", price: 19.90 },
-          { name: "Trimestral (3 meses): R$ 49,90", id: "trimestral", price: 49.90 },
-          { name: "Semestral (6 meses): R$ 89,90", id: "semestral", price: 89.90 },
-        ];
-
-        const buttonContainer = document.createElement("div");
-        buttonContainer.classList.add("button-container");
-        plans.forEach(plan => {
-          const planButton = document.createElement("button");
-          planButton.classList.add("plan-button");
-          planButton.textContent = plan.name;
-          planButton.onclick = () => {
-            userPlan = plan.name;
-            discountPrice = plan.price - 5; // Desconto de R$5
-            addMessage(`Você escolheu o plano: ${userPlan}.`, "bot");
-            addMessage(`O valor com desconto será de R$ ${discountPrice.toFixed(2)}. Para continuarmos conversando, clique no botão abaixo para seguir para o WhatsApp.`, "bot");
-            showWhatsAppButton();
-          };
-          buttonContainer.appendChild(planButton);
-        });
-        chatBox.appendChild(buttonContainer);
-        chatBox.scrollTop = chatBox.scrollHeight;
-      }, 1000); // Delay para "Digitando..."
-    }
-
-    function showWhatsAppButton() {
-      const whatsappButtonContainer = document.createElement("div");
-      whatsappButtonContainer.classList.add("whatsapp-button-container");
-
-      const greeting = getGreeting();
-      const deviceInfo = userDevice.includes("tv") ? `TV: ${userTVBrand}, ` : "";
-      const message = `${greeting} Olá, quero fazer um teste de 4h, e estou interessado(a) no plano de ${userPlan} com o valor de R$ ${discountPrice.toFixed(2)} após o desconto. Dispositivo: ${deviceInfo}${userDevice}.`;
-
-const whatsappButton = document.createElement("a");
-whatsappButton.href = `https://wa.me/558893509111?text=${encodeURIComponent(message)}`;
-whatsappButton.classList.add("whatsapp-button");
-whatsappButton.textContent = "Continuar no WhatsApp";
-
-// Adicionando o rastreamento do evento do Facebook Pixel
-whatsappButton.onclick = function () {
-  fbq('track', 'Contact'); // Evento do Facebook Pixel
-};
-
-whatsappButtonContainer.appendChild(whatsappButton);
-chatBox.appendChild(whatsappButtonContainer);
-chatBox.scrollTop = chatBox.scrollHeight;
-    }
-
-    function handleKeyPress(event) {
-      if (event.key === "Enter") {
-        sendMessage();
-      }
-    }
-
-    addMessage("Olá, eu sou o Atendente Dalmon. Qual o seu nome?", "bot");
-  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js" async></script>
+  <script src="script.js" defer></script>
 </body>
 </html>
