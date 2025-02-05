@@ -4,173 +4,262 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="DALTV - Tenha acesso a filmes, séries, canais fechados e abertos por um preço imperdível!">
-    <meta name="keywords" content="streaming, filmes, séries, canais fechados, Netflix, Disney+, HBO Max, Globoplay">
+    <meta name="keywords" content="IPTV, streaming, filmes, séries, canais ao vivo">
     <meta name="author" content="DALTV">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <title>DALTV - Oferta Imperdível</title>
-    <!-- Font Awesome CDN -->
+    <title>DALTV - Melhor IPTV do Mundo</title>
+
+    <!-- Fontes e Ícones -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
     <style>
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        :root {
+            --primary-color: #FF0000;
+            --secondary-color: #8B0000;
+            --whatsapp-green: #25D366;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
         body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #121212;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #1a1a1a, #000);
             color: #fff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
+            line-height: 1.6;
+            overflow-x: hidden;
         }
+
         .container {
-            width: 100%;
-            max-width: 600px;
-            background-color: #1e1e1e;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 40px 0;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 20px rgba(255, 0, 0, 0.3);
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Video Section */
+        .video-section {
+            position: relative;
+            margin: 30px 0;
             border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 6px 15px rgba(255, 0, 0, 0.5);
-            animation: fadeIn 1s ease-out;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
         }
-        .header {
-            background: linear-gradient(90deg, #ff0000, #8b0000);
-            padding: 20px;
-            text-align: center;
-            font-size: 26px;
-            font-weight: bold;
-            text-transform: uppercase;
-            color: #fff;
-        }
-        .logo {
-            display: flex;
-            justify-content: center;
-            margin: 15px 0;
-        }
-        .logo img {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-        }
-        .content {
-            padding: 20px;
-        }
-        .content p {
-            margin: 10px 0;
-            font-size: 18px;
-            line-height: 1.6;
-        }
-        .highlight {
-            color: #ff0000;
-            font-weight: bold;
-        }
-        .video-container {
-            margin: 20px 0;
-            text-align: center;
-        }
-        .video-container video {
+
+        #main-video {
             width: 100%;
-            max-width: 560px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            height: 500px;
+            object-fit: cover;
         }
-        .button-container {
+
+        /* Countdown Timer */
+        .countdown {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin: 25px 0;
+            animation: pulse 2s infinite;
+        }
+
+        .countdown h2 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        #timer {
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* CTA Buttons */
+        .cta-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
             display: flex;
             flex-direction: column;
-            gap: 20px;
-            margin-top: 30px;
+            gap: 15px;
+            z-index: 1000;
         }
-        .cta-button {
+
+        .whatsapp-button {
+            background: var(--whatsapp-green);
+            color: #fff;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
             display: flex;
             align-items: center;
-            justify-content: center;
-            background-color: #25d366;
-            color: #fff;
-            text-decoration: none;
-            text-align: center;
-            padding: 15px;
-            border-radius: 8px;
-            font-size: 18px;
-            font-weight: bold;
-            box-shadow: 0 0 10px #25d366;
-            transition: background-color 0.3s, transform 0.3s;
+            gap: 10px;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            transition: transform 0.3s;
         }
-        .cta-button i {
-            margin-right: 15px; /* Espaço entre o ícone e o texto */
-            font-size: 24px;
-        }
-        .cta-button:hover {
-            background-color: #1daa59;
+
+        .whatsapp-button:hover {
             transform: scale(1.05);
         }
-        .footer {
+
+        /* Logo Section */
+        .logo-section {
             text-align: center;
-            padding: 15px;
-            background-color: #1e1e1e;
-            font-size: 14px;
-            color: #aaa;
+            margin: 40px 0;
+        }
+
+        .logo-section img {
+            max-width: 200px;
+            height: auto;
+            filter: drop-shadow(0 0 10px rgba(255, 0, 0, 0.5));
+        }
+
+        /* Animations */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8rem;
+            }
+
+            #main-video {
+                height: 250px;
+            }
+
+            .countdown {
+                padding: 15px;
+            }
+
+            #timer {
+                font-size: 1.5rem;
+            }
         }
     </style>
-<!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1035113441753192');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1035113441753192&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
 </head>
 <body>
     <div class="container">
-        <div class="header">DALTV - Oferta Imperdível</div>
-        <div class="content">
-            <div class="video-container">
-                <video src="video.webm" controls></video>
+        <!-- Header -->
+        <header class="header">
+            <div class="logo-section">
+                <img src="logo.png" alt="DALTV Logo">
             </div>
-            <div class="button-container">
-                <a href="https://daltv.site/atendimentodalmon" class="cta-button">
-                    <i class="fab fa-whatsapp"></i> Falar com Atendente
-                </a>
-                <a href="https://daltv.site/atendimentodalmon" class="cta-button">
-                    <i class="fab fa-whatsapp"></i> Fazer Teste Grátis
-                </a>
+            <h1>Assista Tudo por Apenas R$19,90/mês</h1>
+        </header>
+
+        <!-- Countdown Timer -->
+        <div class="countdown">
+            <h2>OFERTA TERMINA EM:</h2>
+            <div id="timer">00:00:00</div>
+        </div>
+
+        <!-- Video Section -->
+        <section class="video-section">
+            <video id="main-video" controls autoplay muted loop poster="video-poster.jpg">
+                <source src="video.mp4" type="video/mp4">
+                Seu navegador não suporta vídeos.
+            </video>
+        </section>
+
+        <!-- Features Grid -->
+        <div class="features-grid">
+            <div class="feature-card">
+                <i class="fas fa-tv fa-3x"></i>
+                <h3>+15.000 Canais Fechados, Abertos, Esportes, Notícias, Infantis, Reality Shows e Variedades!</h3>
+                <p>Canais HD, Full HD, e 4K</p>
             </div>
-            <p>🔥 <span class="highlight">Cancele todas suas assinaturas e tenha MUITO MAIS pagando menos!</span></p>
-            <p>💥 De <s>R$34,90</s> por apenas <span class="highlight">R$19,90/mês!</span></p>
-            <p>💥 No 1º mês, você paga só <span class="highlight">R$14,90!</span></p>
-            <p>❌ Cancele quando quiser!</p>
-            <p>✅ Filmes, séries e documentários: Netflix, Disney+, Amazon Prime, Globoplay, HBO Max, Discovery Plus, Crunchyroll e outros!</p>
-            <p>✅ Canais fechados: esportes, notícias, infantis e variedades!</p>
-            <p>✅ Canais abertos: Globo, SBT, Record, Band e mais!</p>
-            <p>✅ Compatível com TVs, celulares, computadores e TV Box!</p>
-            <p>✅ Teste grátis de 4 horas!</p>
-            <p>✅ Já tem BBB 2025!</p>
-            <p>✅ <span class="highlight">Uma imensa quantidade de conteúdos!</span></p>
-            <p>⚡ Válido para os <span class="highlight">150 primeiros clientes</span> ou até <span class="highlight">31/01!</span></p>
-        <div class="logo">
-            <img src="logo.avif" alt="Logo DALTV">
+            <div class="feature-card">
+                <i class="fas fa-film fa-3x"></i>
+                <h3>+100.000 Filmes, Séries, Novelas, Documentários, e mais.</h3>
+                <p>Netflix, Disney+, Amazon Prime, Globoplay, HBO Max, Discovery Plus, Crunchyroll e outros</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-mobile-alt fa-3x"></i>
+                <h3>Multiplataforma!</h3>
+                <p>Assista em qualquer dispositivo: Celular, Smart TV, Tvbox, Computador</p>
+            </div>
         </div>
-        </div>
-        <div class="footer">
-            © 2025 DALTV. Todos os direitos reservados.
+
+        <!-- Floating CTA -->
+        <div class="cta-container">
+            <a href="https://daltv.site/atendimentodalmon" class="whatsapp-button">
+                <i class="fab fa-whatsapp"></i>
+                Teste Grátis
+            </a>
+            <a href="https://daltv.site/atendimentodalmon" class="whatsapp-button">
+                <i class="fab fa-whatsapp"></i>
+                Assinar Agora
+            </a>
         </div>
     </div>
+
+    <script>
+        // Contador Regressivo
+        function updateTimer() {
+            const targetDate = new Date('2025-02-28T23:59:59').getTime();
+            const now = new Date().getTime();
+            const difference = targetDate - now;
+
+            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+            document.getElementById('timer').innerHTML = 
+                `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+
+            if (difference < 0) {
+                clearInterval(timerInterval);
+                document.getElementById('timer').innerHTML = "OFERTA EXPIRADA!";
+            }
+        }
+
+        const timerInterval = setInterval(updateTimer, 1000);
+
+        // Video Fallback
+        const video = document.getElementById('main-video');
+        video.addEventListener('error', () => {
+            video.innerHTML = '<p>Vídeo não disponível. <a href="#cta">Clique para testar</a></p>';
+        });
+    </script>
 </body>
 </html>
