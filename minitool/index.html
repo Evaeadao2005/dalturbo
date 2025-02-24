@@ -59,15 +59,14 @@
                 const texto = await resposta.text(); // Converte o conteúdo para texto
                 navigator.clipboard.writeText(texto) // Copia o texto para a área de transferência
                     .then(() => {
-                        alert("Texto copiado com sucesso!");
+
                     })
                     .catch(err => {
-                        console.error("Erro ao copiar texto: ", err);
-                        alert("Erro ao copiar texto.");
+
                     });
             } catch (erro) {
                 console.error('Erro ao carregar o arquivo:', erro);
-                alert("Erro ao carregar o texto.");
+
             }
         }
 
