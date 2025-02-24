@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Respostas Rápidas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #121212;
+            color: #fff;
+        }
+        .resposta {
+            background: #222;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .resposta img {
+            max-width: 50px;
+            border-radius: 5px;
+        }
+        .btn-copiar {
+            padding: 5px 10px;
+            background: #0d6efd;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #painel {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 10px;
+            border-radius: 10px;
+            display: none;
+            z-index: 1000; /* Garante que fique acima de tudo */
+        }
+        .painel-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #0d6efd;
+            color: white;
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 1000; /* Garante que fique acima de tudo */
+        }
+    </style>
+</head>
+<body>
+    
+    <h2>Respostas Rápidas</h2>
+    
+    <div class="resposta">
+        <span>Olá! Como posso ajudar?</span>
+        <button class="btn-copiar" onclick="copiarTexto(this)">Copiar</button>
+    </div>
+    
+        <div class="resposta">
+        <img src="androidtv.jpg" alt="Imagem Exemplo">
+        <span>🔹 _*Como baixar e instalar nosso aplicativo oficial:*_  
+
+1️⃣ *Baixe* o app *Downloader by AFTVnews* na Play Store.  
+
+2️⃣ *Abra* o app e digite o código da versão desejada:  
+- 🟢 *Versão IBO:* *476665*  
+- 🔵 *Versão XC:* *958770*  
+
+3️⃣ *Clique em "Go"* e instale o aplicativo. Caso necessário, ative a opção *"Fontes desconhecidas"*.  
+
+4️⃣ *Após a instalação, abra o app* e selecione *"Add Playlist"*.  
+
+💬 Assim que concluir a instalação, me avise para que eu possa gerar seu acesso (*usuário e senha*).  
+
+⚠️ Se as capas não carregarem, ou algum conteúdo não abrir/travar, me avise para ajustar sua conexão!  
+
+🚀 *Tudo pronto! Agora é só aproveitar!* 🎉</span>
+        <button class="btn-copiar" onclick="copiarTextoEImagem(this)">Copiar Tudo</button>
+    </div>
+    <div class="resposta">
+        <img src="smartv.jpg" alt="Imagem Exemplo">
+        <span>🛠️ *Como instalar a DALTV na sua Smart TV*  
+
+1️⃣ *Baixe e instale* o aplicativo parceiro pela loja de apps da sua Smart TV.  
+2️⃣ *Abra o app* e localize o *MAC Address* (geralmente no canto inferior direito ou nas configurações). O formato será algo como: `00:1A:79:XX:XX:XX`.  
+3️⃣ *Envie o MAC Address* junto com o nome do aplicativo parceiro para ativarmos o serviço.  
+4️⃣ *Após a ativação*, reabra o app, vá em *Listas*, selecione *DALTV* e pronto!  
+
+📌 *Importante:* Se o app mostrar um aviso de teste de 7 dias, não se preocupe! Seu acesso continuará ativo normalmente.  
+
+⚠️ *Se as capas não carregarem, conteúdos não abrirem ou travarem, me avise para ajustar sua conexão!* 🚀</span>
+        <button class="btn-copiar" onclick="copiarTextoEImagem(this)">Copiar Tudo</button>
+    </div>
+
+    
+    <script>
+        function copiarTexto(botao) {
+            const texto = botao.parentElement.querySelector('span').innerText;
+            navigator.clipboard.writeText(texto)
+                .then(() => {
+                    alert("Texto copiado!");
+                })
+                .catch(err => {
+                    console.error("Erro ao copiar texto: ", err);
+                    alert("Erro ao copiar texto.");
+                });
+        }
+        
+        function copiarImagem(botao) {
+            const imgElement = botao.parentElement.querySelector('img');
+            fetch(imgElement.src)
+                .then(res => res.blob())
+                .then(blob => {
+                    const item = new ClipboardItem({ "image/png": blob });
+                    navigator.clipboard.write([item])
+                        .then(() => {
+                            alert("Imagem copiada!");
+                        })
+                        .catch(err => {
+                            console.error("Erro ao copiar imagem: ", err);
+                            alert("Erro ao copiar imagem.");
+                        });
+                });
+        }
+        
+        function copiarTextoEImagem(botao) {
+            const texto = botao.parentElement.querySelector('span').innerText;
+            const imgElement = botao.parentElement.querySelector('img');
+            fetch(imgElement.src)
+                .then(res => res.blob())
+                .then(blob => {
+                    const item = new ClipboardItem({ "image/png": blob });
+                    navigator.clipboard.write([item])
+                        .then(() => {
+                            navigator.clipboard.writeText(texto)
+                                .then(() => {
+                                    alert("Texto e imagem copiados!");
+                                })
+                                .catch(err => {
+                                    console.error("Erro ao copiar texto: ", err);
+                                    alert("Erro ao copiar texto.");
+                                });
+                        })
+                        .catch(err => {
+                            console.error("Erro ao copiar imagem: ", err);
+                            alert("Erro ao copiar imagem.");
+                        });
+                });
+        }
+        
+        function copiarTextoRapido(texto) {
+            navigator.clipboard.writeText(texto)
+                .then(() => {
+                    alert("Texto copiado!");
+                })
+                .catch(err => {
+                    console.error("Erro ao copiar texto: ", err);
+                    alert("Erro ao copiar texto.");
+                });
+        }
+        
+        function togglePainel() {
+            const painel = document.getElementById("painel");
+            painel.style.display = painel.style.display === "block" ? "none" : "block";
+        }
+    </script>
+</body>
+</html>
