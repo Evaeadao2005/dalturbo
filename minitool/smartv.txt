@@ -1,0 +1,10 @@
+🛠️ *Como instalar a DALTV na sua Smart TV*  
+
+1️⃣ *Baixe e instale* o aplicativo parceiro pela loja de apps da sua Smart TV.  
+2️⃣ *Abra o app* e localize o *MAC Address* (geralmente no canto inferior direito ou nas configurações). O formato será algo como: `00:1A:79:XX:XX:XX`.  
+3️⃣ *Envie o MAC Address* junto com o nome do aplicativo parceiro para ativarmos o serviço.  
+4️⃣ *Após a ativação*, reabra o app, vá em *Listas*, selecione *DALTV* e pronto!  
+
+📌 *Importante:* Se o app mostrar um aviso de teste de 7 dias, não se preocupe! Seu acesso continuará ativo normalmente.  
+
+⚠️ *Se as capas não carregarem, conteúdos não abrirem ou travarem, me avise para ajustar sua conexão!* 🚀
