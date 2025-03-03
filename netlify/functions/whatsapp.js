@@ -10,7 +10,7 @@ exports.handler = async function(event, context) {
         saudacao = "Boa noite, tenho interesse em adquirir um plano na DALTV";
     }
 
-    const whatsappUrl = `https://wa.me/558892963517?text=${encodeURIComponent(saudacao)}`;
+    const whatsappUrl = `https://wa.me/558893312174?text=${encodeURIComponent(saudacao)}`;
     
     return {
         statusCode: 301,  // Código de redirecionamento
