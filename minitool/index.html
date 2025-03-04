@@ -19,6 +19,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+            cursor: pointer;
         }
         .resposta img {
             max-width: 100px;
@@ -26,12 +27,14 @@
             margin-right: 10px;
         }
         .btn-copiar {
-            padding: 5px 10px;
+            padding: 10px 15px;
             background: #0d6efd;
             color: white;
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            flex-grow: 1;
+            text-align: center;
         }
     </style>
 </head>
@@ -40,41 +43,41 @@
     <h2>Respostas Rápidas</h2>
     
     <!-- Resposta 1 -->
-    <div class="resposta">
+    <div class="resposta" data-arquivo="androidtv.txt">
         <img src="androidtv.jpg" alt="Imagem Exemplo">
-        <button class="btn-copiar" data-arquivo="androidtv.txt">Android</button>
+        <button class="btn-copiar">Android</button>
     </div>
     
     <!-- Resposta 2 -->
-    <div class="resposta">
+    <div class="resposta" data-arquivo="smartv.txt">
         <img src="smartv.jpg" alt="Imagem Exemplo">
-        <button class="btn-copiar" data-arquivo="smartv.txt">Smartv</button>
+        <button class="btn-copiar">Smartv</button>
+    </div>
+    
+    <!-- Botão Disparo -->
+    <div class="resposta" data-arquivo="disparo.txt">
+        <button class="btn-copiar" style="width: 100%;">Disparo</button>
     </div>
     
     <script>
         // Função para carregar e copiar o texto
         async function copiarTexto(arquivo) {
             try {
-                const resposta = await fetch(arquivo); // Carrega o arquivo .txt
-                const texto = await resposta.text(); // Converte o conteúdo para texto
-                navigator.clipboard.writeText(texto) // Copia o texto para a área de transferência
-                    .then(() => {
-
-                    })
-                    .catch(err => {
-
-                    });
+                const resposta = await fetch(arquivo);
+                const texto = await resposta.text();
+                navigator.clipboard.writeText(texto)
+                    .then(() => console.log('Texto copiado!'))
+                    .catch(err => console.error('Erro ao copiar:', err));
             } catch (erro) {
                 console.error('Erro ao carregar o arquivo:', erro);
-
             }
         }
 
-        // Adiciona o evento de clique aos botões
-        document.querySelectorAll('.btn-copiar').forEach(botao => {
-            botao.addEventListener('click', () => {
-                const arquivo = botao.getAttribute('data-arquivo'); // Obtém o nome do arquivo .txt
-                copiarTexto(arquivo); // Copia o texto do arquivo
+        // Adiciona evento de clique em toda a div "resposta"
+        document.querySelectorAll('.resposta').forEach(item => {
+            item.addEventListener('click', () => {
+                const arquivo = item.getAttribute('data-arquivo');
+                copiarTexto(arquivo);
             });
         });
     </script>
