@@ -1,0 +1,21 @@
+*Valores de Assinatura (até 2 telas adicionais):*  
+
+*📅 Mensal (1 mês):*  
+- _Valor da assinatura:_ *R$ 19,90*  
+- _Com desconto:_ *R$ 14,90* (economia de R$ 5)  
+
+*📅 Trimestral (3 meses):*  
+- _Valor da assinatura:_ *R$ 49,90*  
+- _Com desconto:_ *R$ 44,90* (economia de R$ 5)  
+
+*📅 Semestral (6 meses):*  
+- _Valor da assinatura:_ *R$ 94,90*  
+- _Com desconto:_ *R$ 89,90* (economia de R$ 5)  
+
+*📅 Anual (12 meses):*  
+- _Valor da assinatura:_ *R$ 185,90*  
+- _Com desconto:_ *R$ 180,90* (economia de R$ 5)  
+
+*🎉 _AVISO:_*  
+- O desconto de *R$ 5* é válido apenas na _primeira assinatura_. Após a primeira assinatura, os valores retornam ao preço original.  
+- *Acesso extra* pode ser contratado a partir de *R$ 5 reais* por tela adicional (até 2 telas).  
