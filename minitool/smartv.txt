@@ -1,14 +1,14 @@
-🌟 AVISO IMPORTANTE: O servidor da DALTV está 100% operacional e estável. Travas ou lentidão estão ligadas a configurações de rede ou dispositivo. Podemos ajudar a ajustar! 🚀
+🌟 _*AVISO IMPORTANTE:*_ O servidor da DALTV está _*100% operacional e estável*_. Travas ou lentidão estão ligadas a configurações de rede ou dispositivo. Podemos ajudar a ajustar! 🚀 
 
-Como instalar na Smart TV:
-1️⃣ Baixe o app parceiro na loja de apps.
-2️⃣ Abra o app e localize o MAC Address (ex: 00:1A:79:XX:XX:XX).
-3️⃣ Envie o MAC e o nome do app para ativação.
-4️⃣ Após ativar, selecione DALTV em Listas.
+_*Como instalar na Smart TV:*_  
+1️⃣ Baixe o app parceiro na loja de apps.  
+2️⃣ Abra o app e localize o _*MAC Address*_ (ex: `00:1A:79:XX:XX:XX`).  
+3️⃣ Envie o MAC e o nome do app para ativação.  
+4️⃣ Após ativar, selecione _*DALTV*_ em _*Listas*_.  
 
-📌 Importante: Ignore avisos de "teste de 7 dias". Seu acesso continuará normal.
+📌 _*Importante:*_ Ignore avisos de "teste de 7 dias". Seu acesso continuará normal.  
 
-🔔 Para TVs antigas:
-Apps compatíveis: ST.B/SmartU.P, SS1PT.V, 1PT.V Smar.ters, Smart0n.e.
+🔔 _*Para TVs antigas:*_  
+Apps compatíveis: _*ST.B/SmartU.P*_, _*SS1PT.V*_, _*1PT.V Sm4rters*_, _*Smar.t0ne*_, _Cl0uDDy.  
 
-⚠️ Problemas? Travou? Canais não carregam? Chama aqui! Ajudamos a resolver. 😊
+⚠️ _*Problemas?*_ Travou? Canais não carregam? Chama aqui! Ajudamos a resolver. 😊  
