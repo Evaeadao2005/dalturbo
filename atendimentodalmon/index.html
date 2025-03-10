@@ -450,10 +450,13 @@
       const deviceInfo = userDevice.includes("tv") ? `TV: ${userTVBrand}, ` : "";
       const message = `${greeting} Olá, meu nome é ${userName}. Quero fazer um teste de 4h, e estou interessado(a) no plano de ${userPlan} com o valor de R$ ${discountPrice.toFixed(2)} após o desconto. Dispositivo: ${deviceInfo}${userDevice}.`;
 
-      const whatsappButton = document.createElement("a");
-      whatsappButton.href = `https://wa.me/558893312174?text=${encodeURIComponent(message)}`;
-      whatsappButton.classList.add("whatsapp-button");
-      whatsappButton.textContent = "Continuar no WhatsApp";
+   const numbers = ["558892963517", "558893312174"];
+const randomNumber = numbers[Math.floor(Math.random() * numbers.length)];
+
+const whatsappButton = document.createElement("a");
+whatsappButton.href = `https://wa.me/${randomNumber}?text=${encodeURIComponent(message)}`;
+whatsappButton.classList.add("whatsapp-button");
+whatsappButton.textContent = "Continuar no WhatsApp";
 
       // Adicionando o rastreamento do evento do Facebook Pixel
       whatsappButton.onclick = function () {
