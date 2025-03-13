@@ -10,7 +10,7 @@ exports.handler = async function(event, context) {
         saudacao = "Boa noite, tenho interesse em adquirir um plano na DALTV";
     }
 
-    const numbers = ["558892963517", "558892532304"];
+    const numbers = ["558894492159"];
     const randomNumber = numbers[Math.floor(Math.random() * numbers.length)];
 
     const whatsappUrl = `https://wa.me/${randomNumber}?text=${encodeURIComponent(saudacao)}`;
