@@ -6,7 +6,7 @@
     <meta name="description" content="Torne-se um revendedor de sucesso com a DALTV. Treinamento completo, suporte direto e templates profissionais para impulsionar suas vendas.">
     <meta name="keywords" content="revenda DALTV, revendedor, treinamento, suporte, templates, vendas">
     <meta name="author" content="DALTV">
-    <title>Revenda DALTV - Torne-se um Revendedor de Sucesso</title>
+    <title>Revenda DALTV - Futuro do IPTV - Mentoria Grátis</title>
     <style>
         /* Reset geral */
         * {
@@ -16,35 +16,43 @@
         }
 
         body {
-            font-family: 'Helvetica Neue', sans-serif;
-            background-color: #121212;
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0a0a;
             color: #fff;
             line-height: 1.6;
-            margin: 0;
             font-size: 16px;
+        }
+
+        /* Gradiente futurista */
+        .gradient-bg {
+            background: linear-gradient(135deg, #1a1a1a, #0a0a0a);
+        }
+
+        /* Container principal */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
 
         /* Cabeçalho */
         header {
-            width: 100%;
-            padding: 15px 0;
-            background-color: #000;
+            padding: 20px 0;
             text-align: center;
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
         header img {
-            max-width: 180px;
-            transition: all 0.3s ease;
+            max-width: 150px;
+            transition: transform 0.3s ease;
         }
 
         header img:hover {
-            transform: scale(1.05);
-        }
-
-        /* Espaçamento para o conteúdo não ficar atrás do header */
-        .content {
-            padding-top: 20px; /* Ajuste conforme necessário */
+            transform: scale(1.1);
         }
 
         /* Seção de Banner */
@@ -52,53 +60,108 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: #1d1d1d;
-            padding: 120px 20px;
-            height: 100vh;
-            flex-direction: column;
+            min-height: 100vh;
             text-align: center;
-            position: relative;
+            background: linear-gradient(135deg, #e60000, #ff3333);
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+            padding: 100px 20px;
         }
 
         .banner h1 {
-            font-size: 3rem;
-            color: #e60000;
-            margin-bottom: 30px;
+            font-size: 4rem;
+            color: #fff;
+            margin-bottom: 20px;
             font-weight: 700;
-            letter-spacing: 2px;
+            letter-spacing: -1px;
             text-transform: uppercase;
             animation: fadeInDown 1.5s ease;
         }
 
-        .banner img {
-            max-width: 80%;
-            height: auto;
-            border-radius: 10px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-            transition: all 0.3s ease;
-            animation: fadeInUp 1.5s ease;
+        .banner p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 40px;
         }
 
-        .banner img:hover {
+        .banner .cta-btn {
+            background-color: #fff;
+            color: #e60000;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .banner .cta-btn:hover {
+            background-color: #e60000;
+            color: #fff;
             transform: scale(1.05);
+        }
+
+        /* Seção de Tabela de Planos */
+        .pricing-table {
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .pricing-table h2 {
+            font-size: 2.5rem;
+            color: #e60000;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+        }
+
+        table {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            border-collapse: collapse;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: center;
+        }
+
+        th {
+            background-color: rgba(255, 255, 255, 0.1);
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        td {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        tr:nth-child(even) {
+            background-color: rgba(255, 255, 255, 0.02);
+        }
+
+        tr:hover {
+            background-color: rgba(255, 255, 255, 0.05);
         }
 
         /* Seção de Benefícios */
         .benefits {
-            display: flex;
-            justify-content: space-around;
-            padding: 60px 20px;
-            background-color: #121212;
-            position: relative;
-            z-index: 1;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 80px 0;
         }
 
         .benefit {
             text-align: center;
-            max-width: 300px;
-            margin: 0 20px;
+            padding: 30px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            animation: fadeIn 2s ease;
         }
 
         .benefit:hover {
@@ -121,45 +184,21 @@
 
         .benefit p {
             font-size: 1rem;
-            color: #ccc;
+            color: rgba(255, 255, 255, 0.8);
         }
 
-        /* Botão CTA */
-        .cta-btn {
-            display: inline-block;
-            background-color: #e60000;
-            color: #fff;
-            padding: 15px 40px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            border-radius: 50px;
-            font-size: 1.3rem;
-            text-decoration: none;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            transition: all 0.3s ease;
-            margin-top: 30px;
-            animation: pulse 2s infinite;
-        }
-
-        .cta-btn:hover {
-            background-color: #ff3333;
-            transform: scale(1.05);
-            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
-        }
-
-        /* Testemunhos */
+        /* Seção de Testemunhos */
         .testimonials {
-            background-color: #1d1d1d;
-            padding: 80px 20px;
+            padding: 80px 0;
             text-align: center;
+            background: linear-gradient(135deg, #1a1a1a, #0a0a0a);
         }
 
         .testimonial {
+            max-width: 800px;
+            margin: 0 auto 40px;
             font-size: 1.2rem;
-            font-weight: 300;
-            color: #ccc;
-            margin-bottom: 30px;
-            animation: fadeIn 2s ease;
+            color: rgba(255, 255, 255, 0.9);
         }
 
         .testimonial h3 {
@@ -171,8 +210,7 @@
 
         /* Seção FAQ */
         .faq {
-            background-color: #121212;
-            padding: 80px 20px;
+            padding: 80px 0;
             text-align: center;
         }
 
@@ -181,14 +219,15 @@
             color: #e60000;
             margin-bottom: 40px;
             text-transform: uppercase;
-            animation: fadeInDown 1.5s ease;
         }
 
         .faq-item {
             max-width: 800px;
             margin: 0 auto 20px;
             text-align: left;
-            animation: fadeIn 2s ease;
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 10px;
         }
 
         .faq-item h3 {
@@ -199,40 +238,19 @@
 
         .faq-item p {
             font-size: 1rem;
-            color: #ccc;
+            color: rgba(255, 255, 255, 0.8);
         }
 
-        /* Responsividade */
-        @media (max-width: 768px) {
-            .benefits {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .cta-btn {
-                font-size: 1.2rem;
-                padding: 12px 30px;
-            }
-
-            header {
-                padding: 40px 20px;
-            }
-
-            .banner h1 {
-                font-size: 2rem;
-            }
-
-            .faq h2 {
-                font-size: 2rem;
-            }
+        /* Rodapé */
+        footer {
+            background-color: #000;
+            padding: 20px 0;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
         }
 
         /* Animações */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
         @keyframes fadeInDown {
             from { opacity: 0; transform: translateY(-20px); }
             to { opacity: 1; transform: translateY(0); }
@@ -243,84 +261,147 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .banner h1 {
+                font-size: 2.5rem;
+            }
+
+            .benefits {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-btn {
+                font-size: 1rem;
+                padding: 12px 30px;
+            }
+
+            table {
+                display: block;
+                overflow-x: auto;
+            }
         }
     </style>
 
     <!-- Font Awesome para ícones -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
     <!-- Cabeçalho -->
-    <header>
-        <img src="https://daltv.site/logo.png" alt="DALTV Logo">
+    <header class="gradient-bg">
+        <div class="container">
+            <img src="https://daltv.site/logo.png" alt="DALTV Logo">
+        </div>
     </header>
 
     <!-- Conteúdo principal -->
-    <div class="content">
+    <main>
         <!-- Seção de Banner -->
         <section class="banner">
-            <h1>Seja um Revendedor de Sucesso!</h1>
-            <img src="https://daltv.site/tabela.jpg" alt="Planos e Preços">
+            <div class="container">
+                <h1>O Futuro do IPTV</h1>
+                <p>Descubra como você pode dominar o mercado de IPTV com a DALTV.</p>
+                <a href="https://daltv.site/atendimentodalmonrev" class="cta-btn">Quero me tornar Revendedor!</a>
+            </div>
+        </section>
+
+        <!-- Seção de Tabela de Planos -->
+        <section class="pricing-table gradient-bg">
+            <div class="container">
+                <h2>Nossos Planos</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Quantidade</th>
+                            <th>Benefícios</th>
+                            <th>Preço</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>10 a 49 créditos</td>
+                            <td>Painel + Suporte + Mentoria</td>
+                            <td>R$ 6 a unidade</td>
+                        </tr>
+                        <tr>
+                            <td>50 a 99 créditos</td>
+                            <td>Painel + Suporte + Mentoria</td>
+                            <td>R$ 5 a unidade</td>
+                        </tr>
+                        <tr>
+                            <td>+ de 100 créditos</td>
+                            <td>Painel + Suporte + Mentoria</td>
+                            <td>R$ 4 a unidade</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </section>
 
         <!-- Seção de Benefícios -->
         <section class="benefits">
-            <div class="benefit">
-                <i class="fas fa-chalkboard-teacher"></i>
-                <h3>Treinamento Completo</h3>
-                <p>Aprenda todos os segredos para ser um revendedor de sucesso com o nosso treinamento exclusivo.</p>
-            </div>
-            <div class="benefit">
-                <i class="fas fa-users"></i>
-                <h3>Suporte Direto</h3>
-                <p>Fale diretamente com o dono para dicas e estratégias personalizadas para seu sucesso.</p>
-            </div>
-            <div class="benefit">
-                <i class="fas fa-share-alt"></i>
-                <h3>Templates Profissionais</h3>
-                <p>Templates prontos para facilitar suas campanhas de vendas e atrair mais clientes.</p>
+            <div class="container">
+                <div class="benefit">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                    <h3>Treinamento Completo</h3>
+                    <p>Aprenda todos os segredos para ser um revendedor de sucesso com o nosso treinamento exclusivo.</p>
+                </div>
+                <div class="benefit">
+                    <i class="fas fa-users"></i>
+                    <h3>Suporte Direto</h3>
+                    <p>Fale diretamente com o dono para dicas e estratégias personalizadas para seu sucesso.</p>
+                </div>
+                <div class="benefit">
+                    <i class="fas fa-share-alt"></i>
+                    <h3>Templates Profissionais</h3>
+                    <p>Templates prontos para facilitar seu atendimento e atrair mais clientes.</p>
+                </div>
             </div>
         </section>
 
-        <!-- Botão de CTA -->
-        <section style="text-align: center;">
-            <a href="https://daltv.site/atendimentodalmonrev" class="cta-btn">Quero me tornar Revendedor!</a>
-        </section>
-
-        <!-- Testemunhos -->
+        <!-- Seção de Testemunhos -->
         <section class="testimonials">
-            <div class="testimonial">
-                <h3>“Com o treinamento da DALTV, minha renda aumentou rapidamente. Foi a melhor decisão!”</h3>
-                <p>— João Silva</p>
-            </div>
-            <div class="testimonial">
-                <h3>“A ajuda direta do dono fez toda a diferença. A DALTV é um excelente parceiro!”</h3>
-                <p>— Maria Oliveira</p>
+            <div class="container">
+                <div class="testimonial">
+                    <h3>“Com o treinamento da DALTV, minha renda aumentou rapidamente. Foi a melhor decisão!”</h3>
+                    <p>— João Silva</p>
+                </div>
+                <div class="testimonial">
+                    <h3>“A ajuda direta do dono fez toda a diferença. A DALTV é um excelente parceiro!”</h3>
+                    <p>— Maria Oliveira</p>
+                </div>
             </div>
         </section>
 
         <!-- Seção FAQ -->
-        <section class="faq">
-            <h2>Perguntas Frequentes</h2>
-            <div class="faq-item">
-                <h3>Como posso começar a revender?</h3>
-                <p>Basta clicar no botão acima e entrar em contato conosco. Forneceremos todo o suporte necessário para você começar.</p>
-            </div>
-            <div class="faq-item">
-                <h3>Quanto posso ganhar como revendedor?</h3>
-                <p>Nossos revendedores têm ganhos variados, mas com dedicação e uso das nossas estratégias, muitos alcançam resultados significativos.</p>
-            </div>
-            <div class="faq-item">
-                <h3>Preciso de experiência prévia?</h3>
-                <p>Não! Nosso treinamento é completo e adaptado para iniciantes e experientes.</p>
+        <section class="faq gradient-bg">
+            <div class="container">
+                <h2>Perguntas Frequentes</h2>
+                <div class="faq-item">
+                    <h3>Como posso começar a revender?</h3>
+                    <p>Basta clicar no botão acima e entrar em contato conosco. Forneceremos todo o suporte necessário para você começar.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Quanto posso ganhar como revendedor?</h3>
+                    <p>Nossos revendedores têm ganhos variados, mas com dedicação e uso das nossas estratégias, muitos alcançam resultados significativos.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Preciso de experiência prévia?</h3>
+                    <p>Não! Nosso treinamento é completo e adaptado para iniciantes e experientes.</p>
+                </div>
             </div>
         </section>
-    </div>
+    </main>
+
+    <!-- Rodapé -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 DALTV. Todos os direitos reservados.</p>
+        </div>
+    </footer>
 
 </body>
 </html>
