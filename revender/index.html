@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revenda DALTV - Profissional e Simples</title>
+    <style>
+        /* Reset geral */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', sans-serif;
+            background-color: #121212;
+            color: #fff;
+            line-height: 1.6;
+            margin: 0;
+            font-size: 16px;
+        }
+
+        /* Cabeçalho */
+        header {
+            display: flex;
+            justify-content: center;
+            padding: 60px 0;
+            background-color: #000;
+        }
+
+        header img {
+            max-width: 200px;
+        }
+
+        /* Banner */
+        .banner {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #1d1d1d;
+            padding: 100px 20px;
+            height: 100vh;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .banner h1 {
+            font-size: 3rem;
+            color: #fff;
+            margin-bottom: 30px;
+            font-weight: 600;
+            letter-spacing: 2px;
+        }
+
+        .banner img {
+            max-width: 90%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Seção de Benefícios */
+        .benefits {
+            display: flex;
+            justify-content: space-around;
+            padding: 80px 20px;
+            background-color: #121212;
+        }
+
+        .benefit {
+            text-align: center;
+            max-width: 300px;
+            margin: 0 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .benefit:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .benefit i {
+            font-size: 3rem;
+            color: #e60000;
+            margin-bottom: 20px;
+        }
+
+        .benefit h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .benefit p {
+            font-size: 1rem;
+            color: #ccc;
+        }
+
+        /* Botão CTA */
+        .cta-btn {
+            display: inline-block;
+            background-color: #e60000;
+            color: #fff;
+            padding: 15px 40px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-radius: 50px;
+            font-size: 1.3rem;
+            text-decoration: none;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .cta-btn:hover {
+            background-color: #ff3333;
+            transform: scale(1.05);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Seção de Testemunhos */
+        .testimonials {
+            background-color: #1d1d1d;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .testimonial {
+            font-size: 1.2rem;
+            font-weight: 300;
+            color: #ccc;
+            margin-bottom: 30px;
+        }
+
+        .testimonial h3 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .benefits {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .cta-btn {
+                font-size: 1.2rem;
+                padding: 12px 30px;
+            }
+
+            header {
+                padding: 40px 20px;
+            }
+        }
+    </style>
+
+    <!-- Font Awesome para ícones -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Cabeçalho -->
+    <header>
+        <img src="https://daltv.site/logo.png" alt="DALTV Logo">
+    </header>
+
+    <!-- Seção de Banner -->
+    <section class="banner">
+        <h1>Seja um Revendedor de Sucesso!</h1>
+        <img src="https://daltv.site/tabela.jpg" alt="Planos e Preços">
+    </section>
+
+    <!-- Seção de Benefícios -->
+    <section class="benefits">
+        <div class="benefit">
+            <i class="fas fa-chalkboard-teacher"></i>
+            <h3>Treinamento Completo</h3>
+            <p>Aprenda todos os segredos para ser um revendedor de sucesso com o nosso treinamento exclusivo.</p>
+        </div>
+        <div class="benefit">
+            <i class="fas fa-users"></i>
+            <h3>Suporte Direto</h3>
+            <p>Fale diretamente com o dono para dicas e estratégias personalizadas para seu sucesso.</p>
+        </div>
+        <div class="benefit">
+            <i class="fas fa-share-alt"></i>
+            <h3>Templates Profissionais</h3>
+            <p>Templates prontos para facilitar suas campanhas de vendas e atrair mais clientes.</p>
+        </div>
+    </section>
+
+    <!-- Botão de CTA -->
+    <section style="text-align: center;">
+        <a href="https://daltv.site/atendimentodalmonrev" class="cta-btn">Quero me tornar Revendedor!</a>
+    </section>
+
+    <!-- Testemunhos -->
+    <section class="testimonials">
+        <div class="testimonial">
+            <h3>“Com o treinamento da DALTV, minha renda aumentou rapidamente. Foi a melhor decisão!”</h3>
+            <p>— João Silva</p>
+        </div>
+        <div class="testimonial">
+            <h3>“A ajuda direta do dono fez toda a diferença. A DALTV é um excelente parceiro!”</h3>
+            <p>— Maria Oliveira</p>
+        </div>
+    </section>
+
+</body>
+</html>
