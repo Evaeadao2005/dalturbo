@@ -303,6 +303,11 @@ fbq('track', 'PageView');
 src="https://www.facebook.com/tr?id=1349773789694518&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Meta Pixel Code -->
+<script>
+  document.getElementById("botaoContato").addEventListener("click", function() {
+    fbq('track', 'Contact'); // Rastreia o evento "Contato"
+  });
+</script>
 </head>
 <body>
 
@@ -320,7 +325,7 @@ src="https://www.facebook.com/tr?id=1349773789694518&ev=PageView&noscript=1"
             <div class="container">
                 <h1>O Futuro do IPTV</h1>
                 <p>Descubra como você pode dominar o mercado de IPTV com a DALTV.</p>
-                <a href="https://daltv.site/atendimentodalmonrev" class="cta-btn">Quero me tornar Revendedor!</a>
+                <a href="https://daltv.site/atendimentodalmonrev" id="botaoContato" class="cta-btn">Quero me tornar Revendedor!</a>
             </div>
         </section>
 
