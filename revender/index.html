@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Revenda DALTV - Profissional e Simples</title>
+    <meta name="description" content="Torne-se um revendedor de sucesso com a DALTV. Treinamento completo, suporte direto e templates profissionais para impulsionar suas vendas.">
+    <meta name="keywords" content="revenda DALTV, revendedor, treinamento, suporte, templates, vendas">
+    <meta name="author" content="DALTV">
+    <title>Revenda DALTV - Torne-se um Revendedor de Sucesso</title>
     <style>
         /* Reset geral */
         * {
@@ -23,49 +26,71 @@
 
         /* Cabeçalho */
         header {
-            display: flex;
-            justify-content: center;
-            padding: 60px 0;
+            width: 100%;
+            padding: 15px 0;
             background-color: #000;
+            text-align: center;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
         }
 
         header img {
-            max-width: 200px;
+            max-width: 180px;
+            transition: all 0.3s ease;
         }
 
-        /* Banner */
+        header img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Espaçamento para o conteúdo não ficar atrás do header */
+        .content {
+            padding-top: 20px; /* Ajuste conforme necessário */
+        }
+
+        /* Seção de Banner */
         .banner {
             display: flex;
             justify-content: center;
             align-items: center;
             background-color: #1d1d1d;
-            padding: 100px 20px;
+            padding: 120px 20px;
             height: 100vh;
             flex-direction: column;
             text-align: center;
+            position: relative;
         }
 
         .banner h1 {
             font-size: 3rem;
-            color: #fff;
+            color: #e60000;
             margin-bottom: 30px;
-            font-weight: 600;
+            font-weight: 700;
             letter-spacing: 2px;
+            text-transform: uppercase;
+            animation: fadeInDown 1.5s ease;
         }
 
         .banner img {
-            max-width: 90%;
+            max-width: 80%;
             height: auto;
             border-radius: 10px;
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            animation: fadeInUp 1.5s ease;
+        }
+
+        .banner img:hover {
+            transform: scale(1.05);
         }
 
         /* Seção de Benefícios */
         .benefits {
             display: flex;
             justify-content: space-around;
-            padding: 80px 20px;
+            padding: 60px 20px;
             background-color: #121212;
+            position: relative;
+            z-index: 1;
         }
 
         .benefit {
@@ -73,6 +98,7 @@
             max-width: 300px;
             margin: 0 20px;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: fadeIn 2s ease;
         }
 
         .benefit:hover {
@@ -111,6 +137,8 @@
             text-decoration: none;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
             transition: all 0.3s ease;
+            margin-top: 30px;
+            animation: pulse 2s infinite;
         }
 
         .cta-btn:hover {
@@ -119,7 +147,7 @@
             box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
         }
 
-        /* Seção de Testemunhos */
+        /* Testemunhos */
         .testimonials {
             background-color: #1d1d1d;
             padding: 80px 20px;
@@ -131,6 +159,7 @@
             font-weight: 300;
             color: #ccc;
             margin-bottom: 30px;
+            animation: fadeIn 2s ease;
         }
 
         .testimonial h3 {
@@ -138,6 +167,39 @@
             font-weight: 600;
             color: #fff;
             margin-bottom: 10px;
+        }
+
+        /* Seção FAQ */
+        .faq {
+            background-color: #121212;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .faq h2 {
+            font-size: 2.5rem;
+            color: #e60000;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            animation: fadeInDown 1.5s ease;
+        }
+
+        .faq-item {
+            max-width: 800px;
+            margin: 0 auto 20px;
+            text-align: left;
+            animation: fadeIn 2s ease;
+        }
+
+        .faq-item h3 {
+            font-size: 1.5rem;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        .faq-item p {
+            font-size: 1rem;
+            color: #ccc;
         }
 
         /* Responsividade */
@@ -155,6 +217,36 @@
             header {
                 padding: 40px 20px;
             }
+
+            .banner h1 {
+                font-size: 2rem;
+            }
+
+            .faq h2 {
+                font-size: 2rem;
+            }
+        }
+
+        /* Animações */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
         }
     </style>
 
@@ -168,47 +260,67 @@
         <img src="https://daltv.site/logo.png" alt="DALTV Logo">
     </header>
 
-    <!-- Seção de Banner -->
-    <section class="banner">
-        <h1>Seja um Revendedor de Sucesso!</h1>
-        <img src="https://daltv.site/tabela.jpg" alt="Planos e Preços">
-    </section>
+    <!-- Conteúdo principal -->
+    <div class="content">
+        <!-- Seção de Banner -->
+        <section class="banner">
+            <h1>Seja um Revendedor de Sucesso!</h1>
+            <img src="https://daltv.site/tabela.jpg" alt="Planos e Preços">
+        </section>
 
-    <!-- Seção de Benefícios -->
-    <section class="benefits">
-        <div class="benefit">
-            <i class="fas fa-chalkboard-teacher"></i>
-            <h3>Treinamento Completo</h3>
-            <p>Aprenda todos os segredos para ser um revendedor de sucesso com o nosso treinamento exclusivo.</p>
-        </div>
-        <div class="benefit">
-            <i class="fas fa-users"></i>
-            <h3>Suporte Direto</h3>
-            <p>Fale diretamente com o dono para dicas e estratégias personalizadas para seu sucesso.</p>
-        </div>
-        <div class="benefit">
-            <i class="fas fa-share-alt"></i>
-            <h3>Templates Profissionais</h3>
-            <p>Templates prontos para facilitar suas campanhas de vendas e atrair mais clientes.</p>
-        </div>
-    </section>
+        <!-- Seção de Benefícios -->
+        <section class="benefits">
+            <div class="benefit">
+                <i class="fas fa-chalkboard-teacher"></i>
+                <h3>Treinamento Completo</h3>
+                <p>Aprenda todos os segredos para ser um revendedor de sucesso com o nosso treinamento exclusivo.</p>
+            </div>
+            <div class="benefit">
+                <i class="fas fa-users"></i>
+                <h3>Suporte Direto</h3>
+                <p>Fale diretamente com o dono para dicas e estratégias personalizadas para seu sucesso.</p>
+            </div>
+            <div class="benefit">
+                <i class="fas fa-share-alt"></i>
+                <h3>Templates Profissionais</h3>
+                <p>Templates prontos para facilitar suas campanhas de vendas e atrair mais clientes.</p>
+            </div>
+        </section>
 
-    <!-- Botão de CTA -->
-    <section style="text-align: center;">
-        <a href="https://daltv.site/atendimentodalmonrev" class="cta-btn">Quero me tornar Revendedor!</a>
-    </section>
+        <!-- Botão de CTA -->
+        <section style="text-align: center;">
+            <a href="https://daltv.site/atendimentodalmonrev" class="cta-btn">Quero me tornar Revendedor!</a>
+        </section>
 
-    <!-- Testemunhos -->
-    <section class="testimonials">
-        <div class="testimonial">
-            <h3>“Com o treinamento da DALTV, minha renda aumentou rapidamente. Foi a melhor decisão!”</h3>
-            <p>— João Silva</p>
-        </div>
-        <div class="testimonial">
-            <h3>“A ajuda direta do dono fez toda a diferença. A DALTV é um excelente parceiro!”</h3>
-            <p>— Maria Oliveira</p>
-        </div>
-    </section>
+        <!-- Testemunhos -->
+        <section class="testimonials">
+            <div class="testimonial">
+                <h3>“Com o treinamento da DALTV, minha renda aumentou rapidamente. Foi a melhor decisão!”</h3>
+                <p>— João Silva</p>
+            </div>
+            <div class="testimonial">
+                <h3>“A ajuda direta do dono fez toda a diferença. A DALTV é um excelente parceiro!”</h3>
+                <p>— Maria Oliveira</p>
+            </div>
+        </section>
+
+        <!-- Seção FAQ -->
+        <section class="faq">
+            <h2>Perguntas Frequentes</h2>
+            <div class="faq-item">
+                <h3>Como posso começar a revender?</h3>
+                <p>Basta clicar no botão acima e entrar em contato conosco. Forneceremos todo o suporte necessário para você começar.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Quanto posso ganhar como revendedor?</h3>
+                <p>Nossos revendedores têm ganhos variados, mas com dedicação e uso das nossas estratégias, muitos alcançam resultados significativos.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Preciso de experiência prévia?</h3>
+                <p>Não! Nosso treinamento é completo e adaptado para iniciantes e experientes.</p>
+            </div>
+        </section>
+    </div>
 
 </body>
 </html>
