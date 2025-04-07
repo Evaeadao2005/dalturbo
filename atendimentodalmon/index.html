@@ -414,10 +414,10 @@
         addMessage("Escolha o plano desejado para assinar após o teste. Aproveite o desconto de R$ 10 na primeira assinatura!", "bot");
 
         const plans = [
-          { name: "Mensal com 3 telas (1 mês): R$ 34,90", id: "mensal", price: 34.90 },
-          { name: "Trimestral com 3 telas (3 meses): R$ 79,90", id: "trimestral", price: 79.90 },
-          { name: "Semestral com 3 telas (6 meses): R$ 129,90", id: "semestral", price: 129.90 },
- { name: "Anual com 3 telas (12 meses): R$ 190,90", id: "anual", price: 190.90 },
+          { name: "Mensal com 3 telas (1 mês): R$ 34,90 por 24,90", id: "mensal", price: 34.90 },
+          { name: "Trimestral com 3 telas (3 meses): R$ 79,90 por 69,90", id: "trimestral", price: 79.90 },
+          { name: "Semestral com 3 telas (6 meses): R$ 129,90 por 119,90", id: "semestral", price: 129.90 },
+ { name: "Anual com 3 telas (12 meses): R$ 190,90 por 180,90", id: "anual", price: 190.90 },
         ];
 
         const buttonContainer = document.createElement("div");
@@ -428,7 +428,7 @@
           planButton.textContent = plan.name;
           planButton.onclick = () => {
             userPlan = plan.name;
-            discountPrice = plan.price - 5; // Desconto de R$10
+            discountPrice = plan.price - 10; // Desconto de R$10
             addMessage(`Você escolheu o plano: ${userPlan}.`, "bot");
             addMessage(`O valor com desconto será de R$ ${discountPrice.toFixed(2)}. Para continuarmos conversando, clique no botão abaixo para seguir para o WhatsApp.`, "bot");
             showWhatsAppButton();
