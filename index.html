@@ -36,6 +36,7 @@
             --binance-color: #F0B90B;
             --card-color: #FF9900;
             --boleto-color: #00A65A;
+            --revenda-color: #6a1b9a;
         }
 
         * {
@@ -252,9 +253,18 @@
             min-width: 220px;
         }
 
-        .whatsapp-button:hover {
+        .revenda-button {
+            background: var(--revenda-color);
+            box-shadow: 0 5px 20px rgba(106, 27, 154, 0.6);
+        }
+
+        .whatsapp-button:hover, .revenda-button:hover {
             transform: scale(1.1);
             box-shadow: 0 7px 25px rgba(37, 211, 102, 0.8);
+        }
+
+        .revenda-button:hover {
+            box-shadow: 0 7px 25px rgba(106, 27, 154, 0.8);
         }
 
         .whatsapp-button i {
@@ -443,7 +453,7 @@
                 gap: 10px;
             }
 
-            .whatsapp-button {
+            .whatsapp-button, .revenda-button {
                 padding: 15px 20px;
                 font-size: 1rem;
                 min-width: auto;
@@ -540,6 +550,11 @@
                 <h3>Múltiplas Formas de Pagamento</h3>
                 <p>Aceitamos PIX, Cartão de Crédito, Boleto Bancário, PayPal e Binance para sua comodidade!</p>
             </div>
+            <div class="feature-card">
+                <i class="fas fa-hand-holding-usd"></i>
+                <h3>Oportunidade de Revenda</h3>
+                <p>Seja um revendedor e ganhe dinheiro com a melhor IPTV do mercado!</p>
+            </div>
         </div>
 
         <!-- Depoimentos -->
@@ -596,6 +611,12 @@
                 </div>
             </div>
             <div class="faq-item">
+                <div class="faq-question">Como posso me tornar um revendedor?</div>
+                <div class="faq-answer">
+                    Clique no botão "QUERO SER REVENDEDOR" abaixo para acessar nosso programa de revenda. Oferecemos excelentes comissões e todo o suporte necessário para você começar a ganhar dinheiro com a melhor IPTV do mercado!
+                </div>
+            </div>
+            <div class="faq-item">
                 <div class="faq-question">Precisa de aparelho?</div>
                 <div class="faq-answer">
                     Não! Você pode assistir diretamente no seu celular, smart TV ou dispositivo compatível. Para TVs mais antigas, recomendamos um TV Box Android básico.
@@ -611,6 +632,10 @@
 
         <!-- CTA Flutuante Otimizado -->
         <div class="cta-container" id="cta">
+            <a href="https://daltv.site/revender" class="whatsapp-button revenda-button">
+                <i class="fas fa-hand-holding-usd"></i>
+                QUERO SER REVENDEDOR
+            </a>
             <a href="https://daltv.site/atendimentodalmon" class="whatsapp-button">
                 <i class="fab fa-whatsapp"></i>
                 CHAMAR NO WHATSAPP AGORA
@@ -716,7 +741,7 @@
             });
             
             // Rastreamento de Cliques nos CTAs
-            document.querySelectorAll('.whatsapp-button').forEach(button => {
+            document.querySelectorAll('.whatsapp-button, .revenda-button').forEach(button => {
                 button.addEventListener('click', function() {
                     // Aqui você pode adicionar código de rastreamento (Google Analytics, Facebook Pixel, etc.)
                     console.log('CTA clicado:', this.textContent.trim());
