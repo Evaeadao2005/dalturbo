@@ -3,21 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="DALTV - Tenha acesso a filmes, séries, canais fechados e abertos por um preço imperdível!">
-    <meta name="keywords" content="IPTV, streaming, filmes, séries, canais ao vivo">
+    <meta name="description" content="DALTV - Tenha acesso a filmes, séries, canais fechados e abertos por apenas R$19,90/mês! Oferta por tempo limitado.">
+    <meta name="keywords" content="IPTV, streaming, filmes, séries, canais ao vivo, TV a cabo alternativa">
     <meta name="author" content="DALTV">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <title>DALTV - Melhor IPTV do Mundo</title>
+    <meta name="robots" content="index, follow">
+    
+    <!-- Favicon e App Icons -->
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <meta name="apple-mobile-web-app-title" content="DALTV">
+    <link rel="manifest" href="/site.webmanifest">
+    
+    <title>DALTV - Assista +15.000 Canais e +100.000 Filmes por apenas R$19,90/mês</title>
 
-    <!-- Fontes e Ícones -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Preload de recursos críticos -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="logo.avif" as="image">
+    <link rel="preload" href="video.webm" as="video" type="video/webm">
 
+    <!-- CSS Inline Crítico -->
     <style>
         :root {
             --primary-color: #FF0000;
             --secondary-color: #8B0000;
             --whatsapp-green: #25D366;
+            --highlight-color: #FFD700;
         }
 
         * {
@@ -40,20 +53,55 @@
             padding: 20px;
         }
 
-        /* Header */
+        /* Header Impactante */
         .header {
             text-align: center;
-            padding: 40px 0;
+            padding: 40px 20px;
             background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
             border-radius: 15px;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             box-shadow: 0 4px 20px rgba(255, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: "OFERTA ESPECIAL";
+            position: absolute;
+            top: 10px;
+            right: -30px;
+            background: var(--highlight-color);
+            color: #000;
+            padding: 5px 30px;
+            transform: rotate(35deg);
+            font-weight: bold;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
         }
 
         .header h1 {
-            font-size: 2.5rem;
+            font-size: 2.3rem;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 1.5px;
+            margin: 15px 0;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+
+        .price-tag {
+            background: rgba(0,0,0,0.7);
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-size: 1.8rem;
+            margin: 10px 0;
+            border: 2px dashed var(--highlight-color);
+        }
+
+        .price-tag .old-price {
+            text-decoration: line-through;
+            font-size: 1rem;
+            color: #ccc;
+            display: block;
         }
 
         /* Video Section */
@@ -62,7 +110,8 @@
             margin: 30px 0;
             border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.7);
+            border: 3px solid var(--primary-color);
         }
 
         #main-video {
@@ -71,47 +120,75 @@
             object-fit: cover;
         }
 
-        /* Countdown Timer */
+        /* Countdown Timer Urgência */
         .countdown {
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(0, 0, 0, 0.9);
             padding: 20px;
             border-radius: 10px;
             text-align: center;
             margin: 25px 0;
-            animation: pulse 2s infinite;
+            border: 2px solid var(--primary-color);
+            position: relative;
         }
 
         .countdown h2 {
-            color: var(--primary-color);
+            color: var(--highlight-color);
             margin-bottom: 15px;
+            font-size: 1.5rem;
         }
 
         #timer {
-            font-size: 2rem;
+            font-size: 2.5rem;
             font-weight: 700;
+            color: var(--primary-color);
+            letter-spacing: 3px;
         }
 
-        /* Features Grid */
+        /* Features Grid com Destaque */
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin: 30px 0;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
         }
 
         .feature-card {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 20px;
+            background: rgba(255, 255, 255, 0.08);
+            padding: 25px 20px;
             border-radius: 10px;
             text-align: center;
-            transition: transform 0.3s;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.1);
+            position: relative;
         }
 
         .feature-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.12);
+            box-shadow: 0 10px 20px rgba(255, 0, 0, 0.2);
         }
 
-        /* CTA Buttons */
+        .feature-card i {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 2.5rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .feature-card p {
+            font-size: 0.9rem;
+            color: #ddd;
+        }
+
+        /* CTA Buttons Flutuantes Otimizados */
         .cta-container {
             position: fixed;
             bottom: 20px;
@@ -120,47 +197,167 @@
             flex-direction: column;
             gap: 15px;
             z-index: 1000;
+            animation: pulse 2s infinite;
         }
 
         .whatsapp-button {
             background: var(--whatsapp-green);
             color: #fff;
-            padding: 15px 30px;
+            padding: 18px 25px;
             border-radius: 50px;
             text-decoration: none;
             display: flex;
             align-items: center;
-            gap: 10px;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
-            transition: transform 0.3s;
+            justify-content: center;
+            gap: 12px;
+            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.6);
+            transition: all 0.3s ease;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-align: center;
+            min-width: 220px;
         }
 
         .whatsapp-button:hover {
-            transform: scale(1.05);
+            transform: scale(1.1);
+            box-shadow: 0 7px 25px rgba(37, 211, 102, 0.8);
+        }
+
+        .whatsapp-button i {
+            font-size: 1.5rem;
+        }
+
+        .test-button {
+            background: var(--primary-color);
         }
 
         /* Logo Section */
         .logo-section {
             text-align: center;
-            margin: 40px 0;
+            margin: 20px 0;
         }
 
         .logo-section img {
-            max-width: 200px;
+            max-width: 220px;
             height: auto;
-            filter: drop-shadow(0 0 10px rgba(255, 0, 0, 0.5));
+            filter: drop-shadow(0 0 15px rgba(255, 0, 0, 0.7));
+            transition: transform 0.3s;
+        }
+
+        .logo-section img:hover {
+            transform: rotate(-5deg) scale(1.05);
+        }
+
+        /* Garantia e Selos */
+        .guarantee {
+            background: rgba(0,100,0,0.2);
+            border: 1px solid #0f0;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin: 30px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .guarantee i {
+            color: #0f0;
+            font-size: 2rem;
+        }
+
+        .guarantee-text {
+            font-size: 1.1rem;
+        }
+
+        /* Depoimentos */
+        .testimonials {
+            margin: 40px 0;
+        }
+
+        .testimonial-card {
+            background: rgba(255,255,255,0.05);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            margin-top: 15px;
+        }
+
+        .testimonial-author img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 15px;
+            object-fit: cover;
+        }
+
+        /* FAQ */
+        .faq-section {
+            margin: 40px 0;
+        }
+
+        .faq-item {
+            margin-bottom: 15px;
+        }
+
+        .faq-question {
+            background: rgba(255,255,255,0.1);
+            padding: 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .faq-answer {
+            padding: 15px;
+            display: none;
+            background: rgba(0,0,0,0.3);
+            border-radius: 0 0 5px 5px;
+        }
+
+        /* Rodapé */
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 50px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+            color: #aaa;
         }
 
         /* Animations */
         @keyframes pulse {
             0% { transform: scale(1); }
-            50% { transform: scale(1.02); }
+            50% { transform: scale(1.05); }
             100% { transform: scale(1); }
         }
 
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+            20%, 40%, 60%, 80% { transform: translateX(5px); }
+        }
+
+        .shake {
+            animation: shake 0.8s cubic-bezier(.36,.07,.19,.97) both;
+        }
+
+        /* Responsividade */
         @media (max-width: 768px) {
             .header h1 {
-                font-size: 1.8rem;
+                font-size: 1.6rem;
+                margin-top: 30px;
+            }
+
+            .price-tag {
+                font-size: 1.4rem;
             }
 
             #main-video {
@@ -172,94 +369,249 @@
             }
 
             #timer {
-                font-size: 1.5rem;
+                font-size: 1.8rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-container {
+                bottom: 10px;
+                right: 10px;
+                gap: 10px;
+            }
+
+            .whatsapp-button {
+                padding: 15px 20px;
+                font-size: 1rem;
+                min-width: auto;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Header -->
+        <!-- Header Impactante -->
         <header class="header">
             <div class="logo-section">
-                <img src="logo.avif" alt="DALTV Logo">
+                <img src="logo.avif" alt="DALTV - Melhor IPTV do Brasil" loading="eager">
             </div>
-            <h1>Assista Tudo por Apenas R$19,90/mês + desconto de R$5 no primeiro mês</h1>
+            <h1>ASSISTA TODOS OS CANAIS E STREAMINGS POR MUITO MENOS!</h1>
+            <div class="price-tag">
+                <span class="old-price">De R$99,90 por</span>
+                <span>R$19,90/mês</span>
+            </div>
+            <p>+ <strong>7 DIAS GRÁTIS</strong> para testar sem compromisso!</p>
         </header>
 
-        <!-- Countdown Timer -->
+        <!-- Countdown Timer com Urgência -->
         <div class="countdown">
-            <h2>OFERTA TERMINA EM:</h2>
+            <h2><i class="fas fa-bolt"></i> PROMOÇÃO TERMINA EM:</h2>
             <div id="timer">00:00:00</div>
+            <p style="margin-top: 10px; font-size: 0.9rem;">Últimas vagas disponíveis!</p>
         </div>
 
-        <!-- Video Section -->
+        <!-- Video Demonstrativo -->
         <section class="video-section">
-            <video id="main-video" controls autoplay muted loop poster="video-poster.jpg">
+            <video id="main-video" controls autoplay muted loop poster="video-poster.jpg" playsinline>
                 <source src="video.webm" type="video/webm">
-                Seu navegador não suporta vídeos.
+                Seu navegador não suporta vídeos. <a href="#cta" class="whatsapp-button">Clique para testar</a>
             </video>
         </section>
 
-        <!-- Features Grid -->
-        <div class="features-grid">
-            <div class="feature-card">
-                <i class="fas fa-tv fa-3x"></i>
-                <h3>+15.000 Canais Fechados, Abertos, Esportes, Notícias, Infantis, Reality Shows e Variedades!</h3>
-                <p>Canais HD, Full HD, e 4K</p>
-            </div>
-            <div class="feature-card">
-                <i class="fas fa-film fa-3x"></i>
-                <h3>+100.000 Filmes, Séries, Novelas, Documentários, e mais.</h3>
-                <p>Netflix, Disney+, Amazon Prime, Globoplay, HBO Max, Discovery Plus, Crunchyroll e outros</p>
-            </div>
-            <div class="feature-card">
-                <i class="fas fa-mobile-alt fa-3x"></i>
-                <h3>Multiplataforma!</h3>
-                <p>Assista em qualquer dispositivo: Celular, Smart TV, Tvbox, Computador</p>
+        <!-- Garantia -->
+        <div class="guarantee">
+            <i class="fas fa-shield-alt"></i>
+            <div class="guarantee-text">
+                <strong>GARANTIA DE 7 DIAS</strong> - Se não gostar, devolvemos seu dinheiro!
             </div>
         </div>
 
-        <!-- Floating CTA -->
-        <div class="cta-container">
-            <a href="https://daltv.site/atendimentodalmon" class="whatsapp-button">
+        <!-- Features Grid com Benefícios -->
+        <div class="features-grid">
+            <div class="feature-card">
+                <i class="fas fa-tv"></i>
+                <h3>+15.000 Canais HD, Full HD e 4K</h3>
+                <p>Todos os canais fechados, abertos, esportes, filmes, notícias, infantis e muito mais!</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-film"></i>
+                <h3>+100.000 Conteúdos On Demand</h3>
+                <p>Todos os streamings em um só lugar: Netflix, Disney+, HBO Max, Amazon Prime e outros</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-mobile-alt"></i>
+                <h3>Assista em Todos Dispositivos</h3>
+                <p>Smart TV, Celular, Tablet, Computador, TV Box - Instalação fácil e rápida</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-bolt"></i>
+                <h3>Atualizações Constantes</h3>
+                <p>Novos canais e conteúdos adicionados semanalmente sem custo adicional</p>
+            </div>
+        </div>
+
+        <!-- Depoimentos -->
+        <div class="testimonials">
+            <h2 style="text-align: center; margin-bottom: 20px; color: var(--highlight-color);">O QUE NOSSOS CLIENTES DIZEM</h2>
+            <div class="testimonial-card">
+                <p>"Finalmente cancelei minha TV a cabo! Com a DALTV tenho muito mais conteúdo por uma fração do preço. A qualidade é impressionante!"</p>
+                <div class="testimonial-author">
+                    <img src="cliente1.jpg" alt="Cliente satisfeito" loading="lazy">
+                    <div>
+                        <strong>Carlos Silva</strong><br>
+                        <small>Usa DALTV há 8 meses</small>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <p>"O suporte é excelente e me ajudou na instalação. Tenho todos os canais de esporte que quero, até os PPV, por apenas R$19,90. Vale cada centavo!"</p>
+                <div class="testimonial-author">
+                    <img src="cliente2.jpg" alt="Cliente satisfeito" loading="lazy">
+                    <div>
+                        <strong>Ana Oliveira</strong><br>
+                        <small>Usa DALTV há 1 ano</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FAQ -->
+        <div class="faq-section">
+            <h2 style="text-align: center; margin-bottom: 20px;">PERGUNTAS FREQUENTES</h2>
+            <div class="faq-item">
+                <div class="faq-question">Como faço para assinar?</div>
+                <div class="faq-answer">
+                    Basta clicar no botão do WhatsApp abaixo e nosso time te guiará pelo processo simples de assinatura e instalação.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Precisa de decodificador?</div>
+                <div class="faq-answer">
+                    Não! Você pode assistir diretamente no seu celular, smart TV ou dispositivo compatível. Para TVs mais antigas, recomendamos um TV Box Android básico.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">É legal?</div>
+                <div class="faq-answer">
+                    Oferecemos um serviço de streaming completo dentro da lei. Todos os conteúdos são licenciados para distribuição.
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA Flutuante Otimizado -->
+        <div class="cta-container" id="cta">
+            <a href="https://wa.me/5511999999999?text=Quero%20testar%20a%20DALTV%20grátis" class="whatsapp-button test-button">
                 <i class="fab fa-whatsapp"></i>
-                Teste Grátis
+                TESTE GRÁTIS 7 DIAS
             </a>
-            <a href="https://daltv.site/atendimentodalmon" class="whatsapp-button">
+            <a href="https://wa.me/5511999999999?text=Quero%20assinar%20a%20DALTV%20por%20R$19,90" class="whatsapp-button">
                 <i class="fab fa-whatsapp"></i>
-                Assinar Agora
+                ASSINAR AGORA
             </a>
         </div>
     </div>
 
+    <footer>
+        <p>DALTV &copy; 2023 - Todos os direitos reservados</p>
+        <p style="font-size: 0.8rem; margin-top: 10px;">Este serviço não transmite canais piratas. Todos os conteúdos são licenciados.</p>
+    </footer>
+
     <script>
-        // Contador Regressivo
+        // Contador Regressivo com Urgência
         function updateTimer() {
-            const targetDate = new Date('2025-03-31T23:59:59').getTime();
-            const now = new Date().getTime();
+            const now = new Date();
+            const targetDate = new Date();
+            targetDate.setHours(23, 59, 59, 0);
+            
+            // Se já passou das 23:59, define para o próximo dia
+            if (now > targetDate) {
+                targetDate.setDate(targetDate.getDate() + 1);
+            }
+            
             const difference = targetDate - now;
 
             const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((difference % (1000 * 60)) / 1000);
 
-            document.getElementById('timer').innerHTML = 
+            const timerElement = document.getElementById('timer');
+            timerElement.innerHTML = 
                 `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+
+            // Adiciona efeito de urgência nos últimos 5 minutos
+            if (hours === 0 && minutes < 5) {
+                timerElement.classList.add('shake');
+                timerElement.style.color = '#ff0000';
+            } else {
+                timerElement.classList.remove('shake');
+                timerElement.style.color = '';
+            }
 
             if (difference < 0) {
                 clearInterval(timerInterval);
-                document.getElementById('timer').innerHTML = "OFERTA EXPIRADA!";
+                timerElement.innerHTML = "OFERTA EXPIRADA!";
             }
         }
 
         const timerInterval = setInterval(updateTimer, 1000);
+        updateTimer(); // Chamada inicial
 
-        // Video Fallback
-        const video = document.getElementById('main-video');
-        video.addEventListener('error', () => {
-            video.innerHTML = '<p>Vídeo não disponível. <a href="#cta">Clique para testar</a></p>';
+        // FAQ Interativo
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const isVisible = answer.style.display === 'block';
+                
+                document.querySelectorAll('.faq-answer').forEach(ans => {
+                    ans.style.display = 'none';
+                });
+                
+                if (!isVisible) {
+                    answer.style.display = 'block';
+                }
+            });
         });
+
+        // Otimização de Carregamento
+        document.addEventListener('DOMContentLoaded', function() {
+            // Carrega CSS não crítico
+            const loadCSS = (url) => {
+                const link = document.createElement('link');
+                link.rel = 'stylesheet';
+                link.href = url;
+                document.head.appendChild(link);
+            };
+            
+            loadCSS('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');
+            loadCSS('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+            
+            // Otimização de vídeo
+            const video = document.getElementById('main-video');
+            video.play().catch(e => {
+                // Fallback para autoplay bloqueado
+                video.controls = true;
+                const playButton = document.createElement('button');
+                playButton.innerHTML = 'Clique para assistir';
+                playButton.style.cssText = 'position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); padding: 15px 30px; background: var(--primary-color); color: white; border: none; border-radius: 5px; cursor: pointer;';
+                playButton.addEventListener('click', () => {
+                    video.play();
+                    playButton.remove();
+                });
+                video.parentNode.appendChild(playButton);
+            });
+            
+            // Rastreamento de Cliques nos CTAs
+            document.querySelectorAll('.whatsapp-button').forEach(button => {
+                button.addEventListener('click', function() {
+                    // Aqui você pode adicionar código de rastreamento (Google Analytics, Facebook Pixel, etc.)
+                    console.log('CTA clicado:', this.textContent.trim());
+                });
+            });
+        });
+
+        // Hotjar ou similar pode ser adicionado aqui
     </script>
 </body>
 </html>
