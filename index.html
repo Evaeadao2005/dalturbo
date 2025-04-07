@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="DALTV - Tenha acesso a filmes, séries, canais fechados e abertos por apenas R$34,90/mês! Acesso simultâneo em 3 telas. Oferta por tempo limitado.">
-    <meta name="keywords" content="IPTV, streaming, filmes, séries, canais ao vivo, TV a cabo alternativa, 3 telas">
+    <meta name="description" content="DALTV - Tenha acesso a filmes, séries, canais fechados e abertos por apenas R$34,90/mês! Acesso simultâneo em 3 telas. Aceitamos PIX, Cartão, Boleto, PayPal e Binance. Oferta por tempo limitado.">
+    <meta name="keywords" content="IPTV, streaming, filmes, séries, canais ao vivo, TV a cabo alternativa, 3 telas, PIX, cartão de crédito, boleto, PayPal, Binance">
     <meta name="author" content="DALTV">
     <meta name="robots" content="index, follow">
     
@@ -16,7 +16,7 @@
     <meta name="apple-mobile-web-app-title" content="DALTV">
     <link rel="manifest" href="/site.webmanifest">
     
-    <title>DALTV - Assista +2.000 Canais e +20.000 Filmes e Séries em 3 telas por apenas R$34,90/mês, e 24,90 primeiro mês</title>
+    <title>DALTV - Assista +2.000 Canais e +20.000 Filmes e Séries em 3 telas por apenas R$34,90/mês</title>
 
     <!-- Preload de recursos críticos -->
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -31,6 +31,11 @@
             --secondary-color: #8B0000;
             --whatsapp-green: #25D366;
             --highlight-color: #FFD700;
+            --pix-color: #32BCAD;
+            --paypal-color: #003087;
+            --binance-color: #F0B90B;
+            --card-color: #FF9900;
+            --boleto-color: #00A65A;
         }
 
         * {
@@ -60,7 +65,7 @@
             background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
             border-radius: 15px;
             margin-bottom: 20px;
-            box-shadow:  ️0 4px 20px rgba(255, 0, 0, 0.3);
+            box-shadow: 0 4px 20px rgba(255, 0, 0, 0.3);
             position: relative;
             overflow: hidden;
         }
@@ -102,6 +107,35 @@
             font-size: 1rem;
             color: #ccc;
             display: block;
+        }
+
+        .payment-methods {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .payment-method {
+            background: rgba(0,0,0,0.5);
+            padding: 8px 15px;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .payment-method.pix { color: var(--pix-color); }
+        .payment-method.card { color: var(--card-color); }
+        .payment-method.boleto { color: var(--boleto-color); }
+        .payment-method.paypal { color: var(--paypal-color); }
+        .payment-method.binance { color: var(--binance-color); }
+
+        .payment-method i {
+            font-size: 1.2rem;
         }
 
         /* Video Section */
@@ -322,6 +356,15 @@
             border-radius: 0 0 5px 5px;
         }
 
+        .faq-answer ul {
+            margin-top: 10px;
+            padding-left: 20px;
+        }
+
+        .faq-answer li {
+            margin-bottom: 8px;
+        }
+
         /* Rodapé */
         footer {
             text-align: center;
@@ -331,6 +374,24 @@
             font-size: 0.9rem;
             color: #aaa;
         }
+
+        .footer-payments {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 15px 0;
+            flex-wrap: wrap;
+        }
+
+        .footer-payment-icon {
+            font-size: 1.8rem;
+        }
+
+        .footer-payment-icon.pix { color: var(--pix-color); }
+        .footer-payment-icon.card { color: var(--card-color); }
+        .footer-payment-icon.boleto { color: var(--boleto-color); }
+        .footer-payment-icon.paypal { color: var(--paypal-color); }
+        .footer-payment-icon.binance { color: var(--binance-color); }
 
         /* Animations */
         @keyframes pulse {
@@ -387,6 +448,11 @@
                 font-size: 1rem;
                 min-width: auto;
             }
+
+            .payment-method {
+                padding: 6px 10px;
+                font-size: 0.8rem;
+            }
         }
     </style>
 </head>
@@ -404,6 +470,24 @@
             </div>
             <p>+ <strong>1 DIAS GRÁTIS</strong> para testar sem compromisso!</p>
             <p style="margin-top: 10px; font-size: 1.1rem;"><i class="fas fa-tv"></i> Acesso simultâneo em <strong>3 telas</strong> - Assista em vários dispositivos ao mesmo tempo!</p>
+            
+            <div class="payment-methods">
+                <span class="payment-method pix">
+                    <i class="fas fa-qrcode"></i> PIX
+                </span>
+                <span class="payment-method card">
+                    <i class="fas fa-credit-card"></i> Cartão
+                </span>
+                <span class="payment-method boleto">
+                    <i class="fas fa-barcode"></i> Boleto
+                </span>
+                <span class="payment-method paypal">
+                    <i class="fab fa-paypal"></i> PayPal
+                </span>
+                <span class="payment-method binance">
+                    <i class="fas fa-coins"></i> Binance
+                </span>
+            </div>
         </header>
 
         <!-- Countdown Timer com Urgência -->
@@ -451,6 +535,11 @@
                 <h3>Acesso em 3 Telas Simultâneas</h3>
                 <p>Assista em até 3 dispositivos diferentes ao mesmo tempo com uma única assinatura!</p>
             </div>
+            <div class="feature-card">
+                <i class="fas fa-money-bill-wave"></i>
+                <h3>Múltiplas Formas de Pagamento</h3>
+                <p>Aceitamos PIX, Cartão de Crédito, Boleto Bancário, PayPal e Binance para sua comodidade!</p>
+            </div>
         </div>
 
         <!-- Depoimentos -->
@@ -488,6 +577,19 @@
                 </div>
             </div>
             <div class="faq-item">
+                <div class="faq-question">Quais formas de pagamento vocês aceitam?</div>
+                <div class="faq-answer">
+                    Aceitamos todas as principais formas de pagamento para sua conveniência:
+                    <ul>
+                        <li><strong>PIX</strong> - Pagamento instantâneo com 1% de desconto</li>
+                        <li><strong>Cartão de Crédito</strong> - Parcele em até 12x</li>
+                        <li><strong>Boleto Bancário</strong> - Pagamento com até 2 dias úteis para processamento</li>
+                        <li><strong>PayPal</strong> - Ideal para assinantes internacionais</li>
+                        <li><strong>Binance Pay</strong> - Aceitamos criptomoedas via Binance</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="faq-item">
                 <div class="faq-question">Como faço para assinar?</div>
                 <div class="faq-answer">
                     Basta clicar no botão do WhatsApp abaixo e nosso time te guiará pelo processo simples de assinatura e instalação.
@@ -517,6 +619,13 @@
     </div>
 
     <footer>
+        <div class="footer-payments">
+            <i class="fab fa-paypal footer-payment-icon paypal"></i>
+            <i class="fas fa-qrcode footer-payment-icon pix"></i>
+            <i class="fas fa-credit-card footer-payment-icon card"></i>
+            <i class="fas fa-barcode footer-payment-icon boleto"></i>
+            <i class="fas fa-coins footer-payment-icon binance"></i>
+        </div>
         <p>DALTV &copy; 2025 - Todos os direitos reservados</p>
         <p style="font-size: 0.8rem; margin-top: 10px;">Este serviço não transmite canais piratas. Todos os conteúdos são licenciados.</p>
         <p style="font-size: 0.8rem; margin-top: 5px;">Acesso simultâneo em até 3 telas com uma única assinatura.</p>
