@@ -411,12 +411,13 @@
       setTimeout(() => {
         removeTypingMessage();
 
-        addMessage("Escolha o plano desejado para assinar após o teste de 4 horas. Aproveite o desconto de R$ 5 na primeira compra!", "bot");
+        addMessage("Escolha o plano desejado para assinar após o teste. Aproveite o desconto de R$ 10 na primeira assinatura!", "bot");
 
         const plans = [
-          { name: "Mensal (1 mês): R$ 19,90", id: "mensal", price: 19.90 },
-          { name: "Trimestral (3 meses): R$ 49,90", id: "trimestral", price: 49.90 },
-          { name: "Semestral (6 meses): R$ 89,90", id: "semestral", price: 89.90 },
+          { name: "Mensal com 3 telas (1 mês): R$ 34,90", id: "mensal", price: 34.90 },
+          { name: "Trimestral com 3 telas (3 meses): R$ 79,90", id: "trimestral", price: 79.90 },
+          { name: "Semestral com 3 telas (6 meses): R$ 129,90", id: "semestral", price: 129.90 },
+ { name: "Anual com 3 telas (12 meses): R$ 190,90", id: "anual", price: 190.90 },
         ];
 
         const buttonContainer = document.createElement("div");
@@ -427,7 +428,7 @@
           planButton.textContent = plan.name;
           planButton.onclick = () => {
             userPlan = plan.name;
-            discountPrice = plan.price - 5; // Desconto de R$5
+            discountPrice = plan.price - 5; // Desconto de R$10
             addMessage(`Você escolheu o plano: ${userPlan}.`, "bot");
             addMessage(`O valor com desconto será de R$ ${discountPrice.toFixed(2)}. Para continuarmos conversando, clique no botão abaixo para seguir para o WhatsApp.`, "bot");
             showWhatsAppButton();
@@ -448,7 +449,7 @@
 
       const greeting = getGreeting();
       const deviceInfo = userDevice.includes("tv") ? `TV: ${userTVBrand}, ` : "";
-      const message = `${greeting} Olá, meu nome é ${userName}. Quero fazer um teste de 4h, e estou interessado(a) no plano de ${userPlan} com o valor de R$ ${discountPrice.toFixed(2)} após o desconto. Dispositivo: ${deviceInfo}${userDevice}.`;
+      const message = `${greeting} Olá, meu nome é ${userName}. Quero fazer um teste, e estou interessado(a) no plano de ${userPlan} com o valor de R$ ${discountPrice.toFixed(2)} após o desconto. Dispositivo: ${deviceInfo}${userDevice}.`;
 
    const numbers = ["558894492159"];
 const randomNumber = numbers[Math.floor(Math.random() * numbers.length)];
