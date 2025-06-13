@@ -224,6 +224,28 @@
         .whatsapp-btn:hover {
             opacity: 0.9;
         }
+ .code-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+        
+        .code-label {
+            width: 80px;
+            flex-shrink: 0;
+            font-size: 14px;
+        }
+        
+        .code-value {
+            background: #f0f0f0;
+            border-radius: 4px;
+            padding: 5px 10px;
+            font-family: monospace;
+            font-size: 13px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
     </style>
 </head>
 <body>
@@ -376,26 +398,21 @@
                 <h3>APLICATIVOS RECOMENDADOS</h3>
                 
                 <div class="apps">
-                    <div class="app">
-                        <div class="app-title">ASSIST PLUS</div>
-                        <p>Para Smart TVs</p>
-                        <p>Código: <strong>wow</strong></p>
-                    </div>
-                    <div class="app">
-                        <div class="app-title">DALTV IBO</div>
-                        <p>Para Android</p>
-                        <a href="http://nossatv.live/apps/DALTV%20IBO.apk" target="_blank" class="btn btn-tertiary btn-small">BAIXAR APK</a>
-                        <p style="margin-top: 10px; font-size: 14px;"><strong>Códigos:</strong></p>
-                        <div class="info-item" style="margin-bottom: 5px;">
-                            <div style="width: 80px; flex-shrink: 0;">Downloader:</div>
-                            <div class="link-text" style="padding: 5px; font-size: 13px;">8499779</div>
-                        </div>
-                        <div class="info-item">
-                            <div style="width: 80px; flex-shrink: 0;">NTDown:</div>
-                            <div class="link-text" style="padding: 5px; font-size: 13px;">33653</div>
-                        </div>
-                    </div>
-                </div>
+<div class="app">
+        <div class="app-title">DALTV IBO</div>
+        <p>Para Android</p>
+        <a href="http://nossatv.live/apps/DALTV%20IBO.apk" target="_blank" class="btn btn-tertiary btn-small">BAIXAR APK</a>
+        <p style="margin-top: 10px; font-size: 14px;"><strong>Códigos:</strong></p>
+        <div class="code-container">
+            <div class="code-label">Downloader:</div>
+            <div class="code-value">8499779</div>
+        </div>
+        <div class="code-container">
+            <div class="code-label">NTDown:</div>
+            <div class="code-value">33653</div>
+        </div>
+    </div>
+  </div>
                 
                 <div class="divider"></div>
                 
