@@ -1,10 +1,10 @@
 const getSaudacao = (adjustedHour) => {
     // Definir as mensagens de saudação com base na hora do dia
     const saudações = {
-        morning: "Bom dia! Tenho interesse em um plano da DALTV e gostaria de fazer um teste. (2)",
-        afternoon: "Boa tarde! Tenho interesse em um plano da DALTV e queria saber se posso fazer um teste. (2)",
-        night: "Boa noite! Tenho interesse em um plano da DALTV e gostaria de testar antes de contratar. (2)",
-        earlyMorning: "Boa madrugada! Me interessei por um plano da DALTV e queria fazer um teste antes. (2)",
+        morning: "Bom dia! Tenho interesse em assinar a DALTV",
+        afternoon: "Boa tarde! Tenho interesse em assinar a DALTV",
+        night: "Boa noite! Tenho interesse em assinar a DALTV",
+        earlyMorning: "Boa madrugada! Tenho interesse em assinar a DALTV",
     };
 
     // Determina a saudação com base no horário
