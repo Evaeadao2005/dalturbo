@@ -224,7 +224,8 @@
         .whatsapp-btn:hover {
             opacity: 0.9;
         }
- .code-container {
+        
+        .code-container {
             display: flex;
             align-items: center;
             margin-bottom: 5px;
@@ -246,6 +247,14 @@
             overflow: hidden;
             text-overflow: ellipsis;
         }
+        
+        .countdown {
+            text-align: center;
+            font-size: 14px;
+            color: var(--vermelho);
+            margin: 15px 0;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -266,187 +275,63 @@
             <div id="success" class="hidden">
                 <!-- Conteúdo será inserido aqui -->
             </div>
+            
+            <div id="expired" class="hidden">
+                <!-- Mensagem de link expirado será inserida aqui -->
+            </div>
         </div>
     </div>
 
     <script>
-        // Função para gerar o teste
-        function generateTest() {
-            // Mostrar carregamento
-            document.getElementById('loading').classList.remove('hidden');
-            document.getElementById('error').classList.add('hidden');
-            document.getElementById('success').classList.add('hidden');
-            
-            // Buscar dados
-            fetch('https://painel.daltv.top/api/chatbot/rlKWO3Wzo7/kg5164DjlQ', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                }
-            })
-            .then(response => {
-                if (!response.ok) throw new Error('Erro ao gerar acesso');
-                return response.json();
-            })
-            .then(data => {
-                document.getElementById('loading').classList.add('hidden');
-                showSuccess(data);
-            })
-            .catch(error => {
-                document.getElementById('loading').classList.add('hidden');
-                showError();
-                console.error('Erro:', error);
-            });
-        }
-
-        // Mostrar mensagem de erro personalizada
-        function showError() {
-            const errorHtml = `
+        // Função para mostrar que o link expirou
+        function showExpiredMessage() {
+            const expiredHtml = `
                 <div class="error-message">
-                    <h3 style="margin-top: 0; color: var(--vermelho);">Testes Temporariamente Desativados</h3>
-                    <p>Os testes gratuitos podem estar desabilitados no momento devido a jogos ao vivo e alta demanda no servidor.</p>
-                    <p>Por favor, tente novamente em 1 hora ou entre em contato com nosso atendimento.</p>
+                    <h3 style="margin-top: 0; color: var(--vermelho);">LINK DE TESTE EXPIRADO</h3>
+                    <p>Este link de teste expirou. Se você ainda não testou nosso serviço, clique no botão abaixo para solicitar um novo link de teste.</p>
+                    <p>Caso já tenha testado e gostado do serviço, clique em ASSINAR para adquirir seu plano completo.</p>
+                </div>
+                
+                <div class="countdown" id="countdown">
+                    Você será redirecionado para o WhatsApp em 10 segundos...
                 </div>
                 
                 <div class="button-container">
-                    <button id="retryBtn" class="btn">TENTAR NOVAMENTE</button>
-                    <a href="https://wa.me/5588993509111" class="whatsapp-btn" target="_blank">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-10.79-7.151a7.186 7.186 0 0 0-1.831 1.34c-2.387 2.387-2.387 6.27 0 8.658L6 19.071l1.342-1.342a6.062 6.062 0 0 0 2.39 1.453 6.035 6.035 0 0 0 2.925.188 6.043 6.043 0 0 0 2.048-.762 6.054 6.054 0 0 0 1.737-1.453c2.387-2.387 2.387-6.27 0-8.658a6.127 6.127 0 0 0-8.658 0z" fill="white"/>
-                        </svg>
-                        FALAR COM ATENDENTE
-                    </a>
-                </div>
-            `;
-            
-            document.getElementById('error').innerHTML = errorHtml;
-            document.getElementById('error').classList.remove('hidden');
-            
-            // Adicionar evento ao botão de tentar novamente
-            document.getElementById('retryBtn').addEventListener('click', generateTest);
-        }
-
-        // Mostrar resultado do teste
-        function showSuccess(data) {
-            const cred = data;
-            let html = `
-                <div style="display: flex; align-items: center; margin-bottom: 15px;">
-                    <span class="success-icon">✓</span>
-                    <h2 style="margin: 0;">ACESSO GERADO COM SUCESSO!</h2>
-                </div>
-                
-                <div class="info-box">
- <div class="info-item">
-                        <div class="info-label">Url:</div>
-                        <div><strong>http://daltv.top:8080</strong></div>
-                    </div>
-<div class="info-item">
-                        <div class="info-label">Código Smart TV:</div>
-                        <div><strong>wow</strong></div>
-                    </div>
-                    <div class="info-item">
-                        <div class="info-label">Usuário:</div>
-                        <div><strong>${cred.username}</strong></div>
-                    </div>
-                    <div class="info-item">
-                        <div class="info-label">Senha:</div>
-                        <div><strong>${cred.password}</strong></div>
-                    </div>
-                    <div class="info-item">
-                        <div class="info-label">Validade:</div>
-                        <div>${cred.expiresAtFormatted}</div>
-                    </div>
-                </div>
-                
-                <h3>ASSISTIR AGORA</h3>
-                
-                <div class="btn-group">
-                    <a href="http://web22.nossatv.live" target="_blank" class="btn">WEBPLAYER 1</a>
-                    <a href="http://web23.nossatv.live" target="_blank" class="btn btn-secondary">WEBPLAYER 2</a>
-                </div>
-                
-                <div class="divider"></div>
-                
-                <h3>CONFIGURAÇÕES MANUAIS</h3>
-                
-                <div class="link-item">
-                    <p><strong>DNS para STB/SmartUP:</strong></p>
-                    <div class="info-item">
-                        <div class="info-label">DNS 1:</div>
-                        <div>192.99.169.137</div>
-                    </div>
-                    <div class="info-item">
-                        <div class="info-label">DNS 2:</div>
-                        <div>209.14.137.25</div>
-                    </div>
-                </div>
-                
-                <div class="link-item">
-                    <p><strong>Link M3U (para players IPTV):</strong></p>
-                    <div class="link-text">${cred.dns}/get.php?username=${cred.username}&password=${cred.password}&type=m3u_plus</div>
-                    <button class="btn-copy" onclick="copyText(this)">Copiar</button>
-                </div>
-                
-                <div class="link-item">
-                    <p><strong>SSIPTV (Smart TVs Antigas):</strong></p>
-                    <div class="link-text">http://e.daltv.top/p/${cred.username}/${cred.password}/ssiptv</div>
-                    <button class="btn-copy" onclick="copyText(this)">Copiar</button>
-                </div>
-                
-                <div class="divider"></div>
-                
-                <h3>APLICATIVOS RECOMENDADOS</h3>
-                
-                <div class="apps">
-<div class="app">
-        <div class="app-title">DALTV IBO</div>
-        <p>Para Android</p>
-        <a href="http://nossatv.live/apps/DALTV%20IBO.apk" target="_blank" class="btn btn-tertiary btn-small">BAIXAR APLICATIVO</a>
-        <p style="margin-top: 10px; font-size: 14px;"><strong>Códigos:</strong></p>
-        <div class="code-container">
-            <div class="code-label">Downloader:</div>
-            <div class="code-value">8499779</div>
-        </div>
-        <div class="code-container">
-            <div class="code-label">NTDown:</div>
-            <div class="code-value">33653</div>
-        </div>
-    </div>
-<div class="app">
-                        <div class="app-title">ASSIST PLUS (Assist +) ou Core Player</div>
-                        <p>Para Smart TVs (LG, ROKU, SAMSUNG, Android TV)</p>
-                        <p>Código: <strong>wow</strong></p>
- <p>Atenção: <strong>Esses aplicativos são grátis apenas para Clientes DALTV, não compre nada oferecido dentro do app!</strong></p>
-                    </div>
-  </div>
-                
-                <div class="divider"></div>
-                
-                <div class="button-container">
-                    <button id="newTestBtn" class="btn btn-secondary">GERAR OUTRO TESTE</button>
+                    <button id="newTestBtn" class="btn">SOLICITAR NOVO TESTE</button>
                     <a href="https://daltv.site/whatsapp" target="_blank" class="btn">ASSINAR PLANO COMPLETO</a>
                 </div>
             `;
             
-            document.getElementById('success').innerHTML = html;
-            document.getElementById('success').classList.remove('hidden');
+            document.getElementById('expired').innerHTML = expiredHtml;
+            document.getElementById('expired').classList.remove('hidden');
+            document.getElementById('loading').classList.add('hidden');
+            document.getElementById('error').classList.add('hidden');
+            document.getElementById('success').classList.add('hidden');
             
             // Adicionar evento ao botão de novo teste
-            document.getElementById('newTestBtn').addEventListener('click', generateTest);
+            document.getElementById('newTestBtn')?.addEventListener('click', function() {
+                window.location.href = "https://wa.me/5588993509111?text=Olá,%20gostaria%20de%20solicitar%20um%20novo%20link%20de%20teste";
+            });
+            
+            // Iniciar contagem regressiva para redirecionamento
+            let seconds = 10;
+            const countdownElement = document.getElementById('countdown');
+            const countdownInterval = setInterval(() => {
+                seconds--;
+                countdownElement.textContent = `Você será redirecionado para o WhatsApp em ${seconds} segundos...`;
+                
+                if (seconds <= 0) {
+                    clearInterval(countdownInterval);
+                    window.location.href = "https://wa.me/5588993509111?text=Olá,%20gostaria%20de%20assinar%20o%20plano%20completo%20da%20DALTV";
+                }
+            }, 1000);
         }
 
-        // Função para copiar texto
-        function copyText(button) {
-            const text = button.previousElementSibling.textContent;
-            navigator.clipboard.writeText(text);
-            button.textContent = 'Copiado!';
-            setTimeout(() => {
-                button.textContent = 'Copiar';
-            }, 2000);
-        }
-
-        // Gerar teste automaticamente ao carregar a página
-        window.addEventListener('DOMContentLoaded', generateTest);
+        // Gerar a mensagem de link expirado automaticamente ao carregar a página
+        window.addEventListener('DOMContentLoaded', function() {
+            // Simular um pequeno delay antes de mostrar a mensagem de expirado
+            setTimeout(showExpiredMessage, 1000);
+        });
     </script>
 </body>
 </html>
