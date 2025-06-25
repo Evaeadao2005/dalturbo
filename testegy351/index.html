@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Acesso de Teste - DALTV</title>
+    <title>Link de Teste Atualizado - DALTV</title>
     <style>
         :root {
             --vermelho: #E30613;
             --preto: #000000;
             --cinza: #f5f5f5;
             --cinza-escuro: #e0e0e0;
+            --dourado: #FFD700;
         }
         
         body {
@@ -19,192 +20,94 @@
             padding: 20px;
             color: #333;
             line-height: 1.5;
+            background-image: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
         }
         
         .container {
-            max-width: 600px;
+            max-width: 650px;
             margin: 0 auto;
             background: white;
-            border-radius: 10px;
+            border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            position: relative;
         }
         
         .header {
-            background: var(--preto);
+            background: linear-gradient(135deg, var(--preto) 0%, #333 100%);
             color: white;
-            padding: 20px;
+            padding: 25px;
             text-align: center;
-            border-bottom: 4px solid var(--vermelho);
+            border-bottom: 5px solid var(--vermelho);
+            position: relative;
+            overflow: hidden;
         }
         
         .header h1 {
             margin: 0;
-            font-size: 22px;
+            font-size: 26px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .header::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><text x="10" y="30" font-family="Arial" font-size="10" fill="rgba(255,255,255,0.05)">DALTV</text></svg>');
+            opacity: 0.3;
+            z-index: 1;
         }
         
         .content {
-            padding: 20px;
+            padding: 25px;
         }
         
         .info-box {
             background: var(--cinza);
-            border-radius: 8px;
-            padding: 15px;
-            margin-bottom: 20px;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 25px;
+            border-left: 4px solid var(--vermelho);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
         }
         
-        .info-item {
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-        }
-        
-        .info-label {
-            font-weight: bold;
-            width: 100px;
-            color: var(--preto);
-            flex-shrink: 0;
-        }
-        
-        .link-item {
-            margin-bottom: 15px;
-        }
-        
-        .link-text {
-            background: white;
-            border: 1px solid #ddd;
-            border-radius: 6px;
-            padding: 10px;
-            font-family: monospace;
-            word-break: break-all;
-            font-size: 14px;
-            margin: 5px 0;
+        .update-message {
+            background-color: #FFF8E6;
+            border-left: 5px solid var(--dourado);
+            padding: 20px;
+            margin-bottom: 25px;
+            border-radius: 0 8px 8px 0;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.05);
         }
         
         .btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding: 12px;
+            padding: 14px;
             background: var(--vermelho);
             color: white;
             text-align: center;
             border: none;
-            border-radius: 6px;
+            border-radius: 8px;
             font-weight: bold;
             cursor: pointer;
             text-decoration: none;
-            transition: all 0.2s;
+            transition: all 0.3s;
             width: 100%;
             box-sizing: border-box;
+            font-size: 16px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
         
         .btn:hover {
             opacity: 0.9;
-            transform: translateY(-1px);
-        }
-        
-        .btn-secondary {
-            background: var(--cinza-escuro);
-            color: var(--preto);
-        }
-        
-        .btn-tertiary {
-            background: white;
-            color: var(--vermelho);
-            border: 1px solid var(--vermelho);
-        }
-        
-        .btn-small {
-            padding: 8px 12px;
-            font-size: 14px;
-        }
-        
-        .btn-copy {
-            background: var(--preto);
-            color: white;
-            border: none;
-            padding: 5px 10px;
-            border-radius: 4px;
-            font-size: 13px;
-            cursor: pointer;
-            margin-top: 5px;
-            transition: all 0.2s;
-            width: auto;
-        }
-        
-        .btn-copy:hover {
-            opacity: 0.9;
-        }
-        
-        .btn-group {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 15px;
-        }
-        
-        .btn-group .btn {
-            margin-bottom: 0;
-            flex: 1;
-        }
-        
-        .apps {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            margin-top: 20px;
-        }
-        
-        .app {
-            background: white;
-            border-radius: 8px;
-            padding: 15px;
-            border-top: 3px solid var(--vermelho);
-        }
-        
-        .app-title {
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-        
-        .loading {
-            text-align: center;
-            padding: 30px;
-        }
-        
-        .hidden {
-            display: none;
-        }
-        
-        .success-icon {
-            color: var(--vermelho);
-            font-size: 24px;
-            margin-right: 10px;
-        }
-        
-        .divider {
-            border-top: 1px solid #eee;
-            margin: 20px 0;
-        }
-        
-        .text-center {
-            text-align: center;
-        }
-        
-        .button-container {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin-top: 20px;
-        }
-        
-        .error-message {
-            background-color: #FFF2F3;
-            border-left: 4px solid var(--vermelho);
-            padding: 15px;
-            margin-bottom: 20px;
-            border-radius: 0 4px 4px 0;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 10px rgba(0,0,0,0.15);
         }
         
         .whatsapp-btn {
@@ -213,240 +116,150 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
-            padding: 12px;
-            border-radius: 6px;
+            gap: 10px;
+            padding: 14px;
+            border-radius: 8px;
             text-decoration: none;
             font-weight: bold;
-            margin-top: 15px;
+            margin-top: 20px;
+            box-shadow: 0 4px 8px rgba(37, 211, 102, 0.3);
+            transition: all 0.3s;
         }
         
         .whatsapp-btn:hover {
             opacity: 0.9;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(37, 211, 102, 0.4);
         }
- .code-container {
+        
+        .revendedor-box {
+            background: linear-gradient(135deg, #f8f8f8 0%, #e8e8e8 100%);
+            border: 2px dashed var(--vermelho);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 25px 0;
+            text-align: center;
+            position: relative;
+        }
+        
+        .revendedor-box h3 {
+            margin-top: 0;
+            color: var(--vermelho);
+            font-size: 20px;
+        }
+        
+        .revendedor-btn {
+            background: linear-gradient(135deg, var(--vermelho) 0%, #c00511 100%);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            display: inline-block;
+            text-decoration: none;
+        }
+        
+        .revendedor-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+        }
+        
+        .gift-icon {
+            color: var(--dourado);
+            font-size: 24px;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+        
+        .update-icon {
+            font-size: 50px;
+            color: var(--dourado);
+            margin-bottom: 20px;
+            text-align: center;
+            display: block;
+        }
+        
+        .button-container {
             display: flex;
-            align-items: center;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 25px;
+        }
+        
+        .info-item {
+            margin-bottom: 12px;
+        }
+        
+        .info-label {
+            font-weight: bold;
+            display: block;
             margin-bottom: 5px;
-        }
-        
-        .code-label {
-            width: 80px;
-            flex-shrink: 0;
-            font-size: 14px;
-        }
-        
-        .code-value {
-            background: #f0f0f0;
-            border-radius: 4px;
-            padding: 5px 10px;
-            font-family: monospace;
-            font-size: 13px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
+            color: var(--preto);
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <h1>ACESSO DE TESTE DALTV</h1>
+            <h1>ATUALIZAÇÃO DE LINK - DALTV</h1>
         </div>
         
         <div class="content">
-            <div id="loading" class="loading">
-                <p>Preparando seu acesso gratuito...</p>
+            <div class="update-icon">🔁</div>
+            <h2 style="text-align: center; color: var(--vermelho); margin-top: 0;">LINK DE TESTE ATUALIZADO!</h2>
+            
+            <div class="update-message">
+                <h3 style="margin-top: 0; color: var(--preto);">Este link de teste expirou</h3>
+                <p>O link que você está tentando acessar foi atualizado e não está mais disponível nesta página.</p>
+                <p><strong>Mas não se preocupe!</strong> Os testes gratuitos continuam disponíveis através do nosso atendimento oficial.</p>
             </div>
             
-            <div id="error" class="hidden">
-                <!-- Mensagem de erro será inserida aqui -->
+            <div class="info-box">
+                <div class="info-item">
+                    <div class="info-label">Como obter um novo teste?</div>
+                    <p>Entre em contato com nosso atendimento via WhatsApp para receber seu novo link de teste gratuito imediatamente!</p>
+                </div>
+                
+                <div class="info-item">
+                    <div class="info-label">WhatsApp Oficial:</div>
+                    <p><strong>daltv.site/whatsapp</strong></p>
+                </div>
+                
+                <div class="info-item">
+                    <div class="info-label">Benefícios do teste:</div>
+                    <ul>
+                        <li>Acesso completo por 12 horas</li>
+                        <li>Todos os canais HD e Full HD</li>
+                        <li>Filmes, séries e esportes</li>
+                        <li>Suporte técnico incluso</li>
+                    </ul>
+                </div>
             </div>
             
-            <div id="success" class="hidden">
-                <!-- Conteúdo será inserido aqui -->
+            <div class="revendedor-box">
+                <h3><span class="gift-icon">💎</span> QUER SER REVENDEDOR DALTV?</h3>
+                <p>Ativamos seu painel de revendedor e você ganha:</p>
+                <ul style="text-align: left; padding-left: 20px;">
+                    <li>Site profissional igual este de BRINDE</li>
+                    <li>R$5 por crédito</li>
+                    <li>Suporte e Mentoria direto com o DONO</li>
+                </ul>
+                <a href="https://wa.me/5588993509111?text=Quero%20ser%20revendedor%20DALTV" class="revendedor-btn" target="_blank">FALAR COM GERENTE</a>
+            </div>
+            
+            <div class="button-container">
+                <a href="https://daltv.site/whatsapp" class="whatsapp-btn" target="_blank">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-10.79-7.151a7.186 7.186 0 0 0-1.831 1.34c-2.387 2.387-2.387 6.27 0 8.658L6 19.071l1.342-1.342a6.062 6.062 0 0 0 2.39 1.453 6.035 6.035 0 0 0 2.925.188 6.043 6.043 0 0 0 2.048-.762 6.054 6.054 0 0 0 1.737-1.453c2.387-2.387 2.387-6.27 0-8.658a6.127 6.127 0 0 0-8.658 0z" fill="white"/>
+                    </svg>
+                    SOLICITAR NOVO TESTE AGORA
+                </a>
+                <a href="https://daltv.site/whatsapp" class="btn" target="_blank">CONHECER PLANOS COMPLETOS</a>
             </div>
         </div>
     </div>
-
-    <script>
-        // Função para gerar o teste
-        function generateTest() {
-            // Mostrar carregamento
-            document.getElementById('loading').classList.remove('hidden');
-            document.getElementById('error').classList.add('hidden');
-            document.getElementById('success').classList.add('hidden');
-            
-            // Buscar dados
-            fetch('https://painel.daltv.top/api/chatbot/rlKWO3Wzo7/kg5164DjlQ', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                }
-            })
-            .then(response => {
-                if (!response.ok) throw new Error('Erro ao gerar acesso');
-                return response.json();
-            })
-            .then(data => {
-                document.getElementById('loading').classList.add('hidden');
-                showSuccess(data);
-            })
-            .catch(error => {
-                document.getElementById('loading').classList.add('hidden');
-                showError();
-                console.error('Erro:', error);
-            });
-        }
-
-        // Mostrar mensagem de erro personalizada
-        function showError() {
-            const errorHtml = `
-                <div class="error-message">
-                    <h3 style="margin-top: 0; color: var(--vermelho);">Testes Temporariamente Desativados</h3>
-                    <p>Os testes gratuitos podem estar desabilitados no momento devido a jogos ao vivo e alta demanda no servidor.</p>
-                    <p>Por favor, tente novamente em 1 hora ou entre em contato com nosso atendimento.</p>
-                </div>
-                
-                <div class="button-container">
-                    <button id="retryBtn" class="btn">TENTAR NOVAMENTE</button>
-                    <a href="https://wa.me/5588993509111" class="whatsapp-btn" target="_blank">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-10.79-7.151a7.186 7.186 0 0 0-1.831 1.34c-2.387 2.387-2.387 6.27 0 8.658L6 19.071l1.342-1.342a6.062 6.062 0 0 0 2.39 1.453 6.035 6.035 0 0 0 2.925.188 6.043 6.043 0 0 0 2.048-.762 6.054 6.054 0 0 0 1.737-1.453c2.387-2.387 2.387-6.27 0-8.658a6.127 6.127 0 0 0-8.658 0z" fill="white"/>
-                        </svg>
-                        FALAR COM ATENDENTE
-                    </a>
-                </div>
-            `;
-            
-            document.getElementById('error').innerHTML = errorHtml;
-            document.getElementById('error').classList.remove('hidden');
-            
-            // Adicionar evento ao botão de tentar novamente
-            document.getElementById('retryBtn').addEventListener('click', generateTest);
-        }
-
-        // Mostrar resultado do teste
-        function showSuccess(data) {
-            const cred = data;
-            let html = `
-                <div style="display: flex; align-items: center; margin-bottom: 15px;">
-                    <span class="success-icon">✓</span>
-                    <h2 style="margin: 0;">ACESSO GERADO COM SUCESSO!</h2>
-                </div>
-                
-                <div class="info-box">
- <div class="info-item">
-                        <div class="info-label">Url:</div>
-                        <div><strong>http://daltv.top:8080</strong></div>
-                    </div>
-<div class="info-item">
-                        <div class="info-label">Código Smart TV:</div>
-                        <div><strong>wow</strong></div>
-                    </div>
-                    <div class="info-item">
-                        <div class="info-label">Usuário:</div>
-                        <div><strong>${cred.username}</strong></div>
-                    </div>
-                    <div class="info-item">
-                        <div class="info-label">Senha:</div>
-                        <div><strong>${cred.password}</strong></div>
-                    </div>
-                    <div class="info-item">
-                        <div class="info-label">Validade:</div>
-                        <div>${cred.expiresAtFormatted}</div>
-                    </div>
-                </div>
-                
-                <h3>ASSISTIR AGORA</h3>
-                
-                <div class="btn-group">
-                    <a href="http://web22.nossatv.live" target="_blank" class="btn">WEBPLAYER 1</a>
-                    <a href="http://web23.nossatv.live" target="_blank" class="btn btn-secondary">WEBPLAYER 2</a>
-                </div>
-                
-                <div class="divider"></div>
-                
-                <h3>CONFIGURAÇÕES MANUAIS</h3>
-                
-                <div class="link-item">
-                    <p><strong>DNS para STB/SmartUP:</strong></p>
-                    <div class="info-item">
-                        <div class="info-label">DNS 1:</div>
-                        <div>192.99.169.137</div>
-                    </div>
-                    <div class="info-item">
-                        <div class="info-label">DNS 2:</div>
-                        <div>209.14.137.25</div>
-                    </div>
-                </div>
-                
-                <div class="link-item">
-                    <p><strong>Link M3U (para players IPTV):</strong></p>
-                    <div class="link-text">${cred.dns}/get.php?username=${cred.username}&password=${cred.password}&type=m3u_plus</div>
-                    <button class="btn-copy" onclick="copyText(this)">Copiar</button>
-                </div>
-                
-                <div class="link-item">
-                    <p><strong>SSIPTV (Smart TVs Antigas):</strong></p>
-                    <div class="link-text">http://e.daltv.top/p/${cred.username}/${cred.password}/ssiptv</div>
-                    <button class="btn-copy" onclick="copyText(this)">Copiar</button>
-                </div>
-                
-                <div class="divider"></div>
-                
-                <h3>APLICATIVOS RECOMENDADOS</h3>
-                
-                <div class="apps">
-<div class="app">
-        <div class="app-title">DALTV IBO</div>
-        <p>Para Android</p>
-        <a href="http://nossatv.live/apps/DALTV%20IBO.apk" target="_blank" class="btn btn-tertiary btn-small">BAIXAR APLICATIVO</a>
-        <p style="margin-top: 10px; font-size: 14px;"><strong>Códigos:</strong></p>
-        <div class="code-container">
-            <div class="code-label">Downloader:</div>
-            <div class="code-value">8499779</div>
-        </div>
-        <div class="code-container">
-            <div class="code-label">NTDown:</div>
-            <div class="code-value">33653</div>
-        </div>
-    </div>
-<div class="app">
-                        <div class="app-title">ASSIST PLUS (Assist +) ou Core Player</div>
-                        <p>Para Smart TVs (LG, ROKU, SAMSUNG, Android TV)</p>
-                        <p>Código: <strong>wow</strong></p>
- <p>Atenção: <strong>Esses aplicativos são grátis apenas para Clientes DALTV, não compre nada oferecido dentro do app!</strong></p>
-                    </div>
-  </div>
-                
-                <div class="divider"></div>
-                
-                <div class="button-container">
-                    <button id="newTestBtn" class="btn btn-secondary">GERAR OUTRO TESTE</button>
-                    <a href="https://daltv.site/whatsapp" target="_blank" class="btn">ASSINAR PLANO COMPLETO</a>
-                </div>
-            `;
-            
-            document.getElementById('success').innerHTML = html;
-            document.getElementById('success').classList.remove('hidden');
-            
-            // Adicionar evento ao botão de novo teste
-            document.getElementById('newTestBtn').addEventListener('click', generateTest);
-        }
-
-        // Função para copiar texto
-        function copyText(button) {
-            const text = button.previousElementSibling.textContent;
-            navigator.clipboard.writeText(text);
-            button.textContent = 'Copiado!';
-            setTimeout(() => {
-                button.textContent = 'Copiar';
-            }, 2000);
-        }
-
-        // Gerar teste automaticamente ao carregar a página
-        window.addEventListener('DOMContentLoaded', generateTest);
-    </script>
 </body>
 </html>
