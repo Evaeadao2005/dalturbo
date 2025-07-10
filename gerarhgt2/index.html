@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Acesso de Teste VIP - DALTV | Torne-se Revendedor</title>
+    <title>Teste Premium DALTV | IPTV de Alta Qualidade</title>
     <style>
         :root {
             --vermelho: #E30613;
@@ -11,6 +11,8 @@
             --cinza: #f5f5f5;
             --cinza-escuro: #e0e0e0;
             --dourado: #FFD700;
+            --verde: #25D366;
+            --azul: #1e90ff;
         }
         
         * {
@@ -299,7 +301,7 @@
         }
         
         .whatsapp-btn {
-            background-color: #25D366;
+            background-color: var(--verde);
             color: white;
             display: flex;
             align-items: center;
@@ -452,6 +454,97 @@
             height: 18px;
         }
         
+        .promo-banner {
+            background: linear-gradient(135deg, var(--vermelho) 0%, #c00511 100%);
+            color: white;
+            padding: 12px 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            text-align: center;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(227, 6, 19, 0.3);
+        }
+        
+        .access-instructions {
+            background: #f0f8ff;
+            border-left: 4px solid var(--azul);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .access-instructions h4 {
+            color: var(--azul);
+            margin-top: 0;
+        }
+        
+        .access-data {
+            background: white;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 15px 0;
+            border: 2px solid var(--dourado);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .access-data-title {
+            font-weight: bold;
+            margin-bottom: 15px;
+            font-size: clamp(16px, 4vw, 18px);
+            color: var(--preto);
+        }
+        
+        .access-data-item {
+            display: flex;
+            margin-bottom: 12px;
+        }
+        
+        .access-data-label {
+            font-weight: bold;
+            width: 100px;
+            flex-shrink: 0;
+        }
+        
+        .access-data-value {
+            flex: 1;
+            padding: 8px 12px;
+            background: #f8f8f8;
+            border-radius: 6px;
+            font-family: monospace;
+            word-break: break-all;
+        }
+        
+        .note-box {
+            background: #fffaf0;
+            border-left: 4px solid var(--dourado);
+            padding: 12px 15px;
+            margin: 15px 0;
+            border-radius: 0 8px 8px 0;
+            font-size: clamp(13px, 3.5vw, 15px);
+        }
+        
+        .alternative-options {
+            background: #f8f8f8;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 15px 0;
+            border-left: 4px solid var(--azul);
+        }
+        
+        .compatibility-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 10px 0;
+        }
+        
+        .compatibility-item {
+            background: #f0f0f0;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: clamp(13px, 3vw, 14px);
+        }
+        
         @media (min-width: 480px) {
             .content {
                 padding: 25px;
@@ -475,8 +568,8 @@
 <body>
     <div class="container">
         <div class="header">
-            <div class="badge">VIP</div>
-            <h1>ACESSO DE TESTE PREMIUM DALTV</h1>
+            <div class="badge">TESTE GRÁTIS</div>
+            <h1>TESTE PREMIUM DALTV</h1>
         </div>
         
         <div class="content">
@@ -553,7 +646,6 @@
                         FALAR COM ATENDENTE
                     </a>
                 </div>
-          
             `;
             
             document.getElementById('error').innerHTML = errorHtml;
@@ -569,42 +661,86 @@
             let html = `
                 <div style="display: flex; align-items: center; margin-bottom: 15px;">
                     <span class="success-icon">✓</span>
-                    <h2 style="margin: 0;">ACESSO VIP GERADO COM SUCESSO!</h2>
+                    <h2 style="margin: 0;">ACESSO GERADO COM SUCESSO!</h2>
                 </div>
                 
+                <div class="promo-banner">
+                    PROMOÇÃO R$5 OFF: De R$24,90 por apenas R$19,90/mês!<br>
+                    <small>Desconto de R$5 em qualquer plano da DALTV</small><br>
+                    <a href="https://daltv.site/planos" style="color: white; text-decoration: underline;">Confira todos os planos aqui</a>
+                </div>
                              
                 <div class="countdown" id="countdown">Seu teste expira em: 12:00:00</div>
                 
-                <div class="info-box">
-                    <div class="info-item">
-                        <div class="info-label">Usuário:</div>
-                        <div><strong>${cred.username}</strong></div>
+                <div class="access-data">
+                    <div class="access-data-title">DADOS PARA ACESSO</div>
+                    
+                    <div class="access-data-item">
+                        <div class="access-data-label">Usuário:</div>
+                        <div class="access-data-value">${cred.username}</div>
                     </div>
-                    <div class="info-item">
-                        <div class="info-label">Senha:</div>
-                        <div><strong>${cred.password}</strong></div>
+                    
+                    <div class="access-data-item">
+                        <div class="access-data-label">Senha:</div>
+                        <div class="access-data-value">${cred.password}</div>
                     </div>
-                    <div class="info-item">
-                        <div class="info-label">Code / Código:</div>
-                        <div><strong>wow</strong></div>
+                    
+                    <div class="access-data-item">
+                        <div class="access-data-label">URL:</div>
+                        <div class="access-data-value">http://daltv.top</div>
                     </div>
-                    <div class="info-item">
-                        <div class="info-label">Url:</div>
-                        <div><strong>http://daltv.top</strong></div>
-                    </div>
-                    <div class="info-item">
-                        <div class="info-label">Validade:</div>
-                        <div>${cred.expiresAtFormatted}</div>
+                    
+                    <div class="access-data-item">
+                        <div class="access-data-label">Code/Código:</div>
+                        <div class="access-data-value">wow</div>
                     </div>
                 </div>
+                
+                <div class="note-box">
+                    <strong>Observação:</strong> O code/código é usado apenas no Assist Plus ou Core Player. Alguns aplicativos podem usar apenas usuário e senha, outros podem precisar da URL.
+                </div>
+                
+                <div class="access-instructions">
+                    <h4>COMO USAR SEU ACESSO</h4>
+                    <p>1. Baixe o Assist Plus ou Core Player (para Smart TVs)</p>
+                    <p>2. Use os dados acima para fazer login</p>
+                    <p>3. Aproveite todos os canais e conteúdos!</p>
+                </div>
+                
+                <div class="info-box">
+                    <h4>DNS para STB/SmartTV</h4>
+                    <div class="info-item">
+                        <div class="info-label">DNS 1:</div>
+                        <div><strong>192.99.169.137</strong></div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">DNS 2:</div>
+                        <div><strong>209.14.137.25</strong></div>
+                    </div>
+                </div>
+                
+                <div class="alternative-options">
+                    <h4>OPÇÕES ALTERNATIVAS</h4>
+                    <p>Temos compatibilidade com XCloud, MaxPlayer e Vizzion Play para Smart TVs.</p>
+                    <p><strong>Importante:</strong> Estes aplicativos requerem configuração especial que deve ser solicitada ao nosso atendente.</p>
+                    <a href="https://daltv.site/whatsapp" class="btn btn-tertiary" target="_blank" style="margin-top: 10px;">FALAR COM ATENDENTE</a>
+                </div>
+                
+                <div class="compatibility-list">
+                    <div class="compatibility-item">Android TV</div>
+                    <div class="compatibility-item">LG</div>
+                    <div class="compatibility-item">Samsung</div>
+                    <div class="compatibility-item">Roku</div>
+                </div>
                       
-                 <div class="highlight-box">
-                    <h4><span class="gift-icon">🎁</span> OFERTA ESPECIAL PARA REVENDEDORES</h4>
+                <div class="highlight-box">
+                    <h4>OFERTA ESPECIAL PARA REVENDEDORES</h4>
                     <p>Torne-se revendedor DALTV e ganhe um site profissional igual este de brinde!</p>
                     <p>Créditos a partir de R$5</p>
                     <p>Suporte e Mentoria direta com o DONO</p>
                     <a href="https://daltv.site/revender2" class="revendedor-btn" target="_blank" style="margin-top: 10px;">FALAR COM GERENTE</a>
                 </div>
+                
                 <h3>ASSISTIR AGORA (COMPUTADOR)</h3>
                 
                 <div class="btn-group">
@@ -614,40 +750,12 @@
                 
                 <div class="divider"></div>
                 
-                <h3>CONFIGURAÇÕES MANUAIS</h3>
-                
-                <div class="link-item">
-                    <p><strong>DNS para STB/SmartUP:</strong></p>
-                    <div class="info-item">
-                        <div class="info-label">DNS 1:</div>
-                        <div>192.99.169.137</div>
-                    </div>
-                    <div class="info-item">
-                        <div class="info-label">DNS 2:</div>
-                        <div>209.14.137.25</div>
-                    </div>
-                </div>
-                
-                <div class="link-item">
-                    <p><strong>Link M3U (para players IPTV):</strong></p>
-                    <div class="link-text">${cred.dns}/get.php?username=${cred.username}&password=${cred.password}&type=m3u_plus</div>
-                    <button class="btn-copy" onclick="copyText(this)">Copiar</button>
-                </div>
-                
-                <div class="link-item">
-                    <p><strong>SSIPTV (Smart TVs Antigas):</strong></p>
-                    <div class="link-text">http://e.daltv.top/p/${cred.username}/${cred.password}/ssiptv</div>
-                    <button class="btn-copy" onclick="copyText(this)">Copiar</button>
-                </div>
-                
-                <div class="divider"></div>
-                
                 <h3>APLICATIVOS RECOMENDADOS</h3>
                 
                 <div class="apps">
                     <div class="app">
                         <div class="app-title">DALTV IBO</div>
-                        <p>Para Android</p>
+                        <p>Para dispositivos Android</p>
                         <a href="http://nossatv.live/apps/DALTV%20IBO.apk" target="_blank" class="btn btn-tertiary btn-small">BAIXAR APLICATIVO</a>
                         <p style="margin-top: 10px;"><strong>Códigos:</strong></p>
                         <div class="code-container">
@@ -660,15 +768,15 @@
                         </div>
                     </div>
                     <div class="app">
-                        <div class="app-title">ASSIST PLUS (Assist +) ou Core Player</div>
-                        <p>Para Smart TVs (LG, ROKU, SAMSUNG, Android TV)</p>
-                        <p>Código: <strong>wow</strong></p>
-                        <p style="color: #E30613;"><strong>⚠️ Esses aplicativos são grátis apenas para Clientes DALTV, não compre nada oferecido dentro do app!</strong></p>
+                        <div class="app-title">ASSIST PLUS / CORE PLAYER</div>
+                        <p>Para Smart TVs (LG, Samsung, Roku, Android TV)</p>
+                        <p><strong>Code/Código:</strong> wow</p>
+                        <p style="color: #E30613;"><strong>Importante:</strong> Esses aplicativos são grátis apenas para Clientes DALTV</p>
                     </div>
                 </div>
                 
                 <div class="revendedor-box" style="margin-top: 20px;">
-                    <h3><span class="gift-icon">💎</span> QUER GANHAR DINHEIRO COM IPTV?</h3>
+                    <h3>QUER GANHAR DINHEIRO COM IPTV?</h3>
                     <p>Seja um revendedor DALTV e ganhe:</p>
                     <ul>
                         <li>Painel de revenda completo</li>
